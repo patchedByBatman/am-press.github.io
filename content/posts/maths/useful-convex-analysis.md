@@ -2,7 +2,7 @@
 author: "Pantelis Sopasakis"
 title: Normal and tangent cones
 date: 202-00-19
-description: A brief guide to setup KaTeX
+description: Support functions, tangent and normal cones; the basics of convex analysis
 summary: Useful convex analysis stuff
 math: true
 ShowBreadCrumbs: false
@@ -62,7 +62,7 @@ This is a collection of some simple, yet useful results from convex analysis. We
 <p>In convex analysis, the support function plays a central role. Inter alia, it can be used to tell (i) whether a set is a subset of another, (ii) whether a point is in the interior, (iii) relative interior, or (iv) affine hull of a set. The following proposition summarises some of the most important properties of the support function of convex sets.</p>
 
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;" id="prop12">
 <p><strong>Proposition 1.2 (Properties of the support function).</strong> Let \( A, B, (A_i)_{i\in I}\) be nonempty and convex subsets of \( \mathbb{R}^n\). The following hold:</p>
 <ol>
 <li>\( \delta_A^*\) is the convex conjugate of the indicator function of \( A\).</li>
@@ -83,7 +83,7 @@ This is a collection of some simple, yet useful results from convex analysis. We
 </div>
 
 <br>
-<p>It is easy to see that \( \delta_{\{x_0\}}(y) = \langle x_0, y\rangle\), so from Proposition 1.2(8) we see that \( \delta_{A + x_0}^*(y) = \delta_A^*(y) + \langle x_0, y\rangle\).</p>
+<p>It is easy to see that \( \delta_{\{x_0\}}(y) = \langle x_0, y\rangle\), so from <a href="#prop12">Proposition 1.2(8)</a> we see that \( \delta_{A + x_0}^*(y) = \delta_A^*(y) + \langle x_0, y\rangle\).</p>
 
 {{</ math.inline >}}
 
@@ -97,7 +97,7 @@ $$\delta^*_C(y) = \sup_{\|x\|\leq 1}\langle y, x\rangle = \|y\|_*,$$
 
 <p>that is, the support function of a norm-ball is the dual norm. For instance, if \( C = \{x: \|x\|_2 \leq 1\}\), then \( \delta^*(y) = \|y\|_2\). If \( C = \{x: \|x\|_1 \leq 1\}\), then \( \delta^*(y) = \|y\|_\infty\), and if \( C = \{x: \|x\|_\infty \leq 1\}\), then \( \delta^*(y) = \|y\|_1\).</p>
 
-More generally, we can see from Proposition 1.2(8) that
+<p>More generally, we can see from <a href="#prop12">Proposition 1.2(8)</a> that</p>
 
 <div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
@@ -108,9 +108,9 @@ More generally, we can see from Proposition 1.2(8) that
 
 ### 1.2. Support function of a polyhedron
 {{< math.inline >}}
-<p>If \( C\) is a polytope, then by the Minkowski-Weyl theorem there are \( a_1, \ldots, a_p\) such that \( C = \mathrm{conv}(\{a_1, \ldots, a_p\})\). This has the form mentioned in Proposition 1.2(10), leading to the following result.</p>
+<p>If \( C\) is a polytope, then by the Minkowski-Weyl theorem there are \( a_1, \ldots, a_p\) such that \( C = \mathrm{conv}(\{a_1, \ldots, a_p\})\). This has the form mentioned in <a href="prop12">Proposition 1.2(10)</a>, leading to the following result.</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;" id="prop14">
 <p>
 <strong>Proposition 1.4 (Support function of polytope).</strong> Consider the polytope \( A = \mathrm{conv}(\{a_1, \ldots, a_p\})\) (given in its V-representation). Then 
 </p>
@@ -121,9 +121,9 @@ More generally, we can see from Proposition 1.2(8) that
 
 $$\begin{aligned}C = \mathrm{conv}(\{a_1,\ldots a_p\}) \oplus \mathrm{cone}(\{b_1, \ldots, b_r\}).\end{aligned}$$
 
-<p>This is known as the <strong>Weyl-Minkowski representation</strong> of the set. Given Proposition 1.2(8) and 1.2(12) and Proposition 1.4 the following result follows suit:</p>
+<p>This is known as the <strong>Weyl-Minkowski representation</strong> of the set. Given <a href="prop12">Proposition 1.2(8)</a> and 1.2(12) and <a href="prop14">Proposition 1.4</a> the following result follows suit:</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;" id="prop15">
 <p>
 <strong>Proposition 1.5 (Support function of polyhedron 1).</strong> Let \( C\) be a polyhderal set. Then, there are vectors \( (a_i)_{i=1}^{p}\) and \( (b_i)_{i=1}^{r}\) such that \( C = P \oplus K\) where \( P=\mathrm{conv}(\{a_1,\ldots a_p\}) \) and \( K = \mathrm{cone}(\{b_1, \ldots, b_r\}).\) Then,
 </p>
@@ -131,7 +131,7 @@ $$\begin{aligned}C = \mathrm{conv}(\{a_1,\ldots a_p\}) \oplus \mathrm{cone}(\{b_
 <p>where \( K^\circ = \{x \in\mathbb{R}^n: \langle b_i, x\rangle \leq 0, i=1,\ldots, r\}\).</p>
 </div>
 
-<p>Halfspaces are special cases of Proposition 1.5. In particular if \( C = \{x\in\mathbb{R}^n: \langle a, x\rangle \leq b\}\) we can write \( C = x_0 + K,\) where \( K = {x\in\mathbb{R}^n: \langle a, x\rangle \leq 0}\) and \( \langle a, x_0 \rangle = b\). We can show that</p>
+<p>Halfspaces are special cases of <a href="#prop15">Proposition 1.5</a>. In particular if \( C = \{x\in\mathbb{R}^n: \langle a, x\rangle \leq b\}\) we can write \( C = x_0 + K,\) where \( K = {x\in\mathbb{R}^n: \langle a, x\rangle \leq 0}\) and \( \langle a, x_0 \rangle = b\). We can show that</p>
 
 <div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
@@ -139,13 +139,13 @@ $$\begin{aligned}C = \mathrm{conv}(\{a_1,\ldots a_p\}) \oplus \mathrm{cone}(\{b_
 <p>\( \begin{aligned}\delta^*_C(y) = \begin{cases}\lambda b, &amp;\text{ if } y=\lambda a, \lambda \geq 0 \\ \infty, &amp;\text{ otherwise}\end{cases}\end{aligned}\)</p>
 </div>
 
-<p><em>Proof.</em> To prove this, let us first write \( C = K + x_0\) where \( K = \{x\in \mathbb{R}^n : \langle a, x\rangle \leq 0\}\) and \( x_0\) is a vector such that \( \langle a, x_0\rangle = b\) (the reader can verify this as an exercise).  Note that \( K\) is a cone (a homogeneous halfspace). Then, from Proposition 1.2(8), \( \delta_C^*(y) = \delta_K^*(y) + \langle x_0, y\rangle\) and \( \delta_K^*(y) = \delta_{K^\circ}(y)\). The polar of \( K\) is given by</p>
+<p><em>Proof.</em> To prove this, let us first write \( C = K + x_0\) where \( K = \{x\in \mathbb{R}^n : \langle a, x\rangle \leq 0\}\) and \( x_0\) is a vector such that \( \langle a, x_0\rangle = b\) (the reader can verify this as an exercise).  Note that \( K\) is a cone (a homogeneous halfspace). Then, from <a href="prop12">Proposition 1.2(8)</a>, \( \delta_C^*(y) = \delta_K^*(y) + \langle x_0, y\rangle\) and \( \delta_K^*(y) = \delta_{K^\circ}(y)\). The polar of \( K\) is given by</p>
 
 $$\begin{aligned}K^\circ {}={}& \{ y\in\mathbb{R}^n : \langle y, x\rangle 0, \forall x\in K\}    \\    {}={}& \{ y\in\mathbb{R}^n : \langle y, x\rangle 0, \forall x\in \mathbb{R}^n : \langle a, x\rangle \leq 0\}    \\    {}\subseteq{}& \{  y\in\mathbb{R}^n : \langle y, x_1\rangle \leq 0, \langle y, -x_1\rangle \leq 0, \text{ where } \langle a, x_1 \rangle = 0, x_1 \neq 0  \} \\ {}={}& \mathrm{span}(\{a\}), \end{aligned}$$
 
 <p>but \( K^\circ \subseteq K^\circ\), so \( K^\circ \subseteq \mathrm{cone}(\{a\})\). It is easy to show that \( K^\circ \supseteq \mathrm{cone}(\{a\})\). As a result \( K^\circ {}={} \mathrm{cone}(\{a\})\), so \( \delta_C^*(y) = \delta_{\mathrm{cone}(\{a\})}(y) + \langle x_0, y \rangle,\) which proves the assertion. \(\Box\)</p>
 
-<p>Given that a polyhedron can be written as an intersection of finitely many halfspaces (in its H representation), in light of Proposition 1.2(11) we have the following result.</p>
+<p>Given that a polyhedron can be written as an intersection of finitely many halfspaces (in its H representation), in light of <a href="prop12">Proposition 1.2(11)</a> we have the following result.</p>
 
 <div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
@@ -158,7 +158,7 @@ $$\begin{aligned}K^\circ {}={}& \{ y\in\mathbb{R}^n : \langle y, x\rangle 0, \fo
 
 $$\begin{aligned}C = \bigcap_{i=1}^{p}\{x\in\mathbb{R}^n : \langle a_i, x\rangle \leq b\}.\end{aligned}$$
 
-<p>Define \( C_i = \{x\in\mathbb{R}^n : \langle a_i, x\rangle \leq b\}\). By virtue of Proposition 1.2(11),  \( \delta_C^* = \mathrm{cl}\; \mathrm{conv}(\delta_{C_i}^*).\) From Proposition 1.2(2), \( \mathrm{epi}\delta_{C_i}^*\) are closed sets, so their union is closed, therefore, \(  \delta_C^* = \mathrm{conv}(\delta_{C_i}^*).\)</p>
+<p>Define \( C_i = \{x\in\mathbb{R}^n : \langle a_i, x\rangle \leq b\}\). By virtue of <a href="prop12">Proposition 1.2(11)</a>,  \( \delta_C^* = \mathrm{cl}\; \mathrm{conv}(\delta_{C_i}^*).\) From <a href="prop12">Proposition 1.2(2)</a>, \( \mathrm{epi}\delta_{C_i}^*\) are closed sets, so their union is closed, therefore, \(  \delta_C^* = \mathrm{conv}(\delta_{C_i}^*).\)</p>
 
 <p>Firstly note that \( (y, t) \in \mathrm{epi}\delta_{C_i}^*\) if and only if \( y = \lambda a_1\) for some \( \lambda\geq 0\) and \( \lambda b_i \leq t.\)</p>
 
@@ -266,8 +266,175 @@ This is a trivial example: \( N_{\{x_0\}}(x_0)=\mathbb{R}^n\).
 {{</ math.inline >}}
 
 ### 2.4. Normal cone of a unit norm-ball
+{{< math.inline >}}
+<p>In this section we will prove the following result</p>
+
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<p>
+<strong>Proposition 2.5 (Normal cone of a unit norm-ball).</strong> Let \( Q \in \mathbb{R}^{n\times n}\) be a symmetric positive definite matrix; we can define the inner product \( \langle x, y\rangle_Q = x^\intercal Q y\) and the corresponding norm \( \|x\|_Q = \sqrt{\langle x, x\rangle_Q}\). Let \( C = \{x \in \mathbb{R}^n: \|x\|_Q \leq 1\}\). Then, for \( \bar{x} \in \mathbb{R}^n\) with \( \|\bar{x}\|_Q =1\), we have</p>
+<p>\( \begin{aligned}N_{C}(\bar{x}) ={}&amp; \mathrm{cone}(Q\bar{x}), \\ T_C(\bar{x}) ={}&amp; \{w \in \mathbb{R}^n : \langle \bar{x}, w \rangle_Q \leq 0\}.\end{aligned}\)</p>
+</div>
+
+<p>We will provide two proofs to this result.</p>
+{{</ math.inline >}}
+
+#### 2.4-A. Normal cone of a unit norm-ball (method #1)
+{{< math.inline >}}
+<p>For this, we will use the result of Exercise 6.7 from [2], which states the following: Let \( F:\mathbb{R}^n \to \mathbb{R}^m\) be a smooth matting and \( C = F^{-1}(D)\), where \( D \subseteq \mathbb{R}^m\) and suppose that \( \nabla F\) has rank \( m\) at \( \bar{x} \in C\) with \( \bar{u} = F(\bar{x}) \in D\). Then</p>
+
+$$\begin{aligned}T_C(\bar{x}) =& \{w : \nabla F(\bar{x}) w \in T_D(\bar{u})\} \\ N_C(\bar{x}) =& \{\nabla F(\bar{x})^\intercal y : y \in N_{D}(\bar{u})\}  \\ \widehat{N}_C(\bar{x}) =& \{\nabla F(\bar{x})^\intercal y : y \in \widehat{N}_{D}(\bar{u})\} \end{aligned}$$
+
+<p>In this case we have \( C = \{x : \|x\| \leq 1\}\). Suppose that \( \|x\| = \sqrt{\langle x, x\rangle}\) for a given inner product on \( \mathbb{R}^n\). This means that there is a symetric positive definite matrix \( Q\) such that \( \|x\| = \sqrt{x^\intercal Q x}\) and we can write \( C = \{x \in \mathbb{R}^n : x^\intercal Q x \leq 1\}\). Define \( F(x) = \tfrac{1}{2}x^\intercal Q x - \tfrac{1}{2}\) and \( D = (-\infty, 0]\). Then \( \nabla F(x) = Qx\), so for \( \|\bar{x}\| = 1\),</p>
+
+$$\begin{aligned} N_C(\bar{x}) =& \{\nabla F(\bar{x})^\intercal y : y \in N_{D}(\bar{u})\} = \{ yQ\bar{x} : y \geq 0\}, \end{aligned}$$
+
+<p>which means that \( N_C(\bar{x}) = \mathrm{cone}(Q\bar{x})\) whenever \( \|\bar{x}\| = 1\) and since the tangent cone is the polar of the normal cone,</p>
+
+$$\begin{aligned}T_C(\bar{x}) = \{w \in \mathbb{R}^n : \langle Q\bar{x}, w \rangle \leq 0\}.\end{aligned}$$
+{{</ math.inline >}}
+
+
+#### 2.4-B. Normal cone of a unit norm-ball (method #2)
+{{< math.inline >}}
+<p>Here is an alternative approach: the tangent cone of \( C\) at a point \( \bar{x}\) with \( \|\bar{x}\|_Q = 1\) can be determined using the fact that</p>
+
+$$\begin{aligned}T_C(\bar{x}) = \limsup_{\tau \to 0^+}\tau^{-1}(C - \bar{x}) = \mathrm{cl}\bigcup_{\tau \to 0^+}\tau^{-1}(C - \bar{x}),\end{aligned}$$
+
+<p>where the second equality is because \( C\) is a closed clonex set, and</p>
+
+$$\begin{aligned}\tau^{-1}(C - \bar{x}) = \{x \in \mathbb{R}^n: \|\tau x + \bar{x}\|_Q \leq 1\} = \mathcal{B}^{\|\cdot\|_Q}\left(\tfrac{\bar{x}}{\tau}, \tfrac{1}{\tau}\right).\end{aligned}$$
+
+<p>Let \( \langle \cdot, \cdot \rangle_Q\) denote the inner product that corresponds to \( \|\cdot\|_Q\). We claim that \( T_C(\bar{x}) = \{w \in \mathbb{R}^n: \langle w, \bar{x} \rangle_Q \leq 0\}.\)</p>
+
+<p>Firstly we will show that \( \tau^{-1}(C - \bar{x}) = \mathcal{B}^{\|\cdot\|_Q}\left(\tfrac{\bar{x}}{\tau}, \tfrac{1}{\tau}\right) \subseteq \{w \in \mathbb{R}^n: \langle w, \bar{x} \rangle_Q \leq 0\}.\) Take \( w \in \mathcal{B}^{\|\cdot\|_Q}\left(\tfrac{\bar{x}}{\tau}, \tfrac{1}{\tau}\right),\) i.e., \( \|w + \tau^{-1}\bar{x}\|_Q \leq \tau^{-1}\). We need to show that \( \langle w, \bar{x}\rangle_Q \leq 0\). Indeed,</p>
+
+$$\begin{aligned}\|w + \tau^{-1}\bar{x}\|_Q^2 \leq \tau^{-2} \Rightarrow& \|w\|_Q^2 + \|\tau^{-1}\bar{x}\|_Q^2 + 2 \langle w, \tau^{-1}\bar{x}\rangle_Q \leq \tau^{-2} \\ \Rightarrow& 2\langle w, \tau^{-1}\bar{x}\rangle_Q \leq \tau^{-2} -  \|\tau^{-1}\bar{x}\|_Q^2 - \|w\|_Q^2 \leq -\|w\|_Q^2 \\ \Rightarrow& \langle w, \tau^{-1}\bar{x} \rangle_Q \leq 0\end{aligned}$$
+
+<p>Since the set \( \{w \in \mathbb{R}^n: \langle w, \bar{x} \rangle_Q \leq 0\}\) is closed we have that</p>
+
+$$\begin{aligned}T_C(\bar{x}) = \mathrm{cl} \bigcup_{\tau \to 0^+} \mathcal{B}^{\|\cdot\|_Q}\left(\tfrac{\bar{x}}{\tau}, \tfrac{1}{\tau}\right) \subseteq \{w \in \mathbb{R}^n: \langle w, \bar{x} \rangle_Q \leq 0\}.\end{aligned}$$
+
+<p>We now want to show the converse. We start by showing that \( \{w \in \mathbb{R}^n: \langle w, \bar{x} \rangle_Q < 0\} \subseteq T_C(\bar{x})\). In particular, we will show that for every \( w\in\mathbb{R}^n\) with \( \langle w, \bar{x}\rangle_Q < 0\), there is a \( \tau>0\) such that \( \mathcal{B}^{\|\cdot\|_Q}\left(\tfrac{\bar{x}}{\tau}, \tfrac{1}{\tau}\right) \ni w\), or what is the same</p>
+
+$$\begin{aligned}\left\|w + \tau^{-1}\bar{x}\right\|_Q^2 \leq \tau^{-2} \Leftrightarrow \ldots \Leftrightarrow \tau \leq -2\frac{\langle w, \bar{x}\rangle_Q}{\|w\|_Q^2},\end{aligned}$$
+
+<p>where the right hand side is positive.</p>
+
+<p>It remains to show that all vectors \( w\in\mathbb{R}^n\) with \( \langle w, \bar{x}\rangle_Q = 0\) are in the tangent cone. To that end, we will determine a sequence of points \( x_\tau\) that converge to \( w\) while \( x_\tau \in \mathcal{B}^{\|\cdot\|_Q}\left(\tfrac{\bar{x}}{\tau}, \tfrac{1}{\tau}\right).\) The selection of these points is shown in the following figure.</p>
+
+<img src="https://mathematix.files.wordpress.com/2022/05/tangent-space-of-ball-1.png?w=687" alt="x"/>
+
+<p>The blue line is the locus of the points \( x_\tau\) for \( \tau > 0\). In this figure we use the Euclidean norm and \( \bar{x}=(0, -1)\), \( w=(8,0) \perp \bar{x}\). In two dimensions, this locus is part of a curve known as the <a href="https://en.wikipedia.org/wiki/Strophoid" target="_blank">right strophoid</a>.</p>
+
+<p>Given a \( w\) with \( \langle w, \bar{x}\rangle_Q = 0\), we take \( x_\tau\) to be the point where the ball intersects the line segment that connects \( w\) with \( \bar{x}/\tau\). This point is </p>
+
+$$\begin{aligned}x_\tau = -\frac{\bar{x}}{\tau} + \frac{1}{\tau} \frac{w + \frac{\bar{x}}{\tau}}{\left\|w + \frac{\bar{x}}{\tau} \right\|_Q}.\end{aligned}$$
+
+<p>This is a linear combination of \( w\) and \( \bar{x}/\tau\) and can be written as a linear combination of \( w\) and \( \bar{w}\) as \( x_\tau = \lambda(\tau) w + \beta(\tau)\bar{x}\), where</p>
+
+$$\begin{aligned}\lambda(\tau) =& \frac{1}{\|\tau w + \bar{x}\|_Q}, \\ \beta(\tau) =& \frac{1}{\tau}\left(\frac{1}{\tau\left\|w + \frac{\bar{x}}{\tau}\right\|_Q} - 1\right).\end{aligned}$$
+
+<p>We will show that \( \lim_{\tau \to 0^+}\lambda(\tau)=1\) and \( \lim_{\tau \to 0^+}\beta(\tau)=0\). For the first limit we have</p> 
+
+$$\begin{aligned}\lim_{\tau \to 0^+}\lambda(\tau) =& \lim_{\tau \to 0^+}\frac{1}{\sqrt{\tau^2\|w\|_Q^2 + 1}} = 1,\end{aligned}$$
+
+<p>where we used the fact that \( \|\bar{x}\|_Q=1\) and \( \langle w, \bar{x}\rangle_Q = 0\). Next,</p>
+
+$$\begin{aligned} \lim_{\tau \to 0^+}\beta(\tau) =& \lim_{\tau \to 0^+}\frac{1}{\tau}\left(\frac{1}{\tau\left\|w + \frac{\bar{x}}{\tau}\right\|_Q} - 1\right) \\ =& \lim_{\tau \to 0^+}\frac{1}{\tau^2\sqrt{\|w\|_Q^2 + \frac{1}{\tau^2}}} - \frac{1}{\tau} \\ =& \lim_{\tau \to 0^+}\frac{1}{\tau \sqrt{\|w\|_Q^2 \tau^2 + 1}} - \frac{1}{\tau} \\ =& \lim_{\tau \to 0^+} \frac{1 - \sqrt{\|w\|_Q^2 \tau^2 + 1}}{\tau \sqrt{\|w\|_Q^2 \tau^2 + 1}} \\ =& \lim_{\tau \to 0^+} \frac{1}{\sqrt{\|w\|_Q^2 \tau^2 + 1}} \cdot \lim_{\tau \to 0^+}\frac{1 - \sqrt{\|w\|_Q^2 \tau^2 + 1}}{\tau}\end{aligned}$$
+
+<p>where we used the product rule of the limit. The first limit is equal to 1. The second one is as follows:</p>
+
+$$\begin{aligned} \lim_{\tau \to 0^+}\beta(\tau) =& \lim_{\tau \to 0^+}\frac{\left(1 - \sqrt{\|w\|_Q^2 \tau^2 + 1}\right)\left(1 + \sqrt{\|w\|_Q^2 \tau^2 + 1}\right)}{\tau\left(1 + \sqrt{\|w\|_Q^2 \tau^2 + 1}\right)} \\ =& \lim_{\tau \to 0^+}\frac{-\|w\|_Q^2 \tau }{1 + \sqrt{\|w\|_Q^2 \tau^2 + 1}} = 0 \end{aligned}$$
+
+<p>This completes the proof. We have shown that \( T_{\mathcal{B}^{\|\cdot\|_Q}}(\bar{x}) = \{w: \langle w, \bar{x}\rangle_Q \leq 0\},\) whenever \( \|\bar{x}\|_Q = 1\).</p>
+{{</ math.inline >}}
+
+
+### 2.6. Normal cone of a subspace
+
+{{< math.inline >}}
+<p>Suppose that \( C\) is a subspace of \( \mathbb{R}^n\) spanned by the vectors \( \{e_1, \ldots, e_p\}\). Then every \( x \in C\) can be written as \( x = a_1 e_1 + \ldots + a_p e_p\). Take \( \bar{x} \in C\). This means that we can write \( \bar{x} = \bar{a}_1 e_1 + \ldots + \bar{a}_p e_p\) for some \( \bar{a}_1,\ldots, \bar{a}_p\). We have</p>
+
+$$\begin{aligned}N_C(\bar{x}) =& \left\{d\in\mathbb{R}^n: \langle d, x-\bar{x}\rangle \leq 0, \forall x \in C\right\} \\ =& \left\{ d \in \mathbb{R}^n : \langle d, (a_1 - \bar{a}_1)e_1 + \ldots + (a_p - \bar{a}_p)e_p \rangle \leq 0, \forall a_1,\ldots, a_p \in \mathbb{R}\right\} \\ =& \left\{ d \in \mathbb{R}^n : \langle d, b_1 e_1 + \ldots + b_p e_p\rangle  \leq 0, \forall b_1,\ldots, b_p \in \mathbb{R}\right\} \end{aligned}$$
+
+<p>It is not difficult to conclude that \( N_C(\bar{x}) = C^\perp\): firstly, if \( d \in N_C(\bar{x})\) if we choose \( b_1 = 1\) and \( b_2=\ldots=b_p=0\) we have that \( \langle d, e_1\rangle \leq 0\). Then, by choosing \( b_1 = -1\) and \( b_2=\ldots=b_p=0\) we see that \( \langle d, -e_1\rangle \leq 0\), so \( \langle d, e_1 \rangle = 0\). Similarly, we have that \( \langle d, e_i \rangle = 0\) for \( i=1,\ldots, p\), therefore, \( N_C(\bar{x}) \subseteq C^\perp\). The converse is straightforward.</p>
+{{</ math.inline >}}
+
+
+
+### 2.7. Normal cone of a closed halfspace
+
+{{< math.inline >}}
+<p>Let \( C = \{x \in \mathbb{R}^n : \langle a, x\rangle \leq b\}\) and \( \bar{x} \in C\). Here is is more convenient to start by determining \( T_C(\bar{x})\). </p>
+
+<p>If \( \langle a, \bar{x}\rangle < b\) then and only then \( x\in\mathrm{int} C\), so \( N_C(\bar{x}) = \{0\}\) and \( T_C(\bar{x}) = \mathbb{R}^n\). Take \( \bar{x}\) on the boundary of \( C\), that is, \( \langle a, \bar{x}\rangle = b\). Then,</p>
+
+$$\begin{aligned}\tau^{-1}(C - \bar{x}) = \{x \in \mathbb{R}^n : \langle a, x \rangle \leq 0\} \Rightarrow T_C(\bar{x}) = \{x \in \mathbb{R}^n : \langle a, x\rangle \leq 0\}.\end{aligned}$$
+
+<p>Then, since \( N_C(\bar{x}) = T_C(\bar{x})^\circ\), it is </p>
+
+$$\begin{aligned}N_C(\bar{x}) =& \{y\in\mathbb{R}^n: \langle y, x\rangle \leq 0, \forall x: \langle a, x\rangle \leq 0\} \\   =& \left\{y\in\mathbb{R}^n: \sup_{\langle a, x\rangle \leq 0}\langle y, x\rangle \leq 0 \right\} \\ =& \{y\in\mathbb{R}^n: \delta_{\{x: \langle a, x\rangle \leq 0\}}^*(y) \leq 0\}\end{aligned}$$
+
+<p>But we know that \( \delta^*_{\{x: \langle a, x\rangle \leq 0\}}(y) = \delta_{\{\lambda a; \lambda \geq 0\}}(y),\) therefore,</p>
+
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<p>
+<strong>Proposition 2.6 (Normal and tangent cone of a halfspace).</strong> Consider the set \( C = \{x \in \mathbb{R}^n : \langle a, x\rangle \leq b\}\) and \( \bar{x}\) be such that \( \langle a,\bar{x} \rangle = b\). Then \( N_C(\bar{x}) = \mathrm{cone}(\{a\}).\)</p>
+</div>
+{{</ math.inline >}}
+
+
+
+### 2.8. Normal cone of polyhedral set
+
+{{< math.inline >}}
+<p>In this section we will derive the normal and tangent cones of polyhedral sets given then V and H representations. We start with the following proposition for polyhedra given in their H representation:</p>
+
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<p>
+<strong>Proposition 2.7 (Normal and tangent cone of a polyhedron).</strong> Let \( C = \{x\in\mathbb{R}^n : \langle a_i, x\rangle \leq b_i, i=1,\ldots, p\}\). Given \( \bar{x} \in C\) define the <i>active set</i> of \( \bar{x}\) as \( \mathcal{I}(\bar{x}) = \{i\in\{1,\ldots, p\}: \langle a_i, \bar{x}\rangle = b_i\}\). Then,</p>
+<p>\( \begin{aligned}N_C(\bar{x}) ={}&amp; \mathrm{cone}(\{a_i\}_{i\in\mathcal{I}(\bar{x})}),  \\  T_C(\bar{x}) {}={}&amp; \{w \in \mathbb{R}^n : \langle a_i, w \rangle \leq 0, \forall i \in \mathcal{I}(\bar{x})\}.\end{aligned}\)</p>
+</div>
+
+<em>Proof.</em> We will start with the tangent cone. Firstly, we will make a few observations.
+
+<strong>Claim 1.</strong> For every \( \epsilon > 0\), \( T_{C}(\bar{x}) = T_{C \cap \mathcal{B}(\bar{x}, \epsilon)}(\bar{x}).\)
+
+This is simply because \( T_C\) is defined as a limit, so it is a local property. The following property can be verified very easily:
+
+<strong>Claim 2.</strong> For every nonempty convex clossed set \( C\subseteq\) and \( \bar{x} \in C\), \( T_C(\bar{x}) = T_{C - \bar{x}}(0).\)
+
+Now define the set \( C_{\mathcal{I}(\bar{x})} = \{x \in \mathbb{R}^n: \langle a_i, x \rangle \leq b_i, \forall i \in \mathcal{I}(\bar{x})\}.\) For all \( j \notin \mathcal{I}(\bar{x}),\) \( \langle a_j , \bar{x} \rangle \neq 0\), so due to the continuity of the inner product, there is a neighbourhood of \( \bar{x}\), \( \mathcal{B}(\bar{x}, \epsilon)\) where \( \langle a_j , x \rangle \neq 0\) for all \( x\in \mathcal{B}(\bar{x}, \epsilon).\) As a result, \( C \cap \mathcal{B}(\bar{x}, \epsilon) = C_{\mathcal{I}}(\bar{x}) \cap \mathcal{B}(\bar{x}, \epsilon).\) From Claims 1 and 2 we have 
+
+$$\begin{aligned}T_C(\bar{x}) {}={}& T_{C-\bar{x}}(0) \\ {}={}& T_{(C-\bar{x}) \cap \mathcal{B}(\epsilon)}(0) \\  {}={}&  T_{(C_{\mathcal{I}(\bar{x})}-\bar{x}) \cap \mathcal{B}(\epsilon)}(0)  \end{aligned}$$
+
+and note that \( C_{\mathcal{I}(\bar{x})}-\bar{x} = \{x: \langle a_i, x\rangle \leq 0, \forall i \in \mathcal{I}(\bar{x})\},\) which is a cone. The result follows.
+
+<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<p>
+<strong>Proposition 2.8 (Normal and tangent cone of a polytope).</strong> Consider a polytope in its V representation, that is, \( C = \mathrm{conv}(\{a_1, \ldots, a_p\})\) and \( \bar{x} \in C\). Then,
+</p><ol>
+<li>\( N_C(\bar{x}) = \{d \in \mathbb{R}: \langle d, a_i - \bar{x} \rangle \leq 0, \forall i=1,\ldots, p\},\) and</li>
+<li>\( T_C(\bar{x}) = \mathrm{cone}(\{a_i - \bar{x}\}_{i})\)<p></p></li>
+</ol>  
+</div>
+
+<p>This can be proven using the support function of \(C\) (see <a href="#prop15">Proposition 1.5</a>).</p>
+{{</ math.inline >}}
+
+## References
+
+[1] JM Borwein and AS Lewis, Convex analysis and nonlinear optimization: theory and examples, Springer, CMS Books in Mathematics, 2010.
+
+[2] RT Rockafellar and RJB Wets, Variational Analysis, Springer, 2009
+
+[3] J-B Hiriart-Urruty and C. Lemaréchal, Fundamentals of Convex Analysis, Springer, 2001
+
+
+
+
+
 
 
 Work in progress... (read [here](https://mathematix.wordpress.com/2022/05/22/useful-convex-analysis-stuff-support-functions-normal-and-tangent-cones/))
 
-![](https://mathematix.files.wordpress.com/2022/05/tangent-space-of-ball-1.png?w=1024)
