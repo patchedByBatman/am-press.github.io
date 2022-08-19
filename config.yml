@@ -1,7 +1,7 @@
 baseURL: "https://am-press.github.io/"
 title: PaperMod
 paginate: 5
-theme: PaperMod
+theme: hugo-PaperMod
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
