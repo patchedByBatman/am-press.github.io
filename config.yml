@@ -43,72 +43,16 @@ languages:
         profileMode:
             enabled: true
             title: Applied Mathematix Press
-            imageUrl: "https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f317.svg"
-            imageTitle: ProfileMode image
+            # imageUrl: "https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f317.svg"
+            # imageTitle: ProfileMode image
             # imageWidth: 120
             # imageHeight: 120
-            subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
+            subtitle: "Academic Publisher"
             buttons:                
                 - name: Control Systems
                   url: https://am-press.github.io/ControlSystemsBook/
                 - name: Blog
                   url: posts
-
-    # fr:
-    #     languageName: ":fr:"
-    #     languageAltTitle: French
-    #     weight: 2
-    #     title: PaperModL2
-    #     taxonomies:
-    #       category: FRcategories
-    #       tag: FRtags
-    #       series: FRseries
-    #     profileMode:
-    #         enabled: true
-    #         title: PaperMod
-    #         imageUrl: "https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f317.svg"
-    #         imageTitle: ProfileMode image
-    #         # imageWidth: 120
-    #         # imageHeight: 120
-    #         subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
-    #         buttons:
-    #             - name: Blog
-    #               url: posts
-    #             - name: Profile Mode
-    #               url: https://github.com/adityatelange/hugo-PaperMod/wiki/Features#profile-mode
-    #     menu:
-    #         main:
-    #             - name: Postz
-    #               url: archives/
-    #               weight: 5
-    #             - name: FRTags
-    #               url: frtags
-    #               weight: 10
-    #             - name: FRCategories
-    #               url: frcategories
-    #               weight: 10
-    #             - name: FRSeries
-    #               url: frseries
-    #               weight: 10
-    #             - name: NullLink
-    #               url: "#"
-
-    # fa:
-    #     languagedirection: rtl
-    #     weight: 3
-    #     title: PaperMod RTL
-    #     homeInfoParams:
-    #         Title: "Hi there \U0001F44B"
-    #         Content: Welcome to RTL layout
-    #     taxonomies:
-    #       category: FAcategories
-    #       tag: FAtags
-    #       series: FAseries
-    #     menu:
-    #         main:
-    #             - name: FATags
-    #               url: fatags
-    #               weight: 10
 
 outputs:
     home:
@@ -118,11 +62,11 @@ outputs:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
-    author: Theme PaperMod
+    description: "Applied Mathematix Press"
+    author: Pantelis Sopasakis
     # author: ["Me", "You"] # multiple authors
 
-    defaultTheme: auto
+    defaultTheme: light
     # disableThemeToggle: true
     ShowShareButtons: true
     ShowReadingTime: true
@@ -161,15 +105,17 @@ params:
             - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
 
     socialIcons:
-        - name: github
-          url: "https://github.com/adityatelange/hugo-PaperMod"
-        - name: KoFi
-          url: "https://ko-fi.com/adityatelange"
+        - name: Twitter
+          url: "https://twitter.com/AM__Press"
+        - name: discord
+          url: "#"
+        - name: email 
+          url: "mailto: applied.mathematics.press@gmail.com"
         - name: Rss
-          url: "index.xml"
+          url: "index.xml"        
 
     editPost:
-        URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+        URL: "https://github.com/am-press/am-press.github.io/tree/main/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 

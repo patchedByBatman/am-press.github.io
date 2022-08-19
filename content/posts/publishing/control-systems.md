@@ -4,7 +4,6 @@ summary: Announcement of upcoming book
 date: 2022-08-19
 series: ["Publishing"]
 weight: 1
-aliases: ["/papermod-installation"]
 tags: ["Book", "Control"]
 author: "Pantelis Sopasakis"
 ---
