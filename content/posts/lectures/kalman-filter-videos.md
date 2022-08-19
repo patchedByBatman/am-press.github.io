@@ -1,35 +1,41 @@
 ---
-title: "Installation | Update"
-summary: Read Install and Update instructions here
+title: "Kalman Filter Video Lectures"
+summary: A series of 13 video lectures on the Kalman Filter
 date: 2021-01-20
-series: ["PaperMod"]
-weight: 1
-aliases: ["/papermod-installation"]
-tags: ["PaperMod"]
-author: "Aditya Telange"
+series: ["Lectures"]
+tags: ["Video Lectures", "Kalman Filter"]
+author: "Pantelis Sopasakis"
+weight: 0
 ---
 
-## Intro
+## Thirteen lectueres on the Kalman Filter
 
-- **We'll be using `yml/yaml` format for all examples down below, I recommend using `yml` over `toml` as it is easier to read.**
-- You can find any [YML to TOML](https://www.google.com/search?q=yml+to+toml) converters if necessary.
+I have released a series of video lectures on the Kalman filter, including an introduction to probability theory, Bayes’ theorem, minimum variance estimation, maximum likelihood and maximum a posteriori estimation. We start with a gentle introduction to probability theory (probability spaces, random variables, expectation, variance, density functions, etc) and move on to conditioning, which is a notion of central importance in estimation theory.
+
+
+> From basic probability theory to the Bayesian interpretation of the Kalman Filter in [13 video lectures](https://www.youtube.com/watch?v=1RGMKD5_48s&list=PLXBJk7WTnAgWNib_2rO6EKZ0DiTRfbtSJ)
+
+We then state Bayes’ theorem and the celebrated minimum variance estimation theory that states that the conditional expectation is an unbiased minimum variance estimator. Then, we derive the Kalman filter equations and give an interesting example: we use the Kalman filter to estimate the position of a vehicle from noisy GPS measurements (we have included a case where the connection to the GPS satellite is lost for a while, and then it is restored). Lastly, we show that the Kalman filter is BLUE (best linear unbiased estimator) and give a maximum a posteriori estimation interpretation.
+
+## Playlist
+
+You can watch all the videos [in this YouTube playlist](https://www.youtube.com/watch?v=1RGMKD5_48s&list=PLXBJk7WTnAgWNib_2rO6EKZ0DiTRfbtSJ).
 
 ---
 
-## Guide
+### Introduction to Probability
 
-Follow [Quick Start](https://gohugo.io/getting-started/quick-start/) guide to setup {{< inTextImg url="https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png" height="14" >}} and create a new site.
+{{< youtube 1RGMKD5_48s >}}
 
-> Note: Use -f to select yml format
->
-> `hugo new site <name of site> -f yml`
+### Position Estimation
 
-Make sure you install latest version of **`hugo(>=0.83.0)`**.
+{{< youtube Zf89SiDMXzg >}}
 
-After you have created a new site, at [Step 3](https://gohugo.io/getting-started/quick-start/#step-3-add-a-theme) follow the steps:
+### Maximum likelihood estimation
 
-### Method 1
+{{< youtube vjYsR4hYoEU >}}
 
+<!-- 
 Inside the folder of your Hugo site, run:
 
 ```bash
@@ -319,4 +325,4 @@ You can use it by creating `archetypes/post.md`
 hugo new --kind post <name>
 ```
 
----
+--- -->
