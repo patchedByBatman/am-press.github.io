@@ -253,7 +253,7 @@ If \( 0 \in \mathrm{relint}(C_1 - C_2)\) or \( \mathrm{relint}(C_1) \cap \mathrm
 This is a trivial example: \( N_{\{x_0\}}(x_0)=\mathbb{R}^n\).
 {{</ math.inline >}}
 
-### 2.3. Normal cone of a closed interval in \( \mathbb{R}\)
+### 2.3. Normal cone of a closed interval
 {{< math.inline >}}
 <p>Let \( C = [a, b] \subseteq \mathbb{R}\). Then, if \( \bar{x} \in (a, b)\), it is \( N_{[a, b]}(\bar{x}) = \{0\}\). If \( \bar{x} = a\), then \( N_{[a, b]}(a) = \{d \in \mathbb{R}: d(x-a) \leq 0, \forall x \in[a, b]\}\), where \( x-a \geq 0\), so \( N_{[a, b]}(a) = (-\infty, 0]\). Likewise, \( N_{[a,b]}(b) = [0, \infty)\). Overall,</p>
 
