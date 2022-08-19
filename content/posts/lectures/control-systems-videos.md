@@ -1,7 +1,7 @@
 ---
 title: "Introduction to control systems"
 summary: Video recordings for my UG control systems course
-date: 2021-01-20
+date: 2022-08-15
 series: ["Lectures"]
 tags: ["Video Lectures", "Control"]
 author: "Pantelis Sopasakis"
@@ -26,7 +26,7 @@ Here is a sample of three of my video lectures. You can find a lot more on my Yo
 
 ### Modelling circuits
 
-{{< youtube 62Uqrh_PUVY >}}
+{{< youtube kU_WqLm0o5w >}}
 
 ### Properties of the Laplace transform
 

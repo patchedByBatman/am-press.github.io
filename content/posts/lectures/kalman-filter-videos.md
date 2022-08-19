@@ -1,7 +1,7 @@
 ---
 title: "Kalman Filter Video Lectures"
 summary: A series of 13 video lectures on the Kalman Filter
-date: 2021-01-20
+date: 2022-08-19
 series: ["Lectures"]
 tags: ["Video Lectures", "Kalman Filter"]
 author: "Pantelis Sopasakis"
