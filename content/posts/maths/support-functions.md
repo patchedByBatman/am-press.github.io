@@ -51,7 +51,7 @@ This is a collection of some simple, yet useful results from convex analysis. We
 {{< math.inline >}}
 <p>Let us start by stating the definition of the support function:</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Definition 1.1 (Support Function).</strong> The support function of a nonempty set \(C \subseteq \mathbb{R}^n\) is defined as the function \(\delta^*_C(y) = \sup_{x\in C}\langle y, x\rangle\).
 </p>
@@ -60,7 +60,7 @@ This is a collection of some simple, yet useful results from convex analysis. We
 <p>In convex analysis, the support function plays a central role. Inter alia, it can be used to tell (i) whether a set is a subset of another, (ii) whether a point is in the interior, (iii) relative interior, or (iv) affine hull of a set. The following proposition summarises some of the most important properties of the support function of convex sets.</p>
 
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;" id="prop12">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;" id="prop12">
 <p><strong>Proposition 1.2 (Properties of the support function).</strong> Let \( A, B, (A_i)_{i\in I}\) be nonempty and convex subsets of \( \mathbb{R}^n\). The following hold:</p>
 <ol>
 <li>\( \delta_A^*\) is the convex conjugate of the indicator function of \( A\).</li>
@@ -97,7 +97,7 @@ $$\delta^*_C(y) = \sup_{\|x\|\leq 1}\langle y, x\rangle = \|y\|_*,$$
 
 <p>More generally, we can see from <a href="#prop12">Proposition 1.2(8)</a> that</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 1.3 (Support function of norm-ball).</strong> For a \( \|\cdot\|\)-ball of radius \( r&gt;0\), \( \delta_{\mathcal{B}_r}^*(y) = r\|y\|_*\).
 </p>
@@ -108,7 +108,7 @@ $$\delta^*_C(y) = \sup_{\|x\|\leq 1}\langle y, x\rangle = \|y\|_*,$$
 {{< math.inline >}}
 <p>If \( C\) is a polytope, then by the Minkowski-Weyl theorem there are \( a_1, \ldots, a_p\) such that \( C = \mathrm{conv}(\{a_1, \ldots, a_p\})\). This has the form mentioned in <a href="#prop12">Proposition 1.2(10)</a>, leading to the following result.</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;" id="prop14">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;" id="prop14">
 <p>
 <strong>Proposition 1.4 (Support function of polytope).</strong> Consider the polytope \( A = \mathrm{conv}(\{a_1, \ldots, a_p\})\) (given in its V-representation). Then 
 </p>
@@ -121,7 +121,7 @@ $$\begin{aligned}C = \mathrm{conv}(\{a_1,\ldots a_p\}) \oplus \mathrm{cone}(\{b_
 
 <p>This is known as the <strong>Weyl-Minkowski representation</strong> of the set. Given <a href="#prop12">Proposition 1.2(8)</a> and 1.2(12) and <a href="#prop14">Proposition 1.4</a> the following result follows suit:</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;" id="prop15">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;" id="prop15">
 <p>
 <strong>Proposition 1.5 (Support function of polyhedron 1).</strong> Let \( C\) be a polyhderal set. Then, there are vectors \( (a_i)_{i=1}^{p}\) and \( (b_i)_{i=1}^{r}\) such that \( C = P \oplus K\) where \( P=\mathrm{conv}(\{a_1,\ldots a_p\}) \) and \( K = \mathrm{cone}(\{b_1, \ldots, b_r\}).\) Then,
 </p>
@@ -131,7 +131,7 @@ $$\begin{aligned}C = \mathrm{conv}(\{a_1,\ldots a_p\}) \oplus \mathrm{cone}(\{b_
 
 <p>Halfspaces are special cases of <a href="#prop15">Proposition 1.5</a>. In particular if \( C = \{x\in\mathbb{R}^n: \langle a, x\rangle \leq b\}\) we can write \( C = x_0 + K,\) where \( K = {x\in\mathbb{R}^n: \langle a, x\rangle \leq 0}\) and \( \langle a, x_0 \rangle = b\). We can show that</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 1.6 (Support function of halfspace).</strong> Let \( C = \{x\in\mathbb{R}^n : \langle a, x\rangle \leq b\}\) be a halfspace. Then,</p>
 <p>\( \begin{aligned}\delta^*_C(y) = \begin{cases}\lambda b, &amp;\text{ if } y=\lambda a, \lambda \geq 0 \\ \infty, &amp;\text{ otherwise}\end{cases}\end{aligned}\)</p>
@@ -145,7 +145,7 @@ $$\begin{aligned}K^\circ {}={}& \{ y\in\mathbb{R}^n : \langle y, x\rangle 0, \fo
 
 <p>Given that a polyhedron can be written as an intersection of finitely many halfspaces (in its H representation), in light of <a href="#prop12">Proposition 1.2(11)</a> we have the following result.</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 1.7 (Support function of polyhedron 2).</strong> Let \( C = \{x\in\mathbb{R}^n : Ax \leq b\}\) be a polyhedron - or, equivalently \( C = \{x\in\mathbb{R}^n : \langle a_i, x\rangle \leq b, i=1,\ldots, p\}\). Then, if \( y \in \mathrm{cone}(\{a_1, \ldots, a_p\})\)</p>
 <p>\( \begin{aligned}\delta^*_C(y) =&amp; \min\{t : t\geq c_1 b_1 + \ldots + c_p b_p: y=c_1 a_1 + \ldots + c_p a_p, c_1,\ldots, c_p \geq 0\} \\ =&amp; \min\{c_1 b_1 + \ldots + c_p b_p: y=c_1 a_1 + \ldots + c_p a_p, c_1,\ldots, c_p \geq 0\} \\ =&amp; \min\{b^\intercal c: A^\intercal c = y, c \geq 0\},\end{aligned}\)</p>

@@ -6,6 +6,7 @@ series: ["Lectures"]
 tags: ["Video Lectures", "Kalman Filter"]
 author: "Pantelis Sopasakis"
 weight: 0
+showtoc: false
 ---
 
 ## Thirteen lectueres on the Kalman Filter

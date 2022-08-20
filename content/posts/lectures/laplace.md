@@ -5,6 +5,7 @@ date: 2022-08-10
 series: ["Lectures"]
 tags: ["Video Lectures", "Funny"]
 author: "Pantelis Sopasakis"
+showtoc: false
 ---
 
 ## Importance of the Laplace transform

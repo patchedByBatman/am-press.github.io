@@ -1,5 +1,5 @@
 baseURL: "https://am-press.github.io/"
-title: AM Press
+title: AMP
 paginate: 10
 theme: hugo-PaperMod
 
@@ -66,7 +66,7 @@ params:
     author: Pantelis Sopasakis
     # author: ["Me", "You"] # multiple authors
 
-    defaultTheme: light
+    defaultTheme: dark
     # disableThemeToggle: true
     ShowShareButtons: true
     ShowReadingTime: true
@@ -82,7 +82,7 @@ params:
 
     profileMode:
         enabled: false
-        title: AM Press
+        title: AMP
         imageUrl: "#"
         imageTitle: my image
         # imageWidth: 120

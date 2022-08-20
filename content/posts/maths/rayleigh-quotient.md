@@ -7,6 +7,7 @@ summary: Some notes on the Rayleigh quotient
 math: true
 series: ["Mathematix"]
 tags: ["Convex Analysis", "Directional derivative"]
+showtoc: false
 ---
 
 {{< math.inline >}}
@@ -33,7 +34,9 @@ $$R_A(x) = \frac{x^\top A x}{\|x\|^2},$$
 {{< math.inline >}}
 <p>Firstly let us prove the following useful preliminary result [1, Section 2.1, Exercise 6 (p19)]:</p>
 
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p><strong>Lemma 1.</strong> Let the function \( f: \mathbb{R}^n\setminus\{0\} \to \mathbb{R}\) be continuous, satysfying \( f(\lambda x) = f(x)\) for all \( \lambda > 0\) and \( x \in\mathbb{R}^n\), with \( x \neq 0\). Then \( f\) has a minimiser.</p>
+</div>
 
 <p><em>Proof.</em> Note that the range of the function is \( f(\mathbb{R} \setminus \{0\}) = f(S_1)\), where \( S_1 = \{x \in \mathbb{R}^n {}:{} \|x\| = 1\}\), which is a compact set. Since \( f\) is continuous, \( f(S_1)\) is a compact subset of \( \mathbb{R}\), therefore it has a minimum. \( \Box\)</p>
 
@@ -45,7 +48,9 @@ $$\begin{aligned}f'(x; d) = \lim_{t\downarrow 0}\frac{f(x + td)-f(x)}{t}.\end{al
 
 <p>Note that this is not the same as a <a href="https://mathworld.wolfram.com/DirectionalDerivative.html" target="_blank">common definition</a> of the directional derivative where we take "\( h \to 0\)", instead of \( h \downarrow 0\). If \( f\) is directionally differentiable along all directions \( d\in\mathbb{R}^n\) and there is a vector \( \nabla f(x)\) such that \( f'(x; d) = \langle \nabla f(x), d\rangle\) then we say that \( f\) is Gâteaux-differentiable at \( x\). A lot of interesting facts about directional derivatives can be found <a href="https://maunamn.wordpress.com/13-directional-derivatives-of-convex-functions/" target="_blank">in this blog post</a> by Nguyen Mau Nam.</p>
 
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>Proposition 2 (Directional Derivative of Rayleight Quotient).The directional derivative of \( R_A\) along a direction \( d \in \mathbb{R}^n\), \( d \neq 0\) at a point \( x\in\mathbb{R}^n\), with \( x \neq 0\) is given by</p>
+</div>
 
 $$\begin{aligned} R_A'(x; d) = \frac{2}{\|x\|^4}\left( \|x\|^2 x^\top A d - x^\top A x x^\top d \right).\end{aligned}$$
 
@@ -57,11 +62,14 @@ $$\begin{aligned} R_A'(x; d) {}={}& \lim_{t{}\downarrow{}0} \frac{1}{t}\left(\fr
 
 <p>For that we can tell that </p>
 
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p><strong>Proposition 3 (Gradient of Rayleigh Quotient).</strong> The Rayleigh Quotient is Gâteaux-differentiable over \( \mathbb{R}^n \setminus \{0\}\) with gradient</p>
+
 
 $$\begin{aligned} \nabla R_A'(x) {}={}& \frac{2}{\|x\|^4}(\|x\|^2 Ax - \|x\|_A^2 x) \\ {}={}& \frac{2}{\|x\|^2}(Ax - R_A(x) x),\end{aligned}$$
 
 <p>where we have used the notation \( \|x\|_A^2 = x^\top A x\) (this is not a norm unless \( A\) is positive definite as well).</p>
+</div>
 
 <p>Again, since \( R_A(\mathbb{R} \setminus \{0\})\) is compact, \( R_A\) admits at least one minimum and maximum value over \( S_1\). In fact, if \( x^\star\) is a minimiser with \( \|x^\star\| = 1\), then any point \( x = \lambda x^\star\) with \( \lambda > 0\) is also a minimiser. By Fermat's theorem, at any minimiser \( x^\star\) and maximiser \( x^{\star\star}\) the gradient of the Rayleigh quotient vanishes, i.e., </p>
 

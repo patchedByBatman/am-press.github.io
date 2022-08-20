@@ -56,14 +56,14 @@ This is a follow-up on the previous post on <a href="../support-functions">suppo
 <p>A first notable property of the normal cone is the following:</p>
 
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.1 (Normal at the interior).</strong> Suppose that \( C \subseteq \mathbb{R}^n\) has a nonempty interior and \( \bar{x} \in \mathrm{int}C\). Then \( N_C(\bar{x}) = \{0\}\) and \( T_C(\bar{x}) = \mathbb{R}^n\).</p>
 </div>
 
 <p>Next, let us state an important duality result between the tangent cone and the normal cone.</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.2 (Tangent-Normal cone duality).</strong> Let \( C \subseteq \mathbb{R}^n\) be a closed convex set. Then for \( \bar{x} \in C\)</p>
 <p>\( \begin{aligned}N_C(\bar{x}) ={}&amp; T_C(\bar{x})^\circ, \\ T_C(\bar{x}) ={}&amp; N_C(\bar{x})^\circ.\end{aligned}\)</p>
@@ -73,7 +73,7 @@ This is a follow-up on the previous post on <a href="../support-functions">suppo
 
 <p>Some further properties of the normal and tangent cones are stated below (some of these properties are taken from [3, Section 5.3]:</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.3 (Properties of the normal and tangent cone).</strong> Let \( C, C_1, C_2 \subseteq \mathbb{R}^n\) be closed convex sets. Then,</p>
 <ol>
@@ -109,7 +109,7 @@ This is a trivial example: \( N_{\{x_0\}}(x_0)=\mathbb{R}^n\).
 <p>Let \( C = [a, b] \subseteq \mathbb{R}\). Then, if \( \bar{x} \in (a, b)\), it is \( N_{[a, b]}(\bar{x}) = \{0\}\). If \( \bar{x} = a\), then \( N_{[a, b]}(a) = \{d \in \mathbb{R}: d(x-a) \leq 0, \forall x \in[a, b]\}\), where \( x-a \geq 0\), so \( N_{[a, b]}(a) = (-\infty, 0]\). Likewise, \( N_{[a,b]}(b) = [0, \infty)\). Overall,</p>
 
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.4 (Normal cone of a closed interval).</strong> It is</p>
 <p>\( \begin{aligned}N_{[a,b]}(\bar{x}) = \begin{cases}\{0\},&amp;\text{ if } a &lt; x &lt; b\\(-\infty, 0], &amp;\text{ if } \bar{x}=a\\ [0, \infty),&amp;\text{ if } \bar{x} = b\end{cases}\end{aligned}\)</p>
@@ -120,7 +120,7 @@ This is a trivial example: \( N_{\{x_0\}}(x_0)=\mathbb{R}^n\).
 {{< math.inline >}}
 <p>In this section we will prove the following result</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.5 (Normal cone of a unit norm-ball).</strong> Let \( Q \in \mathbb{R}^{n\times n}\) be a symmetric positive definite matrix; we can define the inner product \( \langle x, y\rangle_Q = x^\intercal Q y\) and the corresponding norm \( \|x\|_Q = \sqrt{\langle x, x\rangle_Q}\). Let \( C = \{x \in \mathbb{R}^n: \|x\|_Q \leq 1\}\). Then, for \( \bar{x} \in \mathbb{R}^n\) with \( \|\bar{x}\|_Q =1\), we have</p>
 <p>\( \begin{aligned}N_{C}(\bar{x}) ={}&amp; \mathrm{cone}(Q\bar{x}), \\ T_C(\bar{x}) ={}&amp; \{w \in \mathbb{R}^n : \langle \bar{x}, w \rangle_Q \leq 0\}.\end{aligned}\)</p>
@@ -228,7 +228,7 @@ $$\begin{aligned}N_C(\bar{x}) =& \{y\in\mathbb{R}^n: \langle y, x\rangle \leq 0,
 
 <p>But we know that \( \delta^*_{\{x: \langle a, x\rangle \leq 0\}}(y) = \delta_{\{\lambda a; \lambda \geq 0\}}(y),\) therefore,</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.6 (Normal and tangent cone of a halfspace).</strong> Consider the set \( C = \{x \in \mathbb{R}^n : \langle a, x\rangle \leq b\}\) and \( \bar{x}\) be such that \( \langle a,\bar{x} \rangle = b\). Then \( N_C(\bar{x}) = \mathrm{cone}(\{a\}).\)</p>
 </div>
@@ -241,7 +241,7 @@ $$\begin{aligned}N_C(\bar{x}) =& \{y\in\mathbb{R}^n: \langle y, x\rangle \leq 0,
 {{< math.inline >}}
 <p>In this section we will derive the normal and tangent cones of polyhedral sets given then V and H representations. We start with the following proposition for polyhedra given in their H representation:</p>
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.7 (Normal and tangent cone of a polyhedron).</strong> Let \( C = \{x\in\mathbb{R}^n : \langle a_i, x\rangle \leq b_i, i=1,\ldots, p\}\). Given \( \bar{x} \in C\) define the <i>active set</i> of \( \bar{x}\) as \( \mathcal{I}(\bar{x}) = \{i\in\{1,\ldots, p\}: \langle a_i, \bar{x}\rangle = b_i\}\). Then,</p>
 <p>\( \begin{aligned}N_C(\bar{x}) ={}&amp; \mathrm{cone}(\{a_i\}_{i\in\mathcal{I}(\bar{x})}),  \\  T_C(\bar{x}) {}={}&amp; \{w \in \mathbb{R}^n : \langle a_i, w \rangle \leq 0, \forall i \in \mathcal{I}(\bar{x})\}.\end{aligned}\)</p>
@@ -259,22 +259,22 @@ $$\begin{aligned}N_C(\bar{x}) =& \{y\in\mathbb{R}^n: \langle y, x\rangle \leq 0,
 
 <p>From Claims 1 and 2 we have</p>
 
-$$\begin{aligned}T_C(\bar{x}) {}={}& T_{C-\bar{x}}(0) \\ {}={}& T_{(C-\bar{x}) \cap \mathcal{B}(\epsilon)}(0) \\  {}={}&  T_{(C_{\mathcal{I}(\bar{x})}-\bar{x}) \cap \mathcal{B}(\epsilon)}(0)  \end{aligned}$$
+$$\begin{aligned}T_C(\bar{x}) {}={}& T_{C-\bar{x}}(0) \\ {}={}& T_{(C-\bar{x}) \cap \mathcal{B}(\epsilon)}(0) \\  {}={}&  T_{(C_{\mathcal{I}(\bar{x})}-\bar{x}) \cap \mathcal{B}(\epsilon)}(0),\end{aligned}$$
 
 <p>and note that \( C_{\mathcal{I}(\bar{x})}-\bar{x} = \{x: \langle a_i, x\rangle \leq 0, \forall i \in \mathcal{I}(\bar{x})\},\) which is a cone. This completes the proof. \(\Box\)</p>
 
 
 
-<div style="border-color:black;border-style:solid;border-width:1.5px;padding-left:10px;">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
 <p>
 <strong>Proposition 2.8 (Normal and tangent cone of a polytope).</strong> Consider a polytope in its V representation, that is, \( C = \mathrm{conv}(\{a_1, \ldots, a_p\})\) and \( \bar{x} \in C\). Then,
 </p><ol>
 <li>\( N_C(\bar{x}) = \{d \in \mathbb{R}: \langle d, a_i - \bar{x} \rangle \leq 0, \forall i=1,\ldots, p\},\) and</li>
-<li>\( T_C(\bar{x}) = \mathrm{cone}(\{a_i - \bar{x}\}_{i})\)<p></p></li>
+<li>\( T_C(\bar{x}) = \mathrm{cone}(\{a_i - \bar{x}\}_{i}).\)<p></p></li>
 </ol>  
 </div>
 
-<p>This can be proven using the support function of \(C\) (see <a href="#prop15">Proposition 1.5</a>).</p>
+<p>This can be proven using the support function of \(C\) (see <a href="../support-functions#prop15">Proposition 1.5</a>).</p>
 {{</ math.inline >}}
 
 ---

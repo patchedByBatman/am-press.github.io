@@ -5,6 +5,7 @@ date: 2022-08-15
 series: ["Lectures"]
 tags: ["Video Lectures", "Control"]
 author: "Pantelis Sopasakis"
+showtoc: false
 ---
 
 ## Video Recordings
