@@ -6,7 +6,7 @@ description: Support functions, tangent and normal cones; the basics of convex a
 summary: Useful convex analysis stuff
 math: true
 series: ["Mathematix"]
-tags: ["Convex Analysis"]
+tags: ["Variational Analysis", "Convex Analysis"]
 ---
 
 {{< math.inline >}}

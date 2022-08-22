@@ -6,7 +6,7 @@ description: Support functions
 summary: Properties of support functions
 math: true
 series: ["Mathematix"]
-tags: ["Convex Analysis"]
+tags: ["Variational Analysis", "Convex Analysis"]
 ---
 
 {{< math.inline >}}

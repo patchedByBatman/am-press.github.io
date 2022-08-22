@@ -6,7 +6,7 @@ description: Some notes on the Rayleigh quotient
 summary: Some notes on the Rayleigh quotient
 math: true
 series: ["Mathematix"]
-tags: ["Convex Analysis", "Directional derivative"]
+tags: ["Variational Analysis", "Convex Analysis", "Directional derivative", "Optimization"]
 showtoc: false
 ---
 

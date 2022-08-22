@@ -6,7 +6,7 @@ description: Generalised directional derivatives and examples
 summary: Examples on the Dini, Clarke and Michel-Penot directional derivatives
 math: true
 series: ["Mathematix"]
-tags: ["Convex Analysis"]
+tags: ["Variational Analysis", "Analysis", "Optimization", "Directional derivative"]
 ---
 
 <style>
@@ -202,10 +202,6 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 <p>This is how the graph of this function looks like:</p>
 
 <img src="https://mathematix.files.wordpress.com/2021/10/weird_function_v4.jpg" alt="interesting function; is this differentiable?"/>
-
-<p>and if we look closer, this is what we'll see</p>
-
-<img src="https://mathematix.files.wordpress.com/2021/10/weird_function_v2.jpg" alt="interesting function zoom in around zero"/>
 
 <p>and then if we zoom in even more, this is what we see </p>
 
