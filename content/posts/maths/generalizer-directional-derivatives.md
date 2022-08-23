@@ -93,6 +93,18 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 
 <p>Observe that the Clarke directional derivative majorises the Dini derivative \(f^-(x; h) \leq f^\circ(x; h)\). This is easy to prove - if not, please write a comment here below and I will elaborate.</p>
 
+<p>Moreover, in \(f\) is Lipschitz, we can show the following</p>
+
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
+<p><strong>Proposition 2.</strong> Let \(f\) be locally Lipschitz with modulus \(K\) around \(x\). Then,</p>
+<p>$$\begin{aligned}f^\circ(x; u) \leq K\|u\|,\end{aligned}$$</p>
+<p>for all \(u\).</p>
+</div>
+
+<p><em>Proof.</em> We have</p>
+
+<p>$$\begin{aligned}f^\circ(x; h) {}={}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{f(y+th)-f(y)}{t} \\ {}\leq{}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{|f(y+th)-f(y)|}{t} \\ {}\leq{}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{K\|y+th -y\|}{t} = K\|h\|, \end{aligned}$$</p>
+<p>which completes the proof. \(\blacksquare\)</p>
 {{</ math.inline >}}
 
 
@@ -105,12 +117,49 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 <p>$$\begin{aligned}f^\#(x; h) {}={}& \sup_{u\in\mathbb{R}^n} \limsup_{t \downarrow 0} \frac{f(x+t(h+u))-f(x+th)}{t}.\end{aligned}$$<p>
 
 <div style="border-style:solid;border-width:1.5px;padding-left:10px;">
-<p><strong>Proposition 2.</strong> The Michel-Penot directional derivative is sublinear, i.e.,</p>
-<p>$$\begin{aligned}f^\#(x; u + v) \leq f^\#(x; u) + f^\#(x; v),\end{aligned}$$</p>
+<p><strong>Proposition 3.</strong> The Michel-Penot directional derivative is sublinear, i.e.,</p>
+<p>$$\begin{aligned}f^\#(x; h_1 + h_2) \leq f^\#(x; h_1) + f^\#(x; h_2),\end{aligned}$$</p>
 <p>for all \(x, u, v\).</p>
 </div><br/>
 
-<p><em>Proof.</em> Coming soon.</p>
+<p><em>Proof.</em> Let us define the function</p>
+<p>$$\begin{aligned}\hat{f}(x, h, u){}={}\limsup_{t \downarrow 0} \frac{f(x+th+tu))-f(x+tu)}{t}.\end{aligned}$$</p>
+<p>Note that \(f^\#(x; h) = \sup_u \hat{f}(x, h, u)\). We shall prove that \(\hat{f}\) is sublinear in its second argument; for fixed \(x\) and \(u\) we have</p>
+<p>$$\begin{aligned}\hat{f}(x, h_1+h_2, u)
+{}={}&
+\limsup_{t \downarrow 0} \frac{1}{t}\left[f(x+t(h_1+h_2+u))-f(x+tu)\right]
+\\
+{}={}&
+\limsup_{t \downarrow 0} \frac{1}{t}\big[ f(x+t(h_1+h_2+u)) -f(x+th_2+tu)
+\\
+&\qquad\quad+f(x+th_2+tu)-f(x+tu)\big]
+\\
+{}\leq{}&
+\limsup_{t \downarrow 0} \frac{1}{t}\left[ f(x+t(h_1+h_2+u)) -f(x+th_2+tu)\right]
+\\
+&\qquad\quad+\limsup_{t \downarrow 0} \frac{1}{t}\left[ f(x+th_2+tu)-f(x+tu)\right]
+\\
+{}\leq{}&
+\sup_u\limsup_{t \downarrow 0} \frac{1}{t}\left[ f(x+th_1+t(h_2+u))) -f(x+t(h_2+u))\right] 
+\\
+&\quad\qquad{}+{} f^{\#}(x, h_2)
+\\
+{}={}&
+\sup_{v}\limsup_{t \downarrow 0} \frac{1}{t}\left[ f(x+th_1+t v) - f(x+tv)\right] + f^{\#}(x, h_2)
+\\
+{}={}& f^{\#}(x, h_1) +  f^{\#}(x, h_2).
+\end{aligned}$$</p>
+<p>Now taking a supremum with respect to \(u\), the assertion follows. \(\blacksquare\)</p>
+
+<p>A notable property is stated below.</p>
+
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;">
+<p><strong>Proposition 4.</strong> We have</p>
+<p>$$\begin{aligned}f^{-}(x; h) \leq f^\#(x; h) \leq f^{\circ}(x; h),\end{aligned}$$</p>
+<p>for all \(x, h\).</p>
+</div><br/>
+
+<p><em>Proof.</em> This is Proposition 6.1.1 in [1] and the proof can be found there. \(\blacksquare\)</p>
 
 <p>Observe that</p>
 
@@ -164,9 +213,9 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 <p>We can state the following result that gives the Clarke derivative of \(-f\) in terms of that of \(f\).</p>
 
 
-<div style="border-style:solid;border-width:1.5px;padding-left:10px;padding-top:15px">
+<div style="border-style:solid;border-width:1.5px;padding-left:10px;padding-top:15px" id="prop-clarke-minus-h">
 <p>
-<strong>Proposition 3.</strong> It is \((-f)^\circ(x; h) = f^\circ(x; -h)\).
+<strong>Proposition 5.</strong> It is \((-f)^\circ(x; h) = f^\circ(x; -h)\).
 </p></div><br/>
 
 <p><em>Proof.</em> We have</p>
@@ -179,16 +228,16 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 
 <p>which completes the proof. \(\blacksquare\)</p>
 
-<p>Note that the property of Proposition 3 does not hold for the Dini derivative, but the Michel-Penot derivative satisfies \(f^\#(x; -h) = (-f)^\#(x; h)\).</p>
+<p>Note that the property of <a href="#prop-clarke-minus-h">Proposition 5</a> does not hold for the Dini derivative, but the Michel-Penot derivative satisfies \(f^\#(x; -h) = (-f)^\#(x; h)\).</p>
 
 <p>It is also easy to prove that</p>
 
 <div style="border-style:solid;border-width:1.5px;padding-left:10px;padding-top:15px">
-<p><strong>Proposition 4.</strong> It is \((\lambda f)^\circ(x; h) = \lambda f^\circ(x; h)\), for \(\lambda \geq 0\).</p>
+<p><strong>Proposition 6.</strong> It is \((\lambda f)^\circ(x; h) = \lambda f^\circ(x; h)\), for \(\lambda \geq 0\).</p>
 </div>
 <br/>
 
-<p>Proposition 4 holds for the Michel-Penot derivative too.</p>
+<p>Proposition 6 holds for the Michel-Penot derivative too.</p>
 {{</ math.inline >}}
 
 
