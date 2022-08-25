@@ -1,45 +1,31 @@
 ---
 author: "Pantelis Sopasakis"
-title: From Hahn-Banach to separating theorems
+title: From Hahn-Banach to Separating Theorems
 date: 2022-08-23
 description: From the Hahn-Banach theorem to the three separating theorems
 summary: From the Hahn-Banach theorem to the three separating theorems
 math: true
+draft: true
 series: ["Mathematix"]
 tags: ["Convex Analysis", "Functional Analysis", "Analysis"]
 showtoc: false
 ---
 
-<style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: fixed;
-}
-
-td, th {
-
-  text-align: left;
-  padding: 8px;
-  width: 33%
-}
 
 
-</style>
+## Preliminaries
 
-{{< math.inline >}}
-{{ if or .Page.Params.math .Site.Params.math }}
+<p>We assume that the reader is familiar with the concept of a <a href="https://en.wikipedia.org/wiki/Topological_vector_space" target="_blank">topological vector space</a> (TVS).</p>
 
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-{{ end }}
-{{</ math.inline >}}
+<p>Let \(X\) be a <abbr title="topological vector space">TVS</abbr>. Recall that a set \(A \subseteq X\) is said to be <a href="https://en.wikipedia.org/wiki/Balanced_set" target="_blank"><strong>balanced</strong></a> if \([-1, 1]A \subseteq A\). Of course \(0\in A\). Note that balanced sets are symmetric (\(-A = A\)).</p> 
+
+<p>A set \(A\) is said to be <a><strong>absorbing</strong></a> if for every \(x\in X\) there is a \(c_0 > 0\) such that \(x \in cA\) for all \(c\in{\rm I\!R}\) with \(|c| \geq c_0\). In simple words, a set is absorbing if it can be inflated to include any point \(x\in X\) <em>and</em> once it absorbes \(x\) as we keep inflating it, it will keep containing \(x\).</p>
+
+<p>We will recall a fact from the theory of <abbr title="topological vector space">TVS</abbr> that we will be using a lot in what follows. If \(X\) is a <abbr title="topological vector space">TVS</abbr>, the origin has a topological base of balanced and absorbing sets.</p>
 
 
 ## Nonnegative sublinear functionals
-{{< math.inline >}}
+
 <div style="border-style:solid;border-width:1.5px;padding:10px; margin-bottom: 10px">
 <p><strong>Definition 1 (Banach functional).</strong> Let \(X\) be a vector space. A \(p:X\to{\rm I\!R}\) is called a <strong>nonnegative sublinear functional</strong> (NSF) if the following conditions are satisfied</p>
 <ol>
@@ -66,7 +52,7 @@ td, th {
 <p>$$p\left(\tfrac{\epsilon}{M}V\right) \subseteq (-\epsilon, \epsilon),$$</p>
 <p>so, \(p\) is continuous at \(0\).</p>
 
-<p>Let us now show that 2 implies 1. Let \(p\) be continuous at \(0\) and \(x_0 \in X\). Let \(\epsilon > 0\). Then, there is \(V\), star-shaped neighbourhood of \(0\) such that \(p(V) \subseteq (-\epsilon, \epsilon)\). We will show that \(p(x_0 + V) \subseteq (p(x_0)-\epsilon, p(x_0) + \epsilon)\).</p>
+<p>Let us now show that 2 implies 1. Let \(p\) be continuous at \(0\) and \(x_0 \in X\). Let \(\epsilon > 0\). Then, there is \(V\), balanced neighbourhood of \(0\) such that \(p(V) \subseteq (-\epsilon, \epsilon)\). We will show that \(p(x_0 + V) \subseteq (p(x_0)-\epsilon, p(x_0) + \epsilon)\).</p>
 
 <p>By taking \(v\in V\) we see that \(p(x_0 + v) \leq p(x_0) + p(v) < p(x_0) + \epsilon\). Likewise, \(p(x_0+v) = p(x_0 - (-v)) \geq p(x_0) - p(-v) > p(x_0) - \epsilon\). This completes the proof. \(\blacksquare\)</p>
 
@@ -84,17 +70,17 @@ td, th {
 <p>for all \(x\in X\). If \(p\) is continuous, then \(A\) is continuous.</p>
 </div>
 
-<p><em>Proof.</em> To show that \(A\) is continuous, it suffices to show that for every \(\epsilon > 0\), there is an open neighbourhood of \(0_X\) such that \(A(V) \subseteq (-\epsilon, \epsilon)\). Since \(p\) is continuous (at \(0\)), there is a star-shaped neighbourhood of \(0\) such that \(p(V) \subseteq (-\epsilon, \epsilon)\).</p>
+<p><em>Proof.</em> To show that \(A\) is continuous, it suffices to show that for every \(\epsilon > 0\), there is an open neighbourhood of \(0_X\) such that \(A(V) \subseteq (-\epsilon, \epsilon)\). Since \(p\) is continuous (at \(0\)), there is a balanced neighbourhood of \(0\) such that \(p(V) \subseteq (-\epsilon, \epsilon)\).</p>
 
 <p>For \(x \in V\) we have </p>
 <p>$$A(x) \leq p(x) < \epsilon.$$</p>
 <p>Moreover,</p>
 <p>$$A(x) = A(-(-x)) = -A(-x) \geq -p(-x) > -\epsilon,$$</p>
-<p>where we used the fact that \(V\) is star-shaped, so \(x\in V\) implies \(-x\in V\). We have shown that  \(A(V) \subseteq (-\epsilon, \epsilon)\). \(\blacksquare\)</p>
-{{</ math.inline >}}
+<p>where we used the fact that \(V\) is balanced, so \(x\in V\) implies \(-x\in V\). We have shown that  \(A(V) \subseteq (-\epsilon, \epsilon)\). \(\blacksquare\)</p>
+
 
 ## Zorn's lemma
-{{< math.inline >}}
+
 <p>In this section we'll state Zorn's lemma, which is a very useful tool in functional analysis (and not only) with numerous applications. Zorn's lemma can be proven using the <a href="https://en.wikipedia.org/wiki/Axiom_of_choice" target="_blank">axiom of choice</a> (in fact, it is equivalent to the axiom of choice).</p>
 
 <p>We will state Zorn's lemma here without a proof. We will later use it to prove the Hahn-Banach theorem. Firstly, we need to state some definitions.</p>
@@ -134,7 +120,7 @@ td, th {
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px">
 <p><strong>Theorem 8 (Zorn's lemma).</strong> Let \(A\) be a nonempty set equipped with a partial order \(\leq\) and every chain has an upper bound. Then, \(A\) has a maximal element.</p>
 </div>
-{{</ math.inline >}}
+
 
 
 
@@ -142,8 +128,19 @@ td, th {
 
 ## The Hahn-Banach Theorem
 
-<p></p>
-<p></p>
+<div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px">
+<p><strong>Theorem 9 (Hahn-Banach Theorem).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(p: X \to {\rm I\!R}\) is an <abbr title="nonnegative sublinear functionals">NSFs</abbr>. Let \(Y\subseteq X\) be a subspace of \(X\) and a linear functional \(f:Y\to{\rm I\!R}\) is such that </p>
+<p>$$f(y) \leq p(y),$$</p>
+<p>for all \(y\in Y\). Then, there exists a linear functional \(\hat{f}: X \to {\rm I\!R}\) such that</p>
+<ol>
+    <li>\(\hat{f}\) extends \(f\), i.e., \(\hat{f}(y) = f(y)\) for all \(y\in Y\)</li>
+    <li>\(\hat{f}(x) \leq p(x)\) for all \(x \in X\)</li>
+</ol>
+</div>
+
+<p><em>Proof.</em> </p>
+
+
 <p></p>
 <p></p>
 <p></p>

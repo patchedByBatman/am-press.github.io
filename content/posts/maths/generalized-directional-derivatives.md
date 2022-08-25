@@ -27,26 +27,14 @@ td, th {
 
 </style>
 
-{{< math.inline >}}
-{{ if or .Page.Params.math .Site.Params.math }}
 
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-{{ end }}
-{{</ math.inline >}}
-
-
-{{< math.inline >}}
 <p>In the previous post on the <a href="../rayleigh-quotient">Rayleigh quotient</a> we defined the directional derivative of a function \(f: \mathbb{R}^n \to \overline{\mathbb{R}}\) as</p>
 
-$$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{aligned}$$
+<p>$$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{aligned}$$</p>
 
 <p>provided that the limit exists.</p> 
 
 <p>It turns out that all convex functions are directionally differentiable on the interior (actually, the core) of their domains and \(f'(x; \cdot)\) is sublinear. However, the sublinearity property may fail when working with nonconvex functions. This motivates the definition of generalised directional derivatives which will hopefully be accompanied by some good calculus rules.</p>
-{{</ math.inline >}}
 
 
 
@@ -55,20 +43,20 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 
 ### 1.1. Dini Directional Derivative
 
-{{< math.inline >}}
+
 <p>The Dini directional derivative of a function \(f: \mathbb{R}^n \to \overline{\mathbb{R}}\) at a point \(x\) along a direction \(h\) is a generalised derivative given by </p>
 
 <p>$$\begin{aligned}f^-(x; h) = \liminf_{t \downarrow 0} \frac{f(x+th)-f(x)}{t}.\end{aligned}$$</p>
 
 <p>However, as we will see later, the Dini directional derivative is not always sublinear.</p>
-{{</ math.inline >}}
+
 
 
 
 
 ### 1.2. Clarke Directional Derivative
 
-{{< math.inline >}}
+
 <p>We also define the Clarke directional derivative of \(f\)  at \(x\) for \(h\) is given by</p>
 
 <p>$$\begin{aligned}f^\circ(x; h) {}={}& \limsup_{y \to x, t \downarrow 0} \frac{f(y+th)-f(y)}{t} \\ {}={}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{f(y+th)-f(y)}{t}.\end{aligned}$$</p>
@@ -105,13 +93,12 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 
 <p>$$\begin{aligned}f^\circ(x; h) {}={}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{f(y+th)-f(y)}{t} \\ {}\leq{}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{|f(y+th)-f(y)|}{t} \\ {}\leq{}& \inf_{\delta>0}\, \sup_{\substack{\|y-x\|\leq \delta \\ t \in (0,\delta)}} \frac{K\|y+th -y\|}{t} = K\|h\|, \end{aligned}$$</p>
 <p>which completes the proof. \(\blacksquare\)</p>
-{{</ math.inline >}}
 
 
 
 ### 1.3. Michel-Penot Directional Derivative
 
-{{< math.inline >}}
+
 <p>The Michel-Penot directional derivative is defined as</p>
 
 <p>$$\begin{aligned}f^\#(x; h) {}={}& \sup_{u\in\mathbb{R}^n} \limsup_{t \downarrow 0} \frac{f(x+t(h+u))-f(x+th)}{t}.\end{aligned}$$<p>
@@ -171,12 +158,10 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 
 <p>and take the supremum with respect to \(u\) on both sides.</p>
 
-{{</ math.inline >}}
 
 ## 2. Examples
 
 ### 2.1. Absolute value
-{{< math.inline >}}
 <p>Let us first see how the above three derivatives behave on a nonsmooth convex function. Consider the function \(f(x) = |x|\), with \(x \in \mathbb{R}\). The Dini derivative of \(f\) at \(x=0\) for \(h\) is</p>
 
 <p>$$\begin{aligned}f^-(x; h) = \liminf_{t\downarrow 0} \frac{|th|}{t} = |h|.\end{aligned}$$</p>
@@ -190,10 +175,11 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 <p>$$\begin{aligned}f^\circ(0; h) {}={}& \limsup_{y\to 0, t\downarrow 0} \frac{|y+th|-|y|}{t} \\ {}\geq{}& \lim_{\nu} \frac{|y_\nu + t_\nu h|-|y_\nu|}{t_\nu} = |h|,\end{aligned}$$</p>
 
 <p>therefore, \(f^\circ(0; h) = |h|\). Since the Michel-Penot directional derivative is between the Dini and Clarke derivatives, we conclude that \(f^\#(0; h) = |h|\) (however, it can be easily determined using the definition).</p>
-{{</ math.inline >}}
+
+
 
 ### 2.2. Negative Absolute value
-{{< math.inline >}}
+
 <p>Consider the function \(f(x) = -|x|\) with \(x \in \mathbb{R}\). This is a nonsmooth concave function. The Dini derivative of \(f\) at \(x=0\) along the direction \(h\) is </p>
 
 <p>$$\begin{aligned}f^-(0; h) {}={}& \liminf_{t\downarrow 0} \frac{-|th|}{t} = -|h|.\end{aligned}$$</p>
@@ -238,12 +224,11 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 <br/>
 
 <p>Proposition 6 holds for the Michel-Penot derivative too.</p>
-{{</ math.inline >}}
 
 
 ### 2.3. An interesting case
 
-{{< math.inline >}}
+
 <p>Consider the following function</p>
 
 <p>$$\begin{aligned}f(x) = \begin{cases}x^2 \sin\tfrac{1}{x}, & \text{ for } x \neq 0 \\ 0, &\text{ for } x=0\end{cases}\end{aligned}$$</p>
@@ -281,13 +266,12 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 <p>$$\begin{aligned}f^\#(0; h) {}={}& \sup_u\limsup_{t \downarrow 0}\frac{(th+tu)^2\sin\frac{1}{th+tu} - t^2u^2\sin\frac{1}{tu}}{t} \\ {}={}& \sup_u \limsup_{t \downarrow 0} t \left[ (h+u)^2\sin\frac{1}{th+tu} - u^2\sin\frac{1}{tu}\right] = 0.\end{aligned}$$<p>
 
 
-{{</ math.inline >}}
+
 
 
 
 ### 2.4. An even more interesting example
 
-{{< math.inline >}}
 <p>Consider the function</p>
 
 <p>$$\begin{aligned}f(x) {}={} \begin{cases}3^n, & \text{ if } 3^n \leq x \leq 2(3^n), n \in \mathbb{Z} \\ 2x - 3^{n+1}, &\text{ if } 2(3^n) \leq x \leq 3^{n+1} \\ 0, & \text{ if } x \leq 0\end{cases}\end{aligned}$$</p>
@@ -319,13 +303,11 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
 
 <img src="https://mathematix.files.wordpress.com/2021/10/michel-penot.gif?w=1024" alt="illustration of the Michel Penot derivative"/>
 
-{{</ math.inline >}}
 
 
 
 ### 2.5. Summary
 
-{{< math.inline >}}
 <table>
   <tr>
     <th>Function</th>
@@ -358,7 +340,7 @@ $$\begin{aligned}f'(x; h) = \lim_{t \downarrow 0} \frac{f(x+th)-f(x)}{t},\end{al
     <td>\(\max\{0, 2h\}\)</td>
   </tr>
 </table>
-{{</ math.inline >}}
+
 
 ## Bibliographic notes
 
