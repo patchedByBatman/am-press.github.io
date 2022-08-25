@@ -1,2 +1,20 @@
 {{ if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
 {{ if .Params.mathjax }}{{ partial "mathjax_support.html" . }}{{ end }}
+
+{{ if .Params.collapsible }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript">
+    function toggleCollapseExpand(buttonId, containerId, theText) {
+        conditionsElement = document.getElementById(containerId);
+        techhConditionsButtonElement = document.getElementById(buttonId);
+        conditionsDisplay = getComputedStyle(conditionsElement, null).display
+        if (conditionsDisplay === "none") {
+            conditionsElement.style.display = "block";
+            techhConditionsButtonElement.innerHTML = '<i class="fa fa-angle-up"></i> Collapse ' + theText;
+        } else {
+            conditionsElement.style.display = "none";
+            techhConditionsButtonElement.innerHTML = '<i class="fa fa-cog fa-spin"></i> Expand ' + theText;
+        }
+    }
+</script>
+{{ end }}
