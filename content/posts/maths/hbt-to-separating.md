@@ -41,7 +41,7 @@ collapsible: true
 
 <p>Note that if \(p\) is an <abbr title="nonnegative sublinear functionals">NSF</abbr> and \(\lambda < 0\), then \(p(x) \leq -p(-\lambda x).\)</p>
 
-<div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px">
+<div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="prop2">
 <p><strong>Proposition 2 (Continuity of <abbr title="nonnegative sublinear functionals">NSFs</abbr>).</strong> Let \(X\) be a <a href="https://en.wikipedia.org/wiki/Topological_vector_space" target="_blank">topological vector space</a> (TVS) and \(p:X\to{\rm I\!R}\) is an <abbr title="nonnegative sublinear functional">NSF</abbr>. Then, the following are equivalent</p>
 <ol>
     <li>\(p\) is continuous</li>
@@ -145,7 +145,7 @@ collapsible: true
 
 ## The Hahn-Banach Theorem
 
-<p>The Hahn-Banach theorem is without doubt one of the most important theorems in functional analysis with numerous applications the most notable of which are the separating theorems. The proof of the Hahn-Banach theorem </p>
+<p>The Hahn-Banach theorem is without doubt one of the most important theorems in functional analysis with numerous applications the most notable of which are the separating theorems. The proof of the Hahn-Banach theorem is of remarkable elegance!</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="hahn-banach-thm">
 <p><strong>Theorem 10 (Hahn-Banach Theorem).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(p: X \to {\rm I\!R}\) is an <abbr title="nonnegative sublinear functionals">NSFs</abbr>. Let \(Y\subseteq X\) be a subspace of \(X\) and a linear functional \(f:Y\to{\rm I\!R}\) is such that </p>
@@ -239,7 +239,19 @@ $$</p>
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="prop12">
 <p><strong>Proposition 12 (Minkowski functional is continuous NSF).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\subseteq X\) is a convex set that contains zero in its interior (\(0 \in \mathrm{int}\; K\)), and let \(p_K\) be the Minkowski functional of \(K\). Then \(p_K\) is a continuous <abbr title="nonnegative sublinear functionals">NSF</abbr>.</p>
 </div>
-<p><em>Proof.</em> To do.</p>
+
+<button onclick="toggleCollapseExpand('proofProp12Button', 'proofProp12Container', 'proof')" id="proofProp12Button">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
+
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofProp12Container">
+<p><em>Proof.</em> Clearly, \(p_K \geq 0\). We will show that \(p_K\) is positively homogeneous. Let \(c > 0\). Then</p>
+<p>$$p_K(c x) = \inf\left\{\lambda > 0 : \frac{cx}{\lambda} \in K\right\} = \inf\left\{ \lambda > 0 : \frac{x}{\tfrac{\lambda}{c}}\right\} = \ldots = c p_K(x).$$</p>
+<p>It is easy to see that \(p_K(0) = 0.\)</p>
+<p>Next, we will show that \(p_K\) is sublinear. <span style="color: blue">WORK IN PROGRESS</span></p>
+
+<p>We will show that \(p_K\) is continuous using <a href="#prop2">Proposition 2</a>. For \(x\in K\), \(x/1 \in K\), so \(0 \leq p_K(x) \leq 1\), so it is bounded in \(\mathrm{int}\; K\), which is an open neighbourhood of zero, therefore, it is continuous. \(\blacksquare\)</p>
+</div>
 
 <p>The Minkowski functional of a convex set \(K\) allows us to obtain a complete understanding of the topological properties of \(K\). The following result allows us to use the Minkowski of \(K\) to determine the interior, closure and boundary of \(K\).</p>
 
@@ -311,16 +323,27 @@ $$</p>
 <p>$$p_{\mathrm{int}\; K} = p_{K} = p_{\mathrm{cl}\; K}.$$</p>
 </div>
 
+<button onclick="toggleCollapseExpand('proofProp14Button', 'proofProp14Container', 'proof')" id="proofProp14Button">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
 
-<p><em>Proof.</em> tOdO...</p>
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofProp14Container">
+<p><em>Proof.</em> We will start by showing that \(p_{\mathrm{int}\; K} = p_{K}\). Since \(\mathrm{int}\; K \subseteq K\), we have \(p_{\mathrm{int}\; K} \geq p_{K}\). We will try to end up in a contradition by assuming that there is \(s\) such that</p> 
+<p>$$p_{\mathrm{int}\; K}(x) > s > p_{K}(x)$$</p> 
+<p>for some \(x\). Then, \(p_{\mathrm{int}\; K}(x/s) > 1\). However,</p>
+<p>$$p_{K}\left(\frac{x}{s}\right) \Rightarrow \frac{x}{s} \in \mathrm{int}\; K \Rightarrow p_{\mathrm{int}\; K}\left(\frac{x}{s}\right) \leq 1,$$</p>
+<p>which is a contradiction. Similary we can prove that \(p_{K} = p_{\mathrm{cl}\; K}.\) \(\blacksquare\)</p>
+</div>
 
+
+<p><br/>Using Propositions <a href="#prop13">13</a> and <a href="#prop14">14</a> we can prove the following surprising topological result for convex sets.</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="cor15">
 <p><strong>Corollary 15 (Topological property of convex sets).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\) is a convex set with \(0 \in \mathrm{int}\; K\). Then,</p>
 <p>$$\mathrm{cl}\; \mathrm{int}\; K {}={} \mathrm{cl}\; K.$$</p>
 </div>
 
-<p><em>Proof.</em> toDooo...</p>
+<p><em>Proof.</em> to do...</p>
 
 <p>Convexity is a necessary assumption of <a href="#cor15">Corollary 15</a>. As a counterexample, let \(X\) be a normed space, let \(\mathcal{B}\) be the unit norm ball, \(0 \neq x_0\in X\) and take \(K = \mathcal{B} \cup {\rm I\!R} x_0\), which is not convex. You can verify that \(\mathrm{cl}\; \mathrm{int}\; K {}\subsetneq{} \mathrm{cl}\; K.\)</p>
 <p></p>
@@ -340,16 +363,18 @@ $$</p>
 
 ### First separating theorem
 
-<p>Let us state the theorem</p>
+<p>Let us state the first separating theorem that allows us to separate a point from a convex set using a linear function.</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="first-sep-thm">
 <p><strong>Theorem 16 (First separating theorem).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\) is a convex set with a nonempty interior. Let \(x_0 \notin \mathrm{int}\; K\). Then there is a nonzero continuous linear functional, \(f: X \to {\rm I\!R}\), that separates \(x_0\) from \(K\), that is</p>
 <p>$$\sup f(K) {}\leq{} f(x_0).$$</p>
 </div>
 
+<button onclick="toggleCollapseExpand('proofThm16aButton', 'proofThm16aContainer', 'proof')" id="proofThm16aButton">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
 
-<img src="/first-sep-thm.png" style="width: 50%; margin-left: auto;margin-right: auto;"/>
-
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofThm16aContainer">
 <p><em>Proof.</em> Without loss of generality we shall assume that \(0\in \mathrm{int}\; K\). If not, we can simply take a point \(\bar{x}\) and use the change of variables \(x \mapsto x - \bar{x}\), i.e., to move the set so that zero is inside its interior.</p>
 <p>Since \(x_0 \notin \mathrm{int}; K\), we have from <a href="#prop13">Proposition 13</a> that \(p_K(x_0) \geq 1\).</p>
 <p>On the space \(Y = {\rm I\!R}x_0\) we define the function</p>
@@ -361,10 +386,26 @@ $$</p>
 <p>$$f(x_0){}={}g(x_0){}={}p_K(x_0)\geq 1,$$</p>
 <p>so, \(f\) is a nonzero linear functional, and for all \(x\in K\), \(p_K(x) \leq 1\), therefore, \(f(x) \leq 1\).</p>
 <p>This completes the proof.  \(\blacksquare\)</p>
+</div>
+
+<img src="/first-sep-thm.png" alt="First separating theorem"  style="width: 50%; margin-left: auto;margin-right: auto;"/>
+
+<p><em><strong>Figure 1.</strong> We first define a linear function, \(g\), on \(Y = {\rm I\!R}x_0\) and use the Hahn-Banach theorem to extend it to the entire \(X\).</em></p>
 
 ### Second separating theorem
 
-<p></p>
+<p>The second separating theorem allows us to separate two convex sets.</p>
+
+<div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="second-sep-thm">
+<p><strong>Theorem 17 (Second separating theorem).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K, L\) be two convex sets, \(K\) has a nonempty interior and \(\mathrm{int}\; K \cap L = \emptyset\). Then there is a nonzero continuous linear functional, \(f: X \to {\rm I\!R}\), that separates \(K\) from \(L\), that is</p>
+<p>$$\sup f(K) {}\leq{} \inf f(L).$$</p>
+</div>
+
+<img src="/second-sep-thm.png" alt="Second separating theorem" style="width: 50%; margin-left: auto;margin-right: auto;"/>
+
+<p><em><strong>Figure 2.</strong> Second separating theorem.</em></p>
+
+
 <p></p>
 <p></p>
 <p></p>
