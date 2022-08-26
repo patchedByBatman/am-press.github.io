@@ -14,7 +14,7 @@ collapsible: true
 
 ## About
 
-<p>In this post we will state and prove the Hahn-Banach theorem and the three separating theorems. All results will be stated for general topological vector spaces (normed spaces are a special case).</p>
+<p>In this post we will state and prove the Hahn-Banach theorem and the three separating theorems. All results will be stated for general topological vector spaces (normed spaces are a special case). All vector spaces in this post are taken over the field of real numbers.</p>
 
 ## Preliminaries
 
@@ -27,22 +27,22 @@ collapsible: true
 <p>We will recall a fact from the theory of <abbr title="topological vector space">TVS</abbr> that we will be using a lot in what follows. If \(X\) is a <abbr title="topological vector space">TVS</abbr>, the origin has a topological base of balanced and absorbing sets.</p>
 
 
-## Nonnegative sublinear functionals
+## Positive sublinear functionals
 
 <div style="border-style:solid;border-width:1.5px;padding:10px; margin-bottom: 10px">
-<p><strong>Definition 1 (Nnonnegative sublinear functional).</strong> Let \(X\) be a vector space. A \(p:X\to{\rm I\!R}\) is called a nonnegative sublinear functional (NSF) if the following conditions are satisfied</p>
+<p><strong>Definition 1 (Positive sublinear functional).</strong> Let \(X\) be a vector space. A \(p:X\to{\rm I\!R}\) is called a positive sublinear functional (PSLF) if the following conditions are satisfied</p>
 <ol>
     <li>\(p\) is nonnegative valued on \(X\)</li>
     <li>\(p\) is positively homogeneous on \(X\), that is, \(p(\lambda x) = \lambda p(x)\) for all \(\lambda\geq 0\) and \(x\in X\)</li>
     <li>\(p\) is sublinear, that is, \(p(x+y) \leq p(x) + p(y)\)</li>
 </ol>
 </div>
-<p>Note that <abbr title="nonnegative sublinear functionals">NSFs</abbr> are not necessarily symmetrix (\(p(-x)\) is not equal to \(p(x)\)) and it is not necessary that \(x=0\) whenever \(p(x) = 0\).</p>
+<p>Note that <abbr title="positive sublinear functionals">PSLFs</abbr> are not necessarily symmetrix (\(p(-x)\) is not equal to \(p(x)\)) and it is not necessary that \(x=0\) whenever \(p(x) = 0\).</p>
 
-<p>Note that if \(p\) is an <abbr title="nonnegative sublinear functionals">NSF</abbr> and \(\lambda < 0\), then \(p(x) \leq -p(-\lambda x).\)</p>
+<p>Note that if \(p\) is an <abbr title="positive sublinear functional">PSLF</abbr> and \(\lambda < 0\), then \(p(x) \leq -p(-\lambda x).\)</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="prop2">
-<p><strong>Proposition 2 (Continuity of <abbr title="nonnegative sublinear functionals">NSFs</abbr>).</strong> Let \(X\) be a <a href="https://en.wikipedia.org/wiki/Topological_vector_space" target="_blank">topological vector space</a> (TVS) and \(p:X\to{\rm I\!R}\) is an <abbr title="nonnegative sublinear functional">NSF</abbr>. Then, the following are equivalent</p>
+<p><strong>Proposition 2 (Continuity of <abbr title="positive sublinear functionals">PSLFs</abbr>).</strong> Let \(X\) be a <a href="https://en.wikipedia.org/wiki/Topological_vector_space" target="_blank">topological vector space</a> (TVS) and \(p:X\to{\rm I\!R}\) is an <abbr title="positive sublinear functional">PSLF</abbr>. Then, the following are equivalent</p>
 <ol>
     <li>\(p\) is continuous</li>
     <li>\(p\) is continuous at \(0\)</li>
@@ -68,14 +68,14 @@ collapsible: true
 
 <p></p>
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px">
-<p><strong>Proposition 3 (<abbr title="nonnegative sublinear functionals">NSFs</abbr> have convex sublevel sets).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(p:X\to{\rm I\!R}\) is an <abbr title="nonnegative sublinear functional">NSF</abbr>. Then, its sublevel sets, \(\{x: p(x) \leq a\}\), are convex.</p></div>
+<p><strong>Proposition 3 (<abbr title="positive sublinear functionals">PSLFs</abbr> have convex sublevel sets).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(p:X\to{\rm I\!R}\) is an <abbr title="positive sublinear functional">PSLF</abbr>. Then, its sublevel sets, \(\{x: p(x) \leq a\}\), are convex.</p></div>
 
 <p><em>Proof.</em> Straightforward. \(\blacksquare\)</p>
 
-<p>Next, we will show that any linear functional that is bounded above by a continuous <abbr title="nonnegative sublinear functional">NSF</abbr>, is continuous.</p>
+<p>Next, we will show that any linear functional that is bounded above by a continuous <abbr title="positive sublinear functional">PSLF</abbr>, is continuous.</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="prop4">
-<p><strong>Proposition 4 (Continuity of linear functionals).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr>,   \(p:X\to{\rm I\!R}\) is an <abbr title="nonnegative sublinear functional">NSF</abbr>,  \(A: X\to{\rm I\!R}\) is linear, and</p>
+<p><strong>Proposition 4 (Continuity of linear functionals).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr>,   \(p:X\to{\rm I\!R}\) is an <abbr title="positive sublinear functional">PSLF</abbr>,  \(A: X\to{\rm I\!R}\) is linear, and</p>
 <p>$$A(x) \leq p(x),$$</p>
 <p>for all \(x\in X\). If \(p\) is continuous, then \(A\) is continuous.</p>
 </div>
@@ -148,7 +148,7 @@ collapsible: true
 <p>The Hahn-Banach theorem is without doubt one of the most important theorems in functional analysis with numerous applications the most notable of which are the separating theorems. The proof of the Hahn-Banach theorem is of remarkable elegance!</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="hahn-banach-thm">
-<p><strong>Theorem 10 (Hahn-Banach Theorem).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(p: X \to {\rm I\!R}\) is an <abbr title="nonnegative sublinear functionals">NSFs</abbr>. Let \(Y\subseteq X\) be a subspace of \(X\) and a linear functional \(f:Y\to{\rm I\!R}\) is such that </p>
+<p><strong>Theorem 10 (Hahn-Banach Theorem).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(p: X \to {\rm I\!R}\) is an <abbr title="positive sublinear functionals">PSLFs</abbr>. Let \(Y\subseteq X\) be a subspace of \(X\) and a linear functional \(f:Y\to{\rm I\!R}\) is such that </p>
 <p>$$f(y) \leq p(y),$$</p>
 <p>for all \(y\in Y\). Then, there exists a linear functional \(\hat{f}: X \to {\rm I\!R}\) such that</p>
 <ol>
@@ -158,7 +158,7 @@ collapsible: true
 </div>
 
 <button onclick="toggleCollapseExpand('proofHBButton', 'proofHBContainer', 'Proof')" id="proofHBButton">
-  <i class="fa fa-cog fa-spin"></i> Click to reveal the proof
+  <i class="fa fa-cog fa-spin"></i> Expand proof
 </button>
 
 <div style="width: 100%; display: none; padding: 5px 5px; " id="proofHBContainer">
@@ -222,9 +222,14 @@ $$</p>
 </p>This completes the proof. \(\blacksquare\)</p>
 </div>
 
+<p></p>
+<p>Note that the linear functional \(\hat{f}\) of the Hahn-Banach theorem is guaranteed to be continuous by virtue of <a href="#prop4" title="Continuity of linear functionals">Proposition 4</a>.</p>
+
+<p>Note that we could have stated the Hahn-Banach theorem on a linear space instead of a <abbr title="topological vector space">TVS</abbr>, but the topology is necessary to be able to talk about the continuity of \(\hat{f}\).</p>
+
 ## Minkowski functional
 
-<p>We will now introduce the Minkowski functional. The Minkowski functional is an <abbr title="nonnegative sublinear functionals">NSF</abbr> which is defined using a convex set. Let us give the definition.</p>
+<p>We will now introduce the Minkowski functional. The Minkowski functional is an <abbr title="positive sublinear functional">PSLF</abbr> which is defined using a convex set. Let us give the definition.</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="def11">
 <p><strong>Definition 11 (Minkowski functional).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\subseteq X\) is a convex set that contains zero in its interior (\(0 \in \mathrm{int}\; K\)). We define the Minkowski functional as</p>
@@ -233,11 +238,11 @@ $$</p>
 
 <p>Note that the set \(\{ \lambda > 0 : x / \lambda \in K\}\) is nonempty because every neighbourhood of the origin is absorbing, so \( \mathrm{int}\; K\) is an absrobing set, so \(K\) is also absorbing.</p>
 
-<p>We will now show that the Minkowski functional of a \(K\) as in Definition <a href="#def11">11</a> is an <abbr title="nonnegative sublinear functionals">NSF</abbr>.</p>
+<p>We will now show that the Minkowski functional of a \(K\) as in Definition <a href="#def11">11</a> is an <abbr title="positive sublinear functional">PSLF</abbr>.</p>
 
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="prop12">
-<p><strong>Proposition 12 (Minkowski functional is continuous NSF).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\subseteq X\) is a convex set that contains zero in its interior (\(0 \in \mathrm{int}\; K\)), and let \(p_K\) be the Minkowski functional of \(K\). Then \(p_K\) is a continuous <abbr title="nonnegative sublinear functionals">NSF</abbr>.</p>
+<p><strong>Proposition 12 (Minkowski functional is continuous PSLF).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\subseteq X\) is a convex set that contains zero in its interior (\(0 \in \mathrm{int}\; K\)), and let \(p_K\) be the Minkowski functional of \(K\). Then \(p_K\) is a continuous <abbr title="positive sublinear functional">PSLF</abbr>.</p>
 </div>
 
 <button onclick="toggleCollapseExpand('proofProp12Button', 'proofProp12Container', 'proof')" id="proofProp12Button">
@@ -250,7 +255,7 @@ $$</p>
 <p>It is easy to see that \(p_K(0) = 0.\)</p>
 <p>Next, we will show that \(p_K\) is sublinear. <span style="color: blue">WORK IN PROGRESS</span></p>
 
-<p>We will show that \(p_K\) is continuous using <a href="#prop2">Proposition 2</a>. For \(x\in K\), \(x/1 \in K\), so \(0 \leq p_K(x) \leq 1\), so it is bounded in \(\mathrm{int}\; K\), which is an open neighbourhood of zero, therefore, it is continuous. \(\blacksquare\)</p>
+<p>We will show that \(p_K\) is continuous using <a href="#prop2" title="Continuity of PSLFs">Proposition 2</a>. For \(x\in K\), \(x/1 \in K\), so \(0 \leq p_K(x) \leq 1\), so it is bounded in \(\mathrm{int}\; K\), which is an open neighbourhood of zero, therefore, it is continuous. \(\blacksquare\)</p>
 </div>
 
 <p>The Minkowski functional of a convex set \(K\) allows us to obtain a complete understanding of the topological properties of \(K\). The following result allows us to use the Minkowski of \(K\) to determine the interior, closure and boundary of \(K\).</p>
@@ -275,7 +280,7 @@ $$</p>
 </button>
 
 <div style="width: 100%; display: none; padding: 5px 5px;" id="proofProp13aContainer">
-<p><em>Proof.</em> 1. We have that \([p_K < 1] = p_K^{-1}((-\infty, 1))\) and since \(p_K\) is continuous (<a href="#prop12">Prop 12</a>), it is <em>open</em>. Since \(K\) is convex and contains zero in its interior, \(\lambda K \subseteq K\) for all \(0<\lambda < 1\). This observation allows us to see that \([p_K < 1] \subseteq K\). Since \([p_K < 1]\) is an open set inside \(K\), we conclude that</p> 
+<p><em>Proof.</em> 1. We have that \([p_K < 1] = p_K^{-1}((-\infty, 1))\) and since \(p_K\) is continuous (<a href="#prop12" title="Minkowski functional is continuous PSLF">Prop 12</a>), it is <em>open</em>. Since \(K\) is convex and contains zero in its interior, \(\lambda K \subseteq K\) for all \(0<\lambda < 1\). This observation allows us to see that \([p_K < 1] \subseteq K\). Since \([p_K < 1]\) is an open set inside \(K\), we conclude that</p> 
 <p>$$[p_K < 1] \subseteq \mathrm{int}\; K.$$</p> 
 <p>The reason for this is that \(\mathrm{int}\; K\) is the <em>largest</em> open set inside \(K\). We then need to show that \([p_K < 1] \supseteq \mathrm{int}\; K\).</p>
 
@@ -336,22 +341,26 @@ $$</p>
 </div>
 
 
-<p><br/>Using Propositions <a href="#prop13">13</a> and <a href="#prop14">14</a> we can prove the following surprising topological result for convex sets.</p>
+<p><br/>Using Propositions <a href="#prop13" title="Topological properties of convex sets">13</a> and <a href="#prop14" title="Minkowski functional of convex set">14</a> we can prove the following surprising topological result for convex sets.</p>
 
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="cor15">
 <p><strong>Corollary 15 (Topological property of convex sets).</strong> Let \(X\) be a <abbr title="topological vector space">TVS</abbr> and \(K\) is a convex set with \(0 \in \mathrm{int}\; K\). Then,</p>
 <p>$$\mathrm{cl}\; \mathrm{int}\; K {}={} \mathrm{cl}\; K.$$</p>
 </div>
 
-<p><em>Proof.</em> to do...</p>
+<button onclick="toggleCollapseExpand('proofCorol15Button', 'proofCorol15Container', 'proof')" id="proofCorol15Button">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
 
-<p>Convexity is a necessary assumption of <a href="#cor15">Corollary 15</a>. As a counterexample, let \(X\) be a normed space, let \(\mathcal{B}\) be the unit norm ball, \(0 \neq x_0\in X\) and take \(K = \mathcal{B} \cup {\rm I\!R} x_0\), which is not convex. You can verify that \(\mathrm{cl}\; \mathrm{int}\; K {}\subsetneq{} \mathrm{cl}\; K.\)</p>
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofCorol15Container">
+<p><em>Proof.</em> We have</p>
+<p>$$\mathrm{cl}\; \mathrm{int}\; K = [p_{\mathrm{int}\; K} \leq 1] = [p_K \leq 1] = \mathrm{cl}\; K,$$</p>
+<p>which completes the proof. \(\blacksquare\)</p>
+</div>
+
 <p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>Convexity is a necessary assumption of <a href="#cor15" title="Topological property of convex sets">Corollary 15</a>. As a counterexample, let \(X\) be a normed space, let \(\mathcal{B}\) be the unit norm ball, \(0 \neq x_0\in X\) and take \(K = \mathcal{B} \cup {\rm I\!R} x_0\), which is not convex. You can verify that \(\mathrm{cl}\; \mathrm{int}\; K {}\subsetneq{} \mathrm{cl}\; K.\)</p>
+
 
 ## Convex separating theorems 
 
@@ -376,12 +385,12 @@ $$</p>
 
 <div style="width: 100%; display: none; padding: 5px 5px;" id="proofThm16aContainer">
 <p><em>Proof.</em> Without loss of generality we shall assume that \(0\in \mathrm{int}\; K\). If not, we can simply take a point \(\bar{x}\) and use the change of variables \(x \mapsto x - \bar{x}\), i.e., to move the set so that zero is inside its interior.</p>
-<p>Since \(x_0 \notin \mathrm{int}; K\), we have from <a href="#prop13">Proposition 13</a> that \(p_K(x_0) \geq 1\).</p>
+<p>Since \(x_0 \notin \mathrm{int}; K\), we have from <a href="#prop13" title="Topological properties of convex sets">Proposition 13</a> that \(p_K(x_0) \geq 1\).</p>
 <p>On the space \(Y = {\rm I\!R}x_0\) we define the function</p>
 <p>$$g(y) = g(\lambda x_0) = \lambda p_K(x_0).$$</p>
 <p>It is easy to see that \(g(y) \leq p_K(y)\) for all \(y\in R\) and you see where this is going...</p>
 <p>From the <a href="#hahn-banach-thm">Hahn-Banach theorem</a>, there is a linear functional, \(f\), that extends \(g\) to \(X\) such that \(f(x) \leq p_K(x)\) for all \(x\in X\).</p>
-<p><a href="#prop4">Proposition 4</a> implies that \(f\) is continuous on \(X\) since \(p_K\) is a continuous <abbr title="nonnegative sublinear functionals">NSF</abbr> as we know from <a href="#prop12">Proposition 12</a>.</p>
+<p><a href="#prop4" title="Continuity of linear functionals">Proposition 4</a> implies that \(f\) is continuous on \(X\) since \(p_K\) is a continuous <abbr title="positive sublinear functional">PSLF</abbr> as we know from <a href="#prop12" title="Minkowski functional is continuous PSLF">Proposition 12</a>.</p>
 <p>We have that</p>
 <p>$$f(x_0){}={}g(x_0){}={}p_K(x_0)\geq 1,$$</p>
 <p>so, \(f\) is a nonzero linear functional, and for all \(x\in K\), \(p_K(x) \leq 1\), therefore, \(f(x) \leq 1\).</p>
@@ -391,6 +400,10 @@ $$</p>
 <img src="/first-sep-thm.png" alt="First separating theorem"  style="width: 50%; margin-left: auto;margin-right: auto;"/>
 
 <p><em><strong>Figure 1.</strong> We first define a linear function, \(g\), on \(Y = {\rm I\!R}x_0\) and use the Hahn-Banach theorem to extend it to the entire \(X\).</em></p>
+
+<p>In the finite-dimensional case, \(X = {\rm I\!R}^n\), linear functions \(f: X \to {\rm I\!R}\) have the form of an inner product, that is, \(f(x) = c^\intercal x\) and the separation of a point \(x_0\in X\) from a convex set \(K\) with a nonempty interior reads</p>
+<p>$$\sup_{x\in K} c^\intercal x \leq c^\intercal x_0 \Leftrightarrow \delta^*_K(c) \leq c^\intercal x_0,$$</p>
+<p>where \(\delta^*_K\) is the <a href="../support-functions">support function</a> of \(K\).</p>
 
 ### Second separating theorem
 
@@ -405,17 +418,51 @@ $$</p>
 
 <p><em><strong>Figure 2.</strong> Second separating theorem.</em></p>
 
+<button onclick="toggleCollapseExpand('proofThm17Button', 'proofThm17Container', 'proof')" id="proofThm17Button">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofThm17Container">
+<p><em>Proof.</em> The set \(\mathrm{int}\; K - L\) is open because 
+<p>$$\mathrm{int}\; K - L = \bigcup_{l \in L}(\mathrm{int}\; K - l),$$</p>
+<p>so it is a union of open sets.</p>
+<p>The set is convex because it is the Minkowski sum of two open sets, and \(0\notin \mathrm{int}\; K - L\). As a result, from the first separating theorem (<a href="#first-sep-thm">Theorem 16</a>), there is a nonzero continuous linear functional, \(f\), that separates \(0\) from \(\mathrm{int}\; K - L\), that is</p>
+<p>$$\begin{aligned}&\sup f(\mathrm{int}\; K - L) \leq f(0) = 0\\\Rightarrow{}&\sup f(\mathrm{cl}\; \mathrm{int}\; K) \leq \inf f(L),\end{aligned}$$</p>
+<p>but since \(K\) is convex, \(\mathrm{cl}\; \mathrm{int}\; K = K\), so</p>
+<p>$$\sup f(K) \leq \inf f(L).$$</p>
+<p>This completes the proof. \(\blacksquare\)</p>
+</div>
+
 
 ### Third separating theorem
+
+<p>For the third separating theorem we will need to assume that \(X\) is a <em>locally convex</em> <abbr title="topological vector space">TVS</abbr>. A <abbr title="topological vector space">TVS</abbr> is called locally convex if it has a basis of neighbourhoods of the origin consisting of convex sets.</p> 
+
+<p>According to Proposition 4.1.12 in <a href="http://www.math.uni-konstanz.de/~infusino/TVS-WS18-19/Note2018.pdf" target="_blank">these lecture notes</a> by Maria Infusino (University of Konstanz), every locally convex <abbr title="topological vector space">TVS</abbr> has a basis of neighbourhoods of the origin consisting of open, absorbing, balanced, convex sets. </p>
+
+<div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="third-sep-thm">
+<p><strong>Theorem 18 (Third separating theorem).</strong> Let \(X\) be a locally convex <abbr title="topological vector space">TVS</abbr>, \(L\) is a nonempty closed convex set, \(K\) is a nonempty compact convex set and</p>
+<p>$$K \cap L = \emptyset.$$</p>
+<p>Then, there is a linear continuous functional \(f:X\to{\rm I\!R}\) that separates the two sets.</p>
+</div>
+
+<p><em>Proof.</em></p>
+
+<p>Next we will show that every closed convex set in a locally convex <abbr title="topological vector space">TVS</abbr> can be written as an intersection of halfspaces. Recall that a halfspace is a set of the form</p>
+<p>$$H = \{x \in X {}:{} f(x) \leq a\} = f^{-1}((-\infty, a]),$$</p>
+<p>where \(f: X \to {\rm I\!R}\) is a continuous linear functional.</p>
+
+<div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="intersection-halfspaces">
+<p><strong>Proposition 19 (Representation of convex sets).</strong> Let \(X\) be a locally convex <abbr title="topological vector space">TVS</abbr>, and \(K\) is a nonempty closed convex set. Then \(K\) can be written as the intersection of a famiily of halfspaces.</p>
+</div>
+
+
+<p><em>Proof.</em> Take \(x\notin K\). Since \(\{x\}\) is a compact and convex, from <a href="#third-sep-thm" title="Third separating theorem">Theorem 18</a>, there is a continuous linear operator, \(f_{x}\) such that \(\sup f_x(K) < f_x(x)\).</p>
+<p style="color:blue">WORK IN PROGRESS</p>
+
+<p></p>
+<p></p>
+<p></p>
 
 ## Read next
 
