@@ -1,11 +1,10 @@
 ---
 author: "Pantelis Sopasakis"
 title: From Hahn-Banach to Separating Theorems
-date: 2022-08-25
+date: 2022-08-26
 description: From the Hahn-Banach theorem to the three separating theorems
 summary: From the Hahn-Banach theorem to the three separating theorems
 math: true
-draft: true
 series: ["Mathematix"]
 tags: ["Convex Analysis", "Functional Analysis", "Analysis"]
 showtoc: true
@@ -253,9 +252,15 @@ $$</p>
 <p><em>Proof.</em> Clearly, \(p_K \geq 0\). We will show that \(p_K\) is positively homogeneous. Let \(c > 0\). Then</p>
 <p>$$p_K(c x) = \inf\left\{\lambda > 0 : \frac{cx}{\lambda} \in K\right\} = \inf\left\{ \lambda > 0 : \frac{x}{\tfrac{\lambda}{c}}\right\} = \ldots = c p_K(x).$$</p>
 <p>It is easy to see that \(p_K(0) = 0.\)</p>
-<p>Next, we will show that \(p_K\) is sublinear. <span style="color: blue">WORK IN PROGRESS</span></p>
 
-<p>We will show that \(p_K\) is continuous using <a href="#prop2" title="Continuity of PSLFs">Proposition 2</a>. For \(x\in K\), \(x/1 \in K\), so \(0 \leq p_K(x) \leq 1\), so it is bounded in \(\mathrm{int}\; K\), which is an open neighbourhood of zero, therefore, it is continuous. \(\blacksquare\)</p>
+<p>Next, we will show that \(p_K\) is sublinear. Take \(\epsilon > 0\) and choose \(\lambda_1, \lambda_2 > 0\) such that</p>
+<p>$$\begin{aligned}p_K(x) < \lambda_1 < p_K(x) + \epsilon, \\ p_K(y) < \lambda_2 < p_K(y) + \epsilon.\end{aligned}$$</p>
+<p>As a result we have that \(x/\lambda_1 \in K\) and \(y/\lambda_2 \in K\).</p>
+<p>It suffices to show that \(p_K(x+y) \leq \lambda_1 + \lambda_2\). We have</p>
+<p>$$\frac{x+y}{\lambda_1 + \lambda_2} = \frac{\lambda_1}{\lambda_1 + \lambda_2}\frac{x}{\lambda_1} + \frac{\lambda_2}{\lambda_1 + \lambda_2}\frac{y}{\lambda_2} \in K.$$</p>
+<p>Therefore, \(p_K(x+y) \leq \lambda_1 + \lambda_2\) and taking \(\epsilon{}\to{}0\), it follows that \(p_K(x+y) \leq p_K(x) + p_K(y).\)</p>
+
+<p>Lastly, we will show that \(p_K\) is continuous using <a href="#prop2" title="Continuity of PSLFs">Proposition 2</a>. For \(x\in K\), \(x/1 \in K\), so \(0 \leq p_K(x) \leq 1\), so it is bounded in \(\mathrm{int}\; K\), which is an open neighbourhood of zero, therefore, it is continuous. \(\blacksquare\)</p>
 </div>
 
 <p>The Minkowski functional of a convex set \(K\) allows us to obtain a complete understanding of the topological properties of \(K\). The following result allows us to use the Minkowski of \(K\) to determine the interior, closure and boundary of \(K\).</p>
@@ -446,8 +451,39 @@ $$</p>
 <p>Then, there is a linear continuous functional \(f:X\to{\rm I\!R}\) that separates the two sets.</p>
 </div>
 
-<p><em>Proof.</em></p>
+<button onclick="toggleCollapseExpand('proofThm18Button', 'proofThm18Container', 'proof')" id="proofThm18Button">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
 
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofThm18Container">
+<p><em>Proof.</em> Since \(K \cap L = \emptyset\), we have that \(0 \notin K - L\).</p> 
+
+---
+
+<p><strong>Claim.</strong> We will show that \(K-L\) is closed.</p>
+<p>Equivalently, we will show that its complement is open. To that end, for \(x \notin K - L\) it suffices to find a neighbourhood of 0 which is symmetric (see the above remark) such that </p>
+<p>$$\underbrace{(x+V)}_{\text{neigh. of } x} \cap (K - L) = \emptyset.$$</p>
+<p>Equivalently, it suffices to find \(V\) such that</p>
+<p>$$(K+V) \cap (x + L) = \emptyset.$$</p>
+<p><em>Note:</em> in fact it should be \(K-V\), but \(V\) is symmetric.</p>
+<p>Since \(K \cap (x+L) = \emptyset\) and \(x+L\) is closed, for all \(y \in K\) there is a neighbourhood of zero, \(V_y\), such that \((y+V_y) \cap (x + L) = \emptyset\). Then, we can determine \(U_y \ni 0\) such that \(U_y + U_y \subseteq V_y\). Now consider the following cover of \(K\)</p>
+<p>$$K \subseteq \bigcup_{y \in K}(y + U_y).$$</p>
+<p>Since \(K\) is compact, there is a finite subcover, i.e., there are \(y_1, \ldots, y_n\) such that</p>
+<p>$$K \subseteq \bigcup_{i=1}^{n}(y_i + U_{y_i}).$$</p>
+<p>Define the set</p>
+<p>$$U = \bigcap_{i=1}^{n}U_{y_i},$$</p>
+<p>which is an open set that contains \(0\). For every \(y\in K\) there is \(i\) such that \(y \in y_i + U_{y_i}\). Then,</p>
+<p>$$y + U \subseteq y_i + U_i + U \subseteq y_i + U_i + U_i \subseteq y_i + V_{y_i}.$$</p>
+<p>This means that \((y+U) \cap (x+L) \subseteq (y_i + V_{y_i}) \cap (x+L) = \emptyset.\) This proves the claim.</p>
+
+---
+
+<p>Since \(K-L\) is closed and \(0 \notin K-L\) there is a convex symmetric neighbourhood \(V\ni 0\) such that \(V \cap (K-L) = \emptyset\). Using <a href="#second-sep-thm" title="Second separating theorem">Theorem 17</a> we can separate \(V\) from \(K-L\), i.e., there is a nonzero linear continuous \(f: X \to {\rm I\!R}\) such that</p>
+<p>$$\sup f(V) \leq \inf f(K-L) = \inf f(K) - \sup f(L).$$</p>
+<p>The proof is completed by showing that \(\sup f(V) > 0\). There is an \(x\in X\) with \(f(x) > 0\). There is \(\lambda >0\) such that \(\lambda x \in V\) and \(f(\lambda x) = \lambda f(x) > 0\), so \(\sup f(V) > 0\). $\blacksquare$</p>
+</div>
+
+<p></p>
 <p>Next we will show that every closed convex set in a locally convex <abbr title="topological vector space">TVS</abbr> can be written as an intersection of halfspaces. Recall that a halfspace is a set of the form</p>
 <p>$$H = \{x \in X {}:{} f(x) \leq a\} = f^{-1}((-\infty, a]),$$</p>
 <p>where \(f: X \to {\rm I\!R}\) is a continuous linear functional.</p>
@@ -456,12 +492,15 @@ $$</p>
 <p><strong>Proposition 19 (Representation of convex sets).</strong> Let \(X\) be a locally convex <abbr title="topological vector space">TVS</abbr>, and \(K\) is a nonempty closed convex set. Then \(K\) can be written as the intersection of a famiily of halfspaces.</p>
 </div>
 
+<button onclick="toggleCollapseExpand('proofThm19Button', 'proofThm19Container', 'proof')" id="proofThm19Button">
+  <i class="fa fa-cog fa-spin"></i> Expand proof
+</button>
 
-<p><em>Proof.</em> Take \(x\notin K\). Since \(\{x\}\) is a compact and convex, from <a href="#third-sep-thm" title="Third separating theorem">Theorem 18</a>, there is a continuous linear operator, \(f_{x}\) such that \(\sup f_x(K) < f_x(x)\).</p>
-<p style="color:blue">WORK IN PROGRESS</p>
-
-<p></p>
-<p></p>
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofThm19Container">
+<p><em>Proof.</em> Take \(x\notin K\). Since \(\{x\}\) is a compact and convex, from <a href="#third-sep-thm" title="Third separating theorem">Theorem 18</a>, there is a continuous linear operator, \(f_{x}\) such that \(\sup f_x(K) < s_x < f_x(x)\). Clearly</p>
+<p>$$K \subseteq \bigcap_{x\notin K}f_{x}^{-1}((-\infty, s_x]).$$</p>
+<p>To show that the above intersection is a subset of \(K\) it suffices to show that if \(x_0 \notin K\), then \(x_0 \notin \bigcap_{x\notin K}f_{x}^{-1}((-\infty, s_x])\), which is immediate. \(\blacksquare\)</p>
+</div>
 <p></p>
 
 ## Read next

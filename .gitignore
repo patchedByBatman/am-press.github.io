@@ -1,3 +1,7 @@
+# custom
+scrap/
+.hugo_build.lock
+
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
