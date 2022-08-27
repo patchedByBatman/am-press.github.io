@@ -1,12 +1,12 @@
 ---
 author: "Pantelis Sopasakis"
 title: Generalised directional derivatives
-date: 2022-08-20
+date: 2022-07-05
 description: Generalised directional derivatives and examples
 summary: Examples on the Dini, Clarke and Michel-Penot directional derivatives
 math: true
 series: ["Mathematix"]
-tags: ["Variational Analysis", "Analysis", "Optimization", "Directional derivative"]
+tags: ["Variational Analysis", "Optimization", "Directional derivative"]
 ---
 
 <style>
@@ -23,8 +23,6 @@ td, th {
   padding: 8px;
   width: 25%
 }
-
-
 </style>
 
 

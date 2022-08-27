@@ -1,7 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title: Rayleigh quotient
-date: 2022-08-19
+date: 2022-07-19
 description: Some notes on the Rayleigh quotient
 summary: Some notes on the Rayleigh quotient
 math: true

@@ -1,7 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title: Itô Integrals
-date: 2022-08-23
+date: 2022-08-16
 description: Table of Itô stochastic integrals
 summary: Table of Itô stochastic integrals and their variances
 mathjax: true

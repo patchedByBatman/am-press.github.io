@@ -1,7 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title: Differentiability of pointwise maximum
-date: 2022-08-21
+date: 2022-08-09
 description: Differentiability of pointwise maximum
 summary: Some notes on the differentiability of the pointwise max of a family of functions and the Fritz-John and Mangasarian-Ffromowitz optimality conditions
 mathjax: true

@@ -1,7 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title: Normal and tangent cones
-date: 2022-08-19
+date: 2022-07-26
 description: Support functions, tangent and normal cones; the basics of convex analysis
 summary: Useful convex analysis stuff
 math: true

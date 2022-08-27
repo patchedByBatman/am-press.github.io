@@ -2,12 +2,12 @@
 author: "Pantelis Sopasakis"
 title:  From Separation Theorems to Farkas' Lemma
 draft: true
-date: 2022-08-10
+date: 2022-08-26
 description: From the Hahn-Banach theorem to the three separating theorems
 summary: From the Hahn-Banach theorem to the three separating theorems
 math: true
 series: ["Mathematix"]
-tags: ["Convex Analysis", "Functional Analysis", "Analysis"]
+tags: ["Convex Analysis", "Functional Analysis"]
 showtoc: false
 collapsible: true
 ---

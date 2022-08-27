@@ -1,7 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title: Support functions
-date: 2022-08-18
+date: 2022-07-12
 description: Support functions
 summary: Properties of support functions
 math: true

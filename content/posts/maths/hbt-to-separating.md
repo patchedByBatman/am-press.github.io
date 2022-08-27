@@ -1,12 +1,12 @@
 ---
 author: "Pantelis Sopasakis"
 title: From Hahn-Banach to Separating Theorems
-date: 2022-08-26
+date: 2022-08-23
 description: From the Hahn-Banach theorem to the three separating theorems
 summary: From the Hahn-Banach theorem to the three separating theorems
 math: true
 series: ["Mathematix"]
-tags: ["Convex Analysis", "Functional Analysis", "Analysis"]
+tags: ["Convex Analysis", "Functional Analysis"]
 showtoc: true
 collapsible: true
 ---
