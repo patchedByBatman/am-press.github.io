@@ -1,0 +1,75 @@
+{{- define "main" }}
+
+<article class="post-single">
+    <header class="post-header">
+        {{ partial "breadcrumbs.html" . }}
+        <h1 class="post-title">
+            {{ .Title }}
+            {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+        </h1>
+        {{- if .Description }}
+        <div class="post-description">
+            {{ .Description }}
+        </div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <div class="post-meta">
+            {{- partial "post_meta.html" . -}}
+            {{- partial "translation_list.html" . -}}
+            {{- partial "edit_post.html" . -}}
+            {{- partial "post_canonical.html" . -}}
+        </div>
+        {{- end }}
+    </header>
+    {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden
+    }}
+    {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
+    {{- if (.Param "ShowToc") }}
+    {{- partial "toc.html" . }}
+    {{- end }}
+
+    {{- if .Content }}
+    <div class="post-content">
+        {{- if not (.Param "disableAnchoredHeadings") }}
+        {{- partial "anchored_headings.html" .Content -}}
+        {{- else }}{{ .Content }}{{ end }}
+    </div>
+    {{- end }}
+
+    <footer class="post-footer">
+
+        <!-- Comments by Cusdis -->
+        <h2>Comments</h2>
+
+        <p></p><br />
+        <p style="font-size: 11pt">Comments are powered by Cusdis; an open-source platform that respects your privacy.
+            If you have a question, feel free to write a comment, and we'll get back to you as soon as possible. Note
+            that all comments are moderated prior to publication to avoid spam.</p><br />
+
+
+        <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="96d02aff-d2f5-469a-a699-ba84592669be"
+            data-page-id="{{ .File.UniqueID }}" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}"></div>
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+        <p></p><br />
+
+        {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+        <ul class="post-tags">
+            {{- range ($.GetTerms $tags) }}
+            <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+            {{- end }}
+        </ul>
+        {{- if (.Param "ShowPostNavLinks") }}
+        {{- partial "post_nav_links.html" . }}
+        {{- end }}
+        {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+        {{- partial "share_icons.html" . -}}
+        {{- end }}
+    </footer>
+
+    {{- if (.Param "comments") }}
+    {{- partial "comments.html" . }}
+    {{- end }}
+</article>
+
+{{- end }}{{/* end main */}}
