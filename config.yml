@@ -38,8 +38,11 @@ languages:
                 - name: Tags
                   url: tags/
                   weight: 10
-                - name: Discord
-                  url: https://discord.gg/ahpmTvhVmp
+                - name: About
+                  url: about/
+                  weight: 1
+                # - name: Discord
+                #   url: https://discord.gg/ahpmTvhVmp
         profileMode:
             enabled: true
             title: Applied Mathematix Press
@@ -49,10 +52,14 @@ languages:
             # imageHeight: 120
             subtitle: "Academic Publisher"
             buttons:                
-                - name: Control Systems
-                  url: https://am-press.github.io/ControlSystemsBook/
+                # - name: Control Systems
+                #   url: https://am-press.github.io/ControlSystemsBook/
                 - name: Blog
                   url: posts
+                - name: About
+                  url: about
+                - name: News
+                  url: news
 
 outputs:
     home:
@@ -66,7 +73,7 @@ params:
     author: Pantelis Sopasakis
     # author: ["Me", "You"] # multiple authors
 
-    defaultTheme: dark
+    defaultTheme: light
     # disableThemeToggle: true
     ShowShareButtons: true
     ShowReadingTime: true
@@ -154,13 +161,9 @@ markup:
     goldmark:
         renderer:
             unsafe: true
-    highlight:
-        noClasses: false
-        # anchorLineNos: true
-        # codeFences: true
-        # guessSyntax: true
-        # lineNos: true
-        # style: monokai
+    # highlight:
+    #     noClasses: false
+    #     style: arduino-light
 
 privacy:
     vimeo:

@@ -1,4 +1,5 @@
 # custom
+private/
 scrap/
 .hugo_build.lock
 
