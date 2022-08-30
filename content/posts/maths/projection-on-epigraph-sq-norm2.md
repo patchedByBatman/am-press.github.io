@@ -12,7 +12,7 @@ showtoc: false
 
 <p>Here we discuss how we can project on the epigraph of the squared norm function.</p>
 
-<p>Define $f:\mathbb{R}^n\to\mathbb{R}:x\mapsto \|x\|^2$ with $\nabla f(x) = 2x$ and take $(z,\tau)\notin \mathrm{epi} f$.</p>
+<p>Define $f:{\rm I\!R}^n\to{\rm I\!R}:x\mapsto \|x\|^2$ with $\nabla f(x) = 2x$ and take $(z,\tau)\notin \mathrm{epi} f$.</p>
 
 <p>Let $\Pi_f(z,\tau) = (\bar{x},\bar{s})$. Following the <a href="../projection-on-epigraph">previous post</a>, the optimality conditions are</p>
 

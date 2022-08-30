@@ -39,6 +39,7 @@
     <footer class="post-footer">
 
         <!-- Comments by Cusdis -->
+        {{ if not (.Params.hidecomments) }}
         <h2>Comments</h2>
 
         <p></p><br />
@@ -52,6 +53,7 @@
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
         <p></p><br />
+        {{ end }}
 
         {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
         <ul class="post-tags">

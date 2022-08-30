@@ -15,6 +15,9 @@ collapsible: true
 
 <p>In this post we will state and prove the Hahn-Banach theorem and the three separating theorems. All results will be stated for general topological vector spaces (normed spaces are a special case). All vector spaces in this post are taken over the field of real numbers.</p>
 
+> Read also:
+> - <a href="../support-functions" target="_blank">Support functions</a> of convex sets
+
 ## Preliminaries
 
 <p>We assume that the reader is familiar with the concept of a <a href="https://en.wikipedia.org/wiki/Topological_vector_space" target="_blank">topological vector space</a> (TVS).</p>
@@ -375,6 +378,9 @@ $$</p>
 
 <p>We will state three separating theorems that assert the existence of such separating continuous linear functionals. The first separating theorem is about the separation of a <em>convex</em> set from a point. The second separating theorem is about the separation of two convex sets, and the third one is about the strict separation of two convex sets.</p>
 
+
+<p>Observe that $f$ separates (strictly) two sets $K$ and $L$ (not necessarily convex) if and only if it separates $K-L$ from $\{0\}$. That said, the most fundamental separation theorem is the <a href="">first separating theorem</a> that allows us to separate a point from a convex set (under certain conditions).</p>
+
 ### First separating theorem
 
 <p>Let us state the first separating theorem that allows us to separate a point from a convex set using a linear function.</p>
@@ -448,7 +454,7 @@ $$</p>
 <div style="border-style:solid;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="third-sep-thm">
 <p><strong>Theorem 18 (Third separating theorem).</strong> Let \(X\) be a locally convex <abbr title="topological vector space">TVS</abbr>, \(L\) is a nonempty closed convex set, \(K\) is a nonempty compact convex set and</p>
 <p>$$K \cap L = \emptyset.$$</p>
-<p>Then, there is a linear continuous functional \(f:X\to{\rm I\!R}\) that separates the two sets.</p>
+<p>Then, there is a linear continuous functional \(f:X\to{\rm I\!R}\) that separates the two sets <em>strictly</em>.</p>
 </div>
 
 <button onclick="toggleCollapseExpand('proofThm18Button', 'proofThm18Container', 'proof')" id="proofThm18Button">
@@ -503,6 +509,20 @@ $$</p>
 </div>
 <p></p>
 
+## Endnotes
+
+<ol>
+<li>In Theorem <a href="#first-sep-thm">16</a> we required that \(K\) has an interior point. Following [3], we can instead impose a weaker assumption, namely, that \(K\) has an <em>internal</em> point. The notions of interior and internal points coincide in fintie-dimensional spaces. More about this in a separate post.</li>
+<li>We can say more about separation in Banach spaces. Of course, things are simpler in \({\rm I\!R}^n\) and finite-dimensional spaces. More posts on this topic will follow.</li>
+</ol>
+
+## References 
+
+1. M. Fabian, P. Habala, P. Hájek, V. Montesinos Santalucía, J. Pelant, and V. Zizler, Functional analysis and infinite-dimensional geometry, Springer, 2001
+2. N. Bourbaki, Elements of mathematics: topological vector spaces (Chap 1-5), Springer, 2003 
+3. C.D. Aliprantis and K.C. Border, Infinite Dimensional Analysis: A Hitchhiker's guide, third edition, Springer, 2006
+
 ## Read next
 
+- [The Hahn-Banach theorem on Banach spaces](../hbt-banach-spaces)
 - [From Separation Theorems to Farkas' Lemma](../farkas-separation)
