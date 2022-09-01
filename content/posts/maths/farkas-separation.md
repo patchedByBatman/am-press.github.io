@@ -78,17 +78,18 @@ tags: ["Convex Analysis", "Functional Analysis"]
 <p><em><strong>Figure 2.</strong> Condition 2 is not satisfied.</em></p>
 </div>
 
+<p>It remains to see under what conditions the two sets are separated. We will do this in the proof of Farkas' lemma below.</p>
+
 
 <p><em>Proof of Farkas' lemma.</em> We start by showing that it is not possible that both conditions are satisfies simultaneously. Suppose instead that both conditions are satisfied. Then, on the one hand</p>
 <p>$$y^\intercal A x = y^\intercal b < 0,$$</p>
 <p>and on the other hand</p>
 <p>$$y^\intercal A x = (A^\intercal y)^\intercal x \geq 0,$$</p>
 <p>which is a contradition.</p>
-<p>$(1 \Rightarrow 2).$ We will show that if 2 does not hold, then 1 holds. Define the sets $K=\{y : A^\intercal y \geq 0\}$ and $L = \{y : b^\intercal y < 0\}$. To say that 2 does not hold is to say that $K$ and $L$ are disjoint. From the hyperplane separation theorem, there is a vector $c$ such that</p>
+<p>$(1 \Rightarrow \text{not }2).$ We will show that if condition 2 does not hold, then condition 1 holds. Define the sets $K=\{y : A^\intercal y \geq 0\}$ and $L = \{y : b^\intercal y < 0\}$. To say that 2 does not hold is to say that $K$ and $L$ are disjoint. From the hyperplane separation theorem, there is a vector $c$ such that</p>
 <p>$$\delta_{K^\circ}(c) \leq -\delta_{(-L)^\circ}(c).$$</p>
 <p>This implies that $c \in K^\circ \cap (-L)^\circ$, and the reader can check that this is equivalent to</p>
 <p>$$\begin{cases}c = Ax, x \geq 0\\ c = \alpha b, \alpha \geq 0 \end{cases}$$</p>
 <p>Implying that $Ax = \alpha b$ with $x\geq 0$ and $\alpha \geq 0$, which is equivalent to $Ax = b$ for some $x\geq 0$ (which is the first condition).</p>
 <p>$(2 \Rightarrow 1).$ Likewise. $\blacksquare$</p>
 
-## Read next

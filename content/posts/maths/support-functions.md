@@ -29,7 +29,7 @@ tags: ["Variational Analysis", "Convex Analysis"]
 
 <p>The convex hull of a collection of functions, \( f_i: \mathbb{R}^n \to \overline{\mathbb{R}}\) with \( i\in I\) is a function \( f := \mathrm{conv}(f_i)_i\) with \( \mathrm{epi} f = \mathrm{conv}\bigcup_{i\in I}\mathrm{epi}f_i.\)</p>
 
-<p>The conic hull of a set \( C \subseteq \mathbb{R}^n\) is the smallest cone that contains \( C\) and it is \( \mathrm{cone}(C) = \{y = c_1x_1 + y_2 x_2 + \ldots + c_k x_i\in C, c_i \geq 0, i=1,\ldots,k \}.\)</p>
+<p>The conic hull of a set \( C \subseteq \mathbb{R}^n\) is the smallest cone that contains \( C\) and it is \( \mathrm{cone}(C) = \{y = c_1x_1 + c_2 x_2 + \ldots + c_k x_i\in C, c_i \geq 0, i=1,\ldots,k \}.\)</p>
 
 <p>The Minkowski sum of two sets is denoted by \( A \oplus B = \{a + b: a\in A, b\in B\}.\) The interior, relative interior and closure of a set \( C\) are denoted by \( \mathrm{int}(C)\), \( \mathrm{relint}(C)\) and \( \mathrm{cl}(C)\).</p>
 
