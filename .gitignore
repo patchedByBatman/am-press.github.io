@@ -1,3 +1,7 @@
+# Certain file types
+*.pptx
+~*
+
 # custom
 private/
 scrap/
