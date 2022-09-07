@@ -43,9 +43,15 @@ tags: ["Convex Analysis", "Functional Analysis"]
 
 <p>Next, let us recall from our previous post on <a href="../support-functions" target="_blank">support functions</a> (and in particular,  <a href="../support-functions#prop15" target="_blank">Proposition 1.5</a>) that if $K$ is a finitely generated cone, then</p>
 <p>$$\begin{aligned}\{A^\intercal y {}:{} y\geq 0\}^{\circ} {}={}& \{x : a_i^\intercal x \leq 0\, i=1,\ldots, p\} \\ {}={}&\{x : Ax \leq 0\}\tag{5a}.\end{aligned}$$</p>
-<p>Since $K$ is closed, we have (because $K^{\circ \circ} = \mathrm{cl} K$)</p>
+<p>Since $K$ is a convex closed cone, we have $K^{\circ \circ} = K$ [<a href="#cite:rock72" title="Rockafellar, Convex Analysis">1, Thm 14.5</a>]</p>
 <p>$$\{x : Ax \leq 0\}^{\circ} {}={} \{A^\intercal y {}:{} y\geq 0\}. \tag{5b}$$</p>
 
+
+<div id="fig1">
+<img src="/farkas-polar.png" alt="Polar of cone"  style="width: 60%; margin-left: auto;margin-right: auto;">
+
+<p><em><strong>Figure 0.</strong> The polar of $\{x : Ax \leq 0\}$ is the cone $\{A^\intercal y {}:{} y\geq 0\}$ (and vice versa).</em></p>
+</div>
 
 
 ## Farkas' lemma
@@ -93,3 +99,8 @@ tags: ["Convex Analysis", "Functional Analysis"]
 <p>Implying that $Ax = \alpha b$ with $x\geq 0$ and $\alpha \geq 0$, which is equivalent to $Ax = b$ for some $x\geq 0$ (which is the first condition).</p>
 <p>$(2 \Rightarrow 1).$ Likewise. $\blacksquare$</p>
 
+## References
+
+<ol>
+  <li id="cite:rock72">R.T. Rockafellar, Convex Analysis, Princeton University Press, 1972</li>
+</ol>
