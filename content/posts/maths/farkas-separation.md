@@ -47,7 +47,7 @@ tags: ["Convex Analysis", "Functional Analysis"]
 <p>$$\{x : Ax \leq 0\}^{\circ} {}={} \{A^\intercal y {}:{} y\geq 0\}. \tag{5b}$$</p>
 
 
-<div id="fig1">
+<div id="fig0">
 <img src="/farkas-polar.png" alt="Polar of cone"  style="width: 60%; margin-left: auto;margin-right: auto;">
 
 <p><em><strong>Figure 0.</strong> The polar of $\{x : Ax \leq 0\}$ is the cone $\{A^\intercal y {}:{} y\geq 0\}$ (and vice versa).</em></p>

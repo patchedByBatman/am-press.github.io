@@ -231,7 +231,7 @@ then \(\psi_0,\psi_1,\ldots\) are the Laguerre polynomials.</p>
 
 <p>* If the basis is not orthogonal, we can produce an orthogonal basis using the Gram-Schmidt orthogonalisation procedure<sup>[<a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process" target="_blank">ref</a>]</sup></p>
 <p><em>Proof.</em> It suffices to show that Condition 3 of <a href="#projection1" title="Projection on subspace">Proposition 7</a> is satisfied. Equivalently, it suffices to show that</p>
-<p>$$\left\langle \sum_{i=1}^{n} \frac{\langle x, e_i \rangle}{\|e_i\|^2}e_i, e_j\right\rangle=0,$$</p>
+<p>$$\left\langle \sum_{i=1}^{n} \frac{\langle x, e_i \rangle}{\|e_i\|^2}e_i - x, e_j\right\rangle=0,$$</p>
 <p>for all $j=1,\ldots,n$. This is true because $\langle e_i, e_j\rangle = \delta_{ij}\|e_j\|^2$. $\Box$</p>
 
 <p>Let $\{\psi_0, \ldots, \psi_N\}$ be an orthogonal basis of the set of polynomials on $[a, b]$ with degree up to $N$. This is denoted by $\mathsf{P}_N([a, b])$. Orthogonality is meant with respect to an inner product \(\left\langle{}\cdot{}, {}\cdot{}\right\rangle_w\). Suppose that the $\psi_i$ are unitary, i.e., $\|\psi_i\|_w = 1$.</p>
@@ -248,9 +248,53 @@ then \(\psi_0,\psi_1,\ldots\) are the Laguerre polynomials.</p>
 \]</p>
 
 
+### 2.3. Example
+<p>Here we will approximate the function </p>
+<p>$$f(x) = \sin(5x) \exp(-2x^2),$$</p>
+<p>over $[-1, 1]$ using Legendre polynomials<sup>[<a href="https://en.wikipedia.org/wiki/Legendre_polynomials">ref</a>]</sup>. The Legendre polynomials, $L_0, L_1, \ldots$ are orthogonal with respect to the standard inner product of $\mathcal{L}^2([-1, 1])$. The first four Legendre polynomials are</p>
+<p>$$\begin{aligned}
+L_0(x) {}={}& 1,
+\\
+L_1(x) {}={}& x,
+\\
+L_2(x) {}={}& \tfrac{1}{2}(3x^2 - 1),
+\\
+L_3(x) {}={}& \tfrac{1}{2}(5x^3 - 1).
+\end{aligned}$$</p>
+<p>Using <a href="#projection2">Proposition 8</a>, we can compute the coefficients of the approximation $f \approx \Pi_N f$. In <a href="#fig1">Figure 1</a> we see a comparison of $f_5$, $f_7$ and $f_9$ with $f$. We see that as $N$ increases, the approximation comes closed to $f$.</p>
+<div id="fig1">
+<img src="/pol-approx-1.jpg" alt="Approximation of f with Legendre polynomials"  style="width: 97%; margin-left: auto;margin-right: auto;">
+<p><em><strong>Figure 1.</strong> Approximation of $f(x) = \sin(5x) \exp(-2x^2)$ using Legendre polynomials.</em></p>
+</div>
+
+<div id="fig2">
+<img src="/pol-approx-1-error.jpg" alt="Approximation L2-norm-error against N"  style="width: 65%; margin-left: auto;margin-right: auto;">
+<p><em><strong>Figure 2.</strong> Plot of $\|f-f_N\|_{\mathcal{L}^2([-1, 1])}$ against $N$. As $N\to\infty$, the approximation error goes to zero.</em></p>
+</div>
+
+<p>Is this better compared to the Taylor expansion? TL;DR: Yes! Big time! Taylor's approximation is a <em>local</em> approximation.</p>
+
+### 2.4. Focused approximation
+
+<p>Let's take the same function as in the example of <a href="#23-example">Section 2.3</a>, but now suppose we want to focus more close to $-1$ and less so close to $1$. We want to treat errors close to $-1$ as more important and errors closer to $1$ as less important. To that end, we use the weight function</p>
+<p>$$w(x) = (1-x)^a(1+x)^b,$$</p>
+<p>with $a=2$ and $b=0.1$.</p>
+
+<div id="fig3">
+<img src="/pol-jacobi.jpg" alt="Approximation using  Jacobi polynomials"  style="width: 65%; margin-left: auto;margin-right: auto;">
+<p><em><strong>Figure 3.</strong> Approximation of $f(x) = \sin(5x) \exp(-2x^2),$ with polynomials which are orthogonal with respect to $w$.</em></p>
+</div>
+
+
+<p>The Jacobi polynomials<sup>[<a href="https://en.wikipedia.org/wiki/Jacobi_polynomials" target="_blank">ref</a>]</sup> are orthogonal with resepct to $w$.</p>
+
+
+
 ## Read next
 
 - <p><a href="../pce-2">Polynomial chaos expansions: Part II</a></p>
+
+
 
 ## References 
 
