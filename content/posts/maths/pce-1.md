@@ -286,7 +286,9 @@ L_3(x) {}={}& \tfrac{1}{2}(5x^3 - 1).
 </div>
 
 
-<p>The Jacobi polynomials<sup>[<a href="https://en.wikipedia.org/wiki/Jacobi_polynomials" target="_blank">ref</a>]</sup> are orthogonal with resepct to $w$.</p>
+<p>The Jacobi polynomials<sup>[<a href="https://en.wikipedia.org/wiki/Jacobi_polynomials" target="_blank">ref</a>]</sup> are orthogonal with respect to $w$.</p>
+
+<p>In <a href="#fig3">Figure 3</a> we see that the approximation using an expansion with Jacobi polynomials is better close to $-1$ and less so as we move to $1$.</p>
 
 
 

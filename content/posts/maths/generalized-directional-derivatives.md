@@ -190,9 +190,9 @@ td, th {
 
 <p>Lastly, the Clarke derivative of \(f(x) = -|x|\) at 0 is</p>
 
-<p>$$\begin{aligned}f^\circ(0; h) {}={} \limsup_{y \to 0, t\downarrow 0} \frac{|y+th|-|y|}{t} {}\leq{} |h|,\end{aligned}$$</p>
+<p>$$\begin{aligned}f^\circ(0; h) {}={} \limsup_{y \to 0, t\downarrow 0} \frac{|y|-|y+th|}{t} {}\geq{} |h|,\end{aligned}$$</p>
 
-<p>by using the triangle inequality. By following the same procedure as with \(|x|\) in Example 1, we conclude that \(f^\circ(0; h) = |h|\).</p>
+<p>by using the triangle inequality. By following a similar procedure as in \(|x|\) in Example 1, we conclude that \(f^\circ(0; h) = |h|\).We can arrive at the same conclusion using <a href="#prop-clarke-minus-h">Proposition 5</a> below.</p>
 
 <p>We can state the following result that gives the Clarke derivative of \(-f\) in terms of that of \(f\).</p>
 
