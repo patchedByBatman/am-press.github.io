@@ -39,7 +39,7 @@ High-quality illustrations.<br/>
 
 ## Code snippets in Python and MATLAB
 
-Code in snippets in both Python and MATLAB so that you can experiment with controller design yourself and get valueable hands-on experience.
+Code in snippets in both Python and MATLAB so that you can experiment with controller design yourself and get valuable hands-on experience.
 
 
 <img alt="Image from book" src="https://am-press.github.io/ControlSystemsBook/images/python-matlab-2.png" style="width: 90%; margin-left: auto;margin-right: auto;">
@@ -48,7 +48,7 @@ Code in snippets in both Python and MATLAB so that you can experiment with contr
 
 ## Ace your control exams
 
-Ideal for students who want to understand the topic thoroughly, avoid common pitfalls, and ace their control exams
+Ideal for students who want to understand the topic thoroughly and in depth, avoid common pitfalls, and ace their control exams!
 
 ## Bibliographic references with comments
 
@@ -57,9 +57,11 @@ Bibliographic references with comments.
 
 ## Buy on Amazon
 
-The paperback version of the book will become available in a few months. You will be able to buy from Amazon.com.
+The paperback version of the book in available on Amazon 
+([.com](https://www.amazon.com/dp/173913866X), [UK](https://www.amazon.co.uk/dp/173913866X), [Canada](https://www.amazon.ca/dp/173913866X), [Germany](https://www.amazon.de/dp/173913866X), [Italy](https://www.amazon.it/dp/173913866X), [The Netherlands](https://www.amazon.nl/dp/173913866X), [Poland](https://www.amazon.pl/dp/173913866X), [Sweden](https://www.amazon.se/dp/173913866X), [Australia](https://www.amazon.com.au/dp/173913866X)).
 
 
 ## About the author
 
 Pantelis Sopasakis was born in Athens, Greece, in 1985. He received a diploma (MEng) in chemical engineering in 2007 and an MSc with honours in applied mathematics in 2009 from the National Technical University of Athens. In 2012, he defended his PhD thesis entitled "Modelling and control of biological and physiological systems" at the School of Chemical Engineering, NTU Athens. He held postdoctoral positions at IMT Lucca, KU Leuven and University of Cyprus. Since 2019 he joined the School of Electronics, Electrical Engineering and Computer Science (EEECS) and the i-AMS research centre at Queen's University Belfast. His research interests revolve around model predictive control for uncertain systems and numerical optimisation methods and algorithms for large-scale problems. In 2020, Dr Sopasakis was a runner-up for the QUB Teaching Excellence Award.
+
