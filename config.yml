@@ -56,10 +56,10 @@ languages:
                 #   url: https://am-press.github.io/ControlSystemsBook/
                 - name: Blog
                   url: posts
+                - name: Books!
+                  url: /posts/publishing/control-systems/
                 - name: About
-                  url: about
-                - name: News
-                  url: news
+                  url: about                
 
 outputs:
     home:

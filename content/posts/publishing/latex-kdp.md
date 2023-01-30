@@ -3,8 +3,7 @@ title: "LaTeX for KDP"
 summary: LaTeX tips for Kindle Direct Publishing
 date: 2022-08-19
 series: ["Publishing"]
-weight: 1
-tags: ["LaTeX", "KDP"]
+tags: ["LaTeX", "KDP", "Self-publishing"]
 author: "Pantelis Sopasakis"
 ---
 
@@ -26,4 +25,4 @@ In brief, for 580-page book, here is my `geometry`
             ]{geometry}
 ```
 
-I will update this with more details.
+Of course, you may want to configure this. It is important not to be sparing with the size of the gutter, especially if your book has more than 200 pages, otherwise you will make your readers' life difficult. 

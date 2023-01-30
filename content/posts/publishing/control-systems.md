@@ -10,13 +10,25 @@ author: "Pantelis Sopasakis"
 
 
 
-Applied Mathematix Press proudly presents the book “Control Systems” by Pantelis Sopasakis.
+Applied Mathematix Press proudly presents the textbook “Control Systems: An introduction” by Dr Pantelis Sopasakis.
+
+<img alt="Control Systems Front Cover" src="/book-jacket.jpg" style="width: 35%; margin-left: auto;margin-right: auto;">
+
+
+<a href="https://www.amazon.co.uk/dp/173913866X" title="Buy from Amazon"><img alt="Buy from Amazon" src="/amazon-buy-now-button.png" style="width: 20%; margin-left: auto;margin-right: auto;"></a>
 
 This book’s objective is to equip the students of engineering schools with the necessary theoretical tools and practical skills (including programming) to analyse dynamical systems and design appropriate controllers.
 
 The book starts with an introductory chapter on modelling of physical systems, gives a brief presentation of linearisation, and moves on to the frequency domain with the introduction of the Laplace transform and its inverse. This brings us to the concept of a transfer function, which is a notion of central importance in classical control theory. We give the definition of BIBO stability and state the Routh-Hurwitz criterion. We then move to the frequency domain: we discuss the properties of the steady state frequency response of the system and state the Bode stability criterion and conclude with the powerful Nyquist criterion.
 
 The theory is presented in a rigorous, yet accessible way, while numerous examples with illustrations help the reader to solidify their understanding and avoid common pitfalls and caveats.
+
+## Clearly stated results
+
+All results are clearly stated and, with few exceptions, are accompanied by step-by-step proofs.
+
+<img alt="Exercise from book" src="/final-value-theorem.png" style="width: 90%; margin-left: auto;margin-right: auto;"><br/>
+
 
 ## Numerous worked-out examples
 
@@ -33,7 +45,7 @@ The book counts over 280 exercises, the majority of which are accompanied by sho
 <img alt="Exercise from book" src="https://am-press.github.io/ControlSystemsBook/images/exercises.png" style="width: 80%; margin-left: auto;margin-right: auto;"><br/>
 
 ## Over 250 high-quality figures
-High-quality illustrations.<br/>
+High-quality illustrations help the reader understand the concepts easier and deeper.<br/>
 
 <img alt="Image from book" src="https://am-press.github.io/ControlSystemsBook/images/book-images.png" style="width: 90%; margin-left: auto;margin-right: auto;">
 
@@ -55,10 +67,12 @@ Ideal for students who want to understand the topic thoroughly and in depth, avo
 Bibliographic references with comments.
 
 
-## Buy on Amazon
+## Buy from Amazon
 
 The paperback version of the book in available on Amazon 
-([.com](https://www.amazon.com/dp/173913866X), [UK](https://www.amazon.co.uk/dp/173913866X), [Canada](https://www.amazon.ca/dp/173913866X), [Germany](https://www.amazon.de/dp/173913866X), [Italy](https://www.amazon.it/dp/173913866X), [The Netherlands](https://www.amazon.nl/dp/173913866X), [Poland](https://www.amazon.pl/dp/173913866X), [Sweden](https://www.amazon.se/dp/173913866X), [Australia](https://www.amazon.com.au/dp/173913866X)).
+([.com](https://www.amazon.com/dp/173913866X), [UK](https://www.amazon.co.uk/dp/173913866X), [Canada](https://www.amazon.ca/dp/173913866X), [Germany](https://www.amazon.de/dp/173913866X), [Italy](https://www.amazon.it/dp/173913866X), [France](https://www.amazon.fr/dp/173913866X), [Spain](https://www.amazon.es/dp/173913866X), [The Netherlands](https://www.amazon.nl/dp/173913866X), [Poland](https://www.amazon.pl/dp/173913866X), [Sweden](https://www.amazon.se/dp/173913866X), and [Australia](https://www.amazon.com.au/dp/173913866X)).
+
+<a href="https://www.amazon.co.uk/dp/173913866X" title="Buy from Amazon"><img alt="Buy from Amazon" src="/amazon-buy-now-button.png" style="width: 35%; margin-left: auto;margin-right: auto;"></a>
 
 
 ## About the author
