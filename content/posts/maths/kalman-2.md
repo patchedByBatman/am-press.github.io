@@ -10,7 +10,8 @@ tags: ["Estimation", "Probability"]
 collapsible: true
 ---
 
-<p><b>Read first:</b> <a href="../kalman-1">Kalman Filter I: The Gauss-Markov model</a></p>
+> <b>Read first:</b> <a href="../kalman-1">Kalman Filter I: The Gauss-Markov model</a><br>
+> <b>Read next:</b> <a href="../kalman-3">Kalman Filter III: Measurement and time updates</a>
 
 <p>In this post we present a result of central importance in the development of the Kalman filter.</p>
 
@@ -33,6 +34,13 @@ and
 <p>$${\rm Var}[X_1{}\mid{} X_2 = x_2] {}={} \Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1} \Sigma_{21}.\tag{3b}$$</p>
 </div>
 
+<p>Theorem <a href="#thm:normal_conditioning">1</a> is discussed in the following video:</p>
+
+<div id="youtube-video-conditioning">
+<iframe alt="YouTube video on conditioning" style="margin:auto;display:block;" width="560" height="315" src="https://www.youtube.com/embed/h2sTS8cHkPM?start=456" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<p></p>
 <p><em>Proof.</em> The proof hinges on <em>Schur's complement</em>. We define the Schur complement of $\Sigma$ (with respect to $\Sigma_{22}$) to be the following nonsingular matrix</p>
 <p>$$\Sigma_* = \Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}.\tag{4}$$</p>
 <p>Then, the inverse of $\Sigma$ is the matrix</p>
@@ -144,3 +152,4 @@ therefore \(\Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1} \Sigma_{21} \preccurlyeq \
   \begin{bmatrix}0.77 & 0.23\\0.23 & 0.83\end{bmatrix}^{-1}
   \begin{bmatrix}0.32 & 0.3\\0.39 & 0.26\end{bmatrix}.\end{aligned}$$</p>
 
+> <b>Read next:</b> <a href="../kalman-3">Kalman Filter III: Measurement and time updates</a>

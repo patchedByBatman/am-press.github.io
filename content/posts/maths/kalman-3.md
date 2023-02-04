@@ -69,7 +69,7 @@ collapsible: true
 
 <p>Since $(x_0, y_0)$ is jointly normally distributed as in Equation <a href="eq:aee0f39f-c926-4c39-98c5-bdfd6eadd21e">(3)</a>, $x_0{}\mid{}y_0$ is normally distributed.</p>
 
-<p>We may define the estimator \(\hat{x}_{0{}\mid{}0} \coloneqq  {\rm I\!E}[x_0 {}\mid{} y_0] \), which is (ref)</p>
+<p>We may define the estimator \(\hat{x}_{0{}\mid{}0} \coloneqq  {\rm I\!E}[x_0 {}\mid{} y_0] \), which is (<a href="../kalman-2#thm:normal_conditioning">ref</a>)</p>
 
 <p id="eq:xhat00">$$
   \hat{x}_{0{}\mid{}0}
@@ -78,7 +78,7 @@ collapsible: true
   {}+{}
   {P_0C_0^\intercal}
   ({C_0P_0C_0^\intercal + R_0})^{-1}
-  (y_0 - C_0\tilde{x}_0),$$</p>
+  (y_0 - C_0\tilde{x}_0),\tag{4}$$</p>
 
 <p>and the estimator variance, \(\Sigma_{0{}\mid{}0} \coloneqq  {\rm Var}[x_0{}\mid{}y_0]\), which is</p>
 
@@ -88,30 +88,30 @@ collapsible: true
     {}-{}
   {P_0C_0^\intercal}
   ({C_0P_0C_0^\intercal + R_0})^{-1}
-    {C_0P_0}$$</p>
+    {C_0P_0}\tag{5}$$</p>
 
 <p>Having observed $y_0$ at $t=0$ we want to estimate $x_1$; we compute \(\hat{x}_{1{}\mid{}0} \coloneqq {\rm I\!E}[x_1 {}\mid{} y_0]\) which is</p>
 
-<p>$$\hat{x}_{1{}\mid{}0} {}={} A_0 \hat{x}_{0\mid 0}.$$</p>
+<p>$$\hat{x}_{1{}\mid{}0} {}={} A_0 \hat{x}_{0\mid 0}.\tag{6}$$</p>
 
 <p>The estimator variance, \(\Sigma_{1{}\mid{}0} = {\rm Var}[x_1 {}\mid{} y_0]\), is</p>
 
-<p id="eq:sigma10">$$\Sigma_{1{}\mid{}0} {}={} A_0 \Sigma_{0{}\mid{}0}A_0^\intercal + G_0Q_0G_0^\intercal.$$</p>
+<p id="eq:sigma10">$$\Sigma_{1{}\mid{}0} {}={} A_0 \Sigma_{0{}\mid{}0}A_0^\intercal + G_0Q_0G_0^\intercal.\tag{7}$$</p>
 
 <p>The output at $t=1$ given the observation of $y_0$ is expected to be</p>
 
-<p>$$\hat{y}_{1{}\mid{}0} = {\rm I\!E}[y_1 {}\mid{} y_0] = C_1\hat{x}_{1{}\mid{}0},$$</p>
+<p>$$\hat{y}_{1{}\mid{}0} = {\rm I\!E}[y_1 {}\mid{} y_0] = C_1\hat{x}_{1{}\mid{}0},\tag{8}$$</p>
 
 <p>and its (conditional) variance is</p>
 
-<p>$${\rm Var}[y_1 {}\mid{} y_0] = {C_1\Sigma_{1{}\mid{}0}C_1^\intercal + R_1},$$</p>
+<p>$${\rm Var}[y_1 {}\mid{} y_0] = {C_1\Sigma_{1{}\mid{}0}C_1^\intercal + R_1},\tag{9}$$</p>
 
 <p>(can you see why?) and the covariance between $x_1$ and $y_1$, conditional on $y_0$, is</p>
 
 <p>$${\rm Cov}(x_1, y_1 {}\mid{} y_0)
   {}\coloneqq {}
   {\rm I\!E}[(x_1 - \tilde{x}_1)(y_1 - \tilde{y}_1)^\intercal {}\mid{} y_0]
-  {}={} {\Sigma_{1{}\mid{}0} C_1^\intercal}.$$</p>
+  {}={} {\Sigma_{1{}\mid{}0} C_1^\intercal}.\tag{10}$$</p>
 
 <p>Overall,</p>
 
@@ -129,7 +129,7 @@ collapsible: true
       \\
       {C_1\Sigma_{1{}\mid{}0}} & {C_1\Sigma_{1{}\mid{}0}C_1^\intercal + R_1 }
     \end{bmatrix}
-  \right).$$</p>
+  \right).\tag{11}$$</p>
 
 <p>Once we obtain a measurement $y_1$,</p>
 
