@@ -12,7 +12,7 @@ collapsible: true
 
 This is the first post of a series on the Kalman filter. We will start simply by stating a linear dynamical system, without an input, which is subject to Gaussian process noise, and we will study its properties.
 
-<p><b>Read next:</b> <a href="../kalman-2">Kalman Filter II: Conditioning</a></p>
+> <b>Read next:</b> <a href="../kalman-2">Kalman Filter II: Conditioning</a>
 
 ## The Gauss-Markov Model
 <p>Consider the linear dynamical system (without an input)</p>
@@ -25,7 +25,7 @@ This is the first post of a series on the Kalman filter. We will start simply by
 <p>We assume that </p>
 <ol>
 <li>${\rm I\!E}[w_t]=0$ and ${\rm I\!E}[v_t]=0$ for all $t\in{\rm I\!N}$,</li>
-<li>$x_0$, $(w_t)_t$ and $(v_t)_t$ are mutually independent random variables\footnote{therefore, ${\rm I\!E}[w_tw_l^\intercal]=0$ for $t{}\neq{}l$, and ${\rm I\!E}[v_tv_l^\intercal]=0$ for $t{}\neq{}l$},</li>
+<li>$x_0$, $(w_t)_t$ and $(v_t)_t$ are mutually independent random variables (therefore, ${\rm I\!E}[w_tw_l^\intercal]=0$ for $t{}\neq{}l$, and ${\rm I\!E}[v_tv_l^\intercal]=0$ for $t{}\neq{}l$),</li>
 <li>$w_t$ and $v_t$ are normally distributed and ${\rm I\!E}[w_tw_t^\intercal]=Q_t$, ${\rm I\!E}[v_tv_t^\intercal]=R_t$.</li>
 <li>$x_0$ is a random variable and $x_0 \sim \mathcal{N}(\tilde{x}_0, P_0)$</li>
 </ol>
@@ -136,4 +136,4 @@ F_{x_{t+1}{}\mid{} x_0, x_1, \ldots, x_{t}}(x^+ {}\mid{} x_0, x_1, \ldots, x_{t}
 
 <p>$$ {\rm Cov}(x_t, x_{t+l}) = P_t (A^{\intercal})^l.$$</p>
 
-<p><b>Read next:</b> <a href="../kalman-2">Kalman Filter II: Conditioning</a></p>
+> <p><b>Read next:</b> <a href="../kalman-2">Kalman Filter II: Conditioning</a></p>
