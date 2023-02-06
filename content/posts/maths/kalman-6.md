@@ -1,8 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter VI: Further examples"
-date: 2023-02-05
-draft: true
+date: 2023-02-06
 description: "More examples"
 summary: "Further examples using the Kalman filter in Python"
 math: true
@@ -11,6 +10,8 @@ tags: ["Estimation"]
 collapsible: true
 ---
 
+> <b>Read first:</b> <a href="../kalman-5">Kalman Filter V: It's BLUE!</a><br>
+> <b>Read next:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a> (expected: 13 Feb 2023)<br>
 
 ## Simple Kalman Filter
 
@@ -160,7 +161,7 @@ y_{t+1} =& \tilde{C}\tilde{x}_t + v_t,
 
 <p>The Kalman filter can be applied to systems with inputs and often one needs to design a Kalman filter for a control system. There are, however, other cases of systems with inputs that are not control systems such as ones that we encounter in the study of attitude estimation.</p>
 
-### Known input
+### Perfect knowledge of the input
 
 <p>Consider now a system with an input, $u_t$, which can be measured without error.</p>
 <p>$$\begin{aligned}x_{t+1} {}={}& Ax_t + Bu_t + w_t,\\y_t {}={}& Cx_t + v_t.\end{aligned}$$</p>
@@ -173,16 +174,16 @@ y_{t+1} =& \tilde{C}\tilde{x}_t + v_t,
       {}={}
       \hat{x}_{t{}\mid{}t-1}
       {}+{}
-      \Sigma_{t{}\mid{}t-1}C_t^\intercal
-      (C_t\Sigma_{t{}\mid{}t-1}C_t^\intercal + R_t)^{-1}(y_t - C_t\hat{x}_{t{}\mid{}t-1})
+      \Sigma_{t{}\mid{}t-1}C^\intercal
+      (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}(y_t - C\hat{x}_{t{}\mid{}t-1})
       \\
       \Sigma_{t{}\mid{}t}
       {}={}
       \Sigma_{t{}\mid{}t-1}
       {}-{}
-      \Sigma_{t{}\mid{}t-1}C_t^\intercal
-      (C_t\Sigma_{t{}\mid{}t-1}C_t^\intercal + R_t)^{-1}
-      C_t\Sigma_{t{}\mid{}t-1}
+      \Sigma_{t{}\mid{}t-1}C^\intercal
+      (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}
+      C\Sigma_{t{}\mid{}t-1}
     \end{array}
     \right.
     \\
@@ -191,11 +192,11 @@ y_{t+1} =& \tilde{C}\tilde{x}_t + v_t,
     \begin{array}{l}
       \hat{x}_{t+1{}\mid{}t}
       {}={}
-      A_t \hat{x}_{t{}\mid{}t} + Bu_{t}
+      A \hat{x}_{t{}\mid{}t} + Bu_{t}
       \\
       \Sigma_{t+1{}\mid{}t}
       {}={}
-      A_t \Sigma_{t{}\mid{}t} A_t^\intercal + G_tQ_tG_t^\intercal
+      A \Sigma_{t{}\mid{}t} A^\intercal + Q^\intercal
     \end{array}
     \right.
     \\
@@ -213,11 +214,87 @@ y_{t+1} =& \tilde{C}\tilde{x}_t + v_t,
     \right.
   \end{aligned}$$</p>
 
+<p>Results are shown in Figure <a href="#fig6-4">VI-4</a>.</p>
+
+<div id="fig6-4">
+<img src="/kf6-4.png" alt="Kalman filter with perfectly known input"  style="width: 97%; margin-left: auto;margin-right: auto;">
+<p><em><strong>Figure VI-4.</strong> The Kalman filter is used to estiamate the states of the system with an input signal. Here we have used the same system matrices $A$ and $C$ as <a href="#example-system">above</a>, $B=[1 ~~ 0.04]^\intercal$ and an input $u_t = t$.</em></p>
+</div>
 
 
+### Imperfect knowledge of the input
 
-### Uncertain input
-
-<p>Now suppose that the true input, $u_t$, can be measured. It is $u^{\rm meas}_t = u_t + n_t,$ where $n_t$ is an iid zero-mean Gaussian noise term. Then, the system becomes</p>
+<p>Now suppose that the true input, $u_t$, can be measured and, in particular, we can measure a signal $u^{\rm meas}_t = u_t + n_t,$ where $n_t$ is an iid zero-mean Gaussian noise, $n_t\sim\mathcal{N}(0, N)$. Then, the system becomes</p>
 <p>$$\begin{aligned}x_{t+1} {}={}& Ax_t + B(u^{\rm meas}_t - n_t) + w_t,\\y_t {}={}& Cx_t + v_t.\end{aligned}$$</p>
-<p>which is in the form discussed above.</p>
+<p>which is in the form discussed above. We can rewrite this as</p>
+<p>$$\begin{aligned}
+x_{t+1} {}={}& Ax_t + Bu^{\rm meas}_t - Bn_t + w_t
+\\
+=& Ax_t + Bu^{\rm meas}_t + \begin{bmatrix}-B & I\end{bmatrix}\begin{bmatrix}n_t\\w_t\end{bmatrix},
+\\
+y_t {}={}& Cx_t + v_t.\end{aligned}$$</p>
+<p>We can now define the new noise term $\tilde{w}_t = (n_t, w_t)$ and the matrix $G = [-B ~ I]$ and write</p>
+<p>$$\begin{aligned}
+x_{t+1} {}={}& Ax_t + Bu^{\rm meas}_t + G\tilde{w}_t,
+\\
+y_t {}={}& Cx_t + v_t,\end{aligned}$$</p>
+<p>where</p>
+<p>$$\tilde{w}_t\sim\mathcal{N}\left(0, \begin{bmatrix}N\\&Q\end{bmatrix}\right)$$</p>
+<p>The Kalman filter update equations become</p>
+<p>$$\begin{aligned}
+    \text{M/U} &
+    \left[
+    \begin{array}{l}
+      \hat{x}_{t{}\mid{}t}
+      {}={}
+      \hat{x}_{t{}\mid{}t-1}
+      {}+{}
+      \Sigma_{t{}\mid{}t-1}C^\intercal
+      (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}(y_t - C\hat{x}_{t{}\mid{}t-1})
+      \\
+      \Sigma_{t{}\mid{}t}
+      {}={}
+      \Sigma_{t{}\mid{}t-1}
+      {}-{}
+      \Sigma_{t{}\mid{}t-1}C^\intercal
+      (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}
+      C\Sigma_{t{}\mid{}t-1}
+    \end{array}
+    \right.
+    \\
+    \text{T/U}        &
+    \left[
+    \begin{array}{l}
+      \hat{x}_{t+1{}\mid{}t}
+      {}={}
+      A \hat{x}_{t{}\mid{}t} + Bu_{t}
+      \\
+      \Sigma_{t+1{}\mid{}t}
+      {}={}
+      A \Sigma_{t{}\mid{}t} A^\intercal + BNB^\intercal + Q^\intercal
+    \end{array}
+    \right.
+    \\
+    \text{Init.} &
+    \left[
+    \begin{array}{l}
+      \hat{x}_{0{}\mid{}-1}
+      {}={}
+      \tilde{x}_0
+      \\
+      \Sigma_{0{}\mid{}-1}
+      {}={}
+      P_0
+    \end{array}
+    \right.
+  \end{aligned}$$</p>
+
+  <p>Results are shown in Figure <a href="#fig6-5">VI-5</a>.</p>
+
+<div id="fig6-5">
+<img src="/kf6-5.png" alt="Kalman filter with imperfectly known input"  style="width: 97%; margin-left: auto;margin-right: auto;">
+<p><em><strong>Figure VI-5.</strong> The Kalman filter is used to estiamate the states of the system with an input signal. Here we have used the same system matrices $A$ and $C$ as <a href="#example-system">above</a>, $B=[1 ~~ 0.04]^\intercal$ and an input $u_t = t$.</em></p>
+</div>
+
+
+> <b>Read next:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a> (expected: 13 Feb 2023)<br>

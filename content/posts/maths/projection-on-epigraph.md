@@ -1,8 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title:  Projections on epigraphs
-draft: true
-date: 2022-08-26
+date: 2023-02-15
 math: true
 summary: How to project on the epigraph of a convex function
 series: ["Mathematix"]

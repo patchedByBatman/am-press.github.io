@@ -1,8 +1,7 @@
 ---
 author: "Pantelis Sopasakis"
 title:  Projection on the epigraph of the squared Euclidean norm
-draft: true
-date: 2022-08-26
+date: 2023-03-01
 math: true
 summary: How to project on the epigraph of the squared Euclidean norm
 series: ["Mathematix"]
