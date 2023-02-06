@@ -1,9 +1,9 @@
 ---
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter IV: Application to position estimation"
-date: 2023-02-04
-description: "Update equations of the Kalman fiter"
-summary: "Update equations of the Kalman fiter"
+date: 2023-02-03
+description: "Application to position estimation"
+summary: "We use the Kalman filter to estimate the position of a vehicle by fusing tachometer and GPS sensor data"
 math: true
 series: ["Mathematix"]
 tags: ["Estimation"]
@@ -73,11 +73,11 @@ collapsible: true
 
 <p>and $\bar{\bm{x}}_0 = (\tilde{x}_0, \tilde{\bar{u}}_0) = (0,10)$.</p>
 
-<p>The true and estimated trajectories of the vehicle are shown below in Figures <a href="#fig1">1</a> and <a href="#fig2">2</a>.</p>
+<p>The true and estimated trajectories of the vehicle are shown below in Figures <a href="#fig1">IV.1</a> and <a href="#fig2">IV.2</a>.</p>
 
 <div id="fig1">
 <img src="/kf4-1.png" alt="Estimated position of vehicle using the Kalman filter"  style="width: 97%; margin-left: auto;margin-right: auto;">
-<p><em><strong>Figure 1.</strong> (Left) Estimated positions, $\hat{x}_{t\mid t-1}$
+<p><em><strong>Figure IV.1.</strong> (Left) Estimated positions, $\hat{x}_{t\mid t-1}$
         (pink square),
         $\hat{x}_{t\mid t}$
         (blue rhombus)
@@ -89,7 +89,7 @@ collapsible: true
 
 <div id="fig2">
 <img src="/kf4-2.png" alt="Trajectories of the estimated position of vehicle using the Kalman filter"  style="width: 97%; margin-left: auto;margin-right: auto;">
-<p><em><strong>Figure 2.</strong> Estimated positions, $\hat{x}_{t\mid t-1}$
+<p><em><strong>Figure IV.2.</strong> Estimated positions, $\hat{x}_{t\mid t-1}$
         (pink square),
         $\hat{x}_{t\mid t}$
         (blue rhombus)
@@ -99,20 +99,20 @@ collapsible: true
 
 > <b>See also:</b> Watch the following YouTube video
 
-<iframe alt="YouTube video on the application of the Kalman filter for position estimation" style="margin:auto;display:block;"  width="560" height="315" src="https://www.youtube.com/embed/Zf89SiDMXzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe alt="YouTube video on the application of the Kalman filter for position estimation" style="margin:auto;display:block;" width="560" height="315" src="https://www.youtube.com/embed/Zf89SiDMXzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Intermittent measurements
 
-<p>Suppose we obtain measurements at $t=0,1,\ldots, t_1$, but then the connection to the GPS breaks so we have no measurements from $t_1+1$ to $t_2-1$. At time $t_2$ the connection is recovered. In that case, we can still apply the Kalman filter by applying only time update steps when we do not have measurements. This is illustrated in Figures <a href="#fig3">3</a> and <a href="#fig4">4</a>.</p>
+<p>Suppose we obtain measurements at $t=0,1,\ldots, t_1$, but then the connection to the GPS breaks so we have no measurements from $t_1+1$ to $t_2-1$. At time $t_2$ the connection is recovered. In that case, we can still apply the Kalman filter by applying only time update steps when we do not have measurements. This is illustrated in Figures <a href="#fig3">IV.3</a> and <a href="#fig4">IV.4</a>.</p>
 
 <div id="fig3">
 <img src="/kf4-3.png" alt="Evolution of states of the Gauss-Markov model"  style="width: 97%; margin-left: auto;margin-right: auto;">
-<p><em><strong>Figure 3.</strong> The connection is lost at $t_1=2$ and there are no measurements from time $3$ to time $7$; then, at $t_2=8$, the connection to the GPS is recovered (not shown here). Meanwhile, we compute the estimates $\hat{x}_{3{}\mid{}2},\ldots, \hat{x}_{8{}\mid{}2}$ and variances $\Sigma_{3{}\mid{}2},\ldots, \Sigma_{8{}\mid{}2}$.</em></p>
+<p><em><strong>Figure IV.3.</strong> The connection is lost at $t_1=2$ and there are no measurements from time $3$ to time $7$; then, at $t_2=8$, the connection to the GPS is recovered (not shown here). Meanwhile, we compute the estimates $\hat{x}_{3{}\mid{}2},\ldots, \hat{x}_{8{}\mid{}2}$ and variances $\Sigma_{3{}\mid{}2},\ldots, \Sigma_{8{}\mid{}2}$.</em></p>
 </div>
 
 <div id="fig4">
 <img src="/kf4-4.png" alt="Evolution of states of the Gauss-Markov model"  style="width: 97%; margin-left: auto;margin-right: auto;">
-<p><em><strong>Figure 4.</strong> The connection is recovered at time $t_2=8$; subsequently, we can keep interleaving time and measurement update steps.</em></p>
+<p><em><strong>Figure IV.4.</strong> The connection is recovered at time $t_2=8$; subsequently, we can keep interleaving time and measurement update steps.</em></p>
 </div>
 
 

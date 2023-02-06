@@ -1,9 +1,9 @@
 ---
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter III: Measurement and time updates"
-date: 2023-02-04
+date: 2023-02-02
 description: "Update equations of the Kalman fiter"
-summary: "Update equations of the Kalman fiter"
+summary: "We derive the measurement and update steps of the Kalman filter"
 math: true
 series: ["Mathematix"]
 tags: ["Estimation"]
@@ -217,3 +217,20 @@ collapsible: true
 
 > <b>Read next:</b> <a href="../kalman-4">Kalman Filter IV: Application to position estimation</a>
 
+## At infinity 
+
+<p>Suppose that $A_t = A$, $C_t = C$, $Q_t = Q$ and $R_t = R$. Then, the covariance matrices are updated according to</p>
+<p>$$\Sigma_{t+1{}\mid{}t}
+  {}={}
+  A \Sigma_{t{}\mid{}t-1} A^\intercal
+  {}+{}
+  A \Sigma_{t{}\mid{}t-1}C^\intercal
+  (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}
+  C\Sigma_{t{}\mid{}t-1} A^\intercal
+  {}+{}
+  GQG^\intercal,$$</p>
+  
+<p>which is a <b>Riccati recursion</b>! We know that the Riccati recursion - under certain assumptions (left to the reader as an exercise; drop a comment below) - converges to a steady-state matrix $\Sigma_{\infty}$, i.e., $\Sigma_{t+1{}\mid{}t}\to\Sigma_\infty$ as $t\to\infty$. The covariance matrices can be computed without the need to obtain any system data (independent of $y_t$). The state estimates are essentially conditional expectations. As such, the Kalman filter is the <em>best</em> we can achieve (minimum
+conditional variance estimator).</p>
+
+> <b>Read next:</b> <a href="../kalman-4">Kalman Filter IV: Application to position estimation</a>

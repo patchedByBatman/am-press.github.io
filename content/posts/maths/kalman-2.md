@@ -1,9 +1,9 @@
 ---
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter II: Conditioning"
-date: 2023-02-04
+date: 2023-02-01
 description: "Conditioning multivariate normals"
-summary: "Conditioning multivariate normals"
+summary: "We derive a useful formula that allows us to compute the conditional expectation of jointly normally distributed data; this result plays a central role in the development of the Kalman filter"
 math: true
 series: ["Mathematix"]
 tags: ["Estimation", "Probability"]
@@ -18,7 +18,7 @@ collapsible: true
 ## Main result
 
 <div style="border-style:dashed;border-width:1.5px;padding: 10px 10px 10px 10px; margin-bottom: 10px" id="thm:normal_conditioning"> 
- <p><b>Theorem 1.</b> Let $X \sim \mathcal{N}(\mu, \Sigma)$ be an $n$-dimensional random vector. Let us partition $X$ into two random vectors $X_1$ and $X_2$ as follows</p>
+ <p><b>Theorem II.1 (Conditioning of multivariate normal).</b> Let $X \sim \mathcal{N}(\mu, \Sigma)$ be an $n$-dimensional random vector. Let us partition $X$ into two random vectors $X_1$ and $X_2$ as follows</p>
 
 <p>$$ X = \begin{bmatrix}X_1\\X_2\end{bmatrix},\tag{1}$$</p>
 
@@ -34,7 +34,7 @@ and
 <p>$${\rm Var}[X_1{}\mid{} X_2 = x_2] {}={} \Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1} \Sigma_{21}.\tag{3b}$$</p>
 </div>
 
-<p>Theorem <a href="#thm:normal_conditioning">1</a> is discussed in the following video:</p>
+<p>Theorem <a href="#thm:normal_conditioning">II.1</a> is discussed in the following video:</p>
 
 <div id="youtube-video-conditioning">
 <iframe alt="YouTube video on conditioning" style="margin:auto;display:block;" width="560" height="315" src="https://www.youtube.com/embed/h2sTS8cHkPM?start=456" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -102,14 +102,14 @@ therefore \(\Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1} \Sigma_{21} \preccurlyeq \
     1.0 & 0.35 & 0.32 & 0.39 \\ 0.35 & 0.84 & 0.3 & 0.26\\ 0.32 & 0.3 & 0.77 & 0.23\\ 0.39 & 0.26 & 0.23 & 0.83
   \end{bmatrix}.\tag{12}$$</p>
 
-<p>The reader can verify that $\Sigma\in\mathbb{S}_{++}^4$. Suppose we measure $Z_3$ and $Z_4$ and we want to determine ${\rm I\!E}[Z_1, Z_2 {}\mid{} Z_3, Z_4]$. We will apply Theorem <a href="#thm:normal_conditioning">1</a> with $X_{1}=(Z_1, Z_2)$ and $X_{2}=(Z_3, Z_4)$. We have</p>
+<p>The reader can verify that $\Sigma\in\mathbb{S}_{++}^4$. Suppose we measure $Z_3$ and $Z_4$ and we want to determine ${\rm I\!E}[Z_1, Z_2 {}\mid{} Z_3, Z_4]$. We will apply Theorem <a href="#thm:normal_conditioning">II.1</a> with $X_{1}=(Z_1, Z_2)$ and $X_{2}=(Z_3, Z_4)$. We have</p>
 
 <p>$$
   \Sigma_{11} = \begin{bmatrix}1.0 & 0.35\\0.35 & 0.84\end{bmatrix},
   \Sigma_{12} = \begin{bmatrix}0.32 & 0.39\\0.3 & 0.26\end{bmatrix},
   \Sigma_{22} = \begin{bmatrix}0.77 & 0.23\\0.23 & 0.83\end{bmatrix}.$$</p>
 
-<p>and $\mu_1 = (1,2)$, $\mu_2 = (3, 4)$. By Theorem <a href="#thm:normal_conditioning">1</a></p>
+<p>and $\mu_1 = (1,2)$, $\mu_2 = (3, 4)$. By Theorem <a href="#thm:normal_conditioning">II.1</a></p>
 
 <p>$${\rm I\!E}\left[Z_1, Z_2 {}
   \left|\hspace{-0.2em}

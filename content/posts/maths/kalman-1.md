@@ -1,9 +1,9 @@
 ---
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter I: The Gauss-Markov model"
-date: 2023-02-04
+date: 2023-01-30
 description: "Introduction to the Kalman Filter"
-summary: "The Gauss-Markov Model"
+summary: "We present the Gauss-Markov Model, thus taking our first step towards understanding the Kalman filter"
 math: true
 series: ["Mathematix"]
 tags: ["Estimation"]
@@ -44,13 +44,13 @@ The evolution of the system states - which are random variables - starting from 
 
 <div id="fig1">
 <img src="/gauss-markov.png" alt="Evolution of states of the Gauss-Markov model"  style="width: 97%; margin-left: auto;margin-right: auto;">
-<p><em><strong>Figure 1.</strong> Evolution of states of the Gauss-Markov model.</em></p>
+<p><em><strong>Figure I.1.</strong> Evolution of states of the Gauss-Markov model.</em></p>
 </div>
 
 
 ### Evolution of expectation and variance
 
-<p>For the system in <a href="#fig1">Figure 1</a>, define $\tilde{x}_t = {\rm I\!E}[x_t]$. Then,</p>
+<p>For the system in <a href="#fig1">Figure I.1</a>, define $\tilde{x}_t = {\rm I\!E}[x_t]$. Then,</p>
 <p>$$\begin{aligned}\tilde{x}_{t+1} {}={} & {\rm I\!E}[x_{t+1}] = {\rm I\!E}[A_tx_{t} + G_tw_t] {}={} A_t {\rm I\!E}[x_t] {}={} A_t \tilde{x}_t.\end{aligned}$$</p>
 
 <p>Define $P_{t} = \mathrm{Var}[x_t]$. Then,</p>
@@ -108,7 +108,8 @@ F_{x_{t+1}{}\mid{} x_0, x_1, \ldots, x_{t}}(x^+ {}\mid{} x_0, x_1, \ldots, x_{t}
 
 <p>A property that plays a key role in the development of the Kalman filter is</p>
 <div style="border-style:dashed;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px">
-<p>$$p_{x_{t+1}\mid x_t}(x_{t+1}\mid x_t) {}={} p_{w_t}(x_{t+1} - Ax_t).$$</p>
+
+<p><b>Proposition I.1 (Key result).</b> It is $$p_{x_{t+1}\mid x_t}(x_{t+1}\mid x_t) {}={} p_{w_t}(x_{t+1} - Ax_t).$$</p>
 </div>
 <p>This can be easily generalised when the system is nonlinear, but let us prove this first.</p> 
 
@@ -118,7 +119,7 @@ F_{x_{t+1}{}\mid{} x_0, x_1, \ldots, x_{t}}(x^+ {}\mid{} x_0, x_1, \ldots, x_{t}
 
 ### Covariances
 
-<p>We will determine $P_{t, t+l} = {\rm Cov}(x_t, x_{t+l}) = {\rm I\!E}[(x_t - \tilde{x}_t)(x_{t+l} - \tilde{x}_{t+1})^{\intercal}]$. The covariance has the following properties: for two random variables $X$, $Z$, $S$ and matrix $A$,</p>
+<p>We will determine ${\rm Cov}(x_t, x_{t+l}) = {\rm I\!E}[(x_t - \tilde{x}_t)(x_{t+l} - \tilde{x}_{t+1})^{\intercal}]$. The covariance has the following properties: for two random variables $X$, $Z$, $S$ and matrix $A$,</p>
 <ol>
     <li>${\rm Cov}(X,X) = {\rm Var}(X)$</li>
     <li>${\rm Cov}(X, Y) = {\rm Cov}(Y, X)^\intercal$</li>
