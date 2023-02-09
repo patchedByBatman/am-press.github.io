@@ -11,7 +11,7 @@ collapsible: true
 ---
 
 > <b>Read first:</b> <a href="../kalman-5">Kalman Filter V: It's BLUE!</a><br>
-> <b>Read next:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a> (expected: 13 Feb 2023)<br>
+> <b>Read next:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a><br>
 
 ## Simple Kalman Filter
 
@@ -267,7 +267,7 @@ y_t {}={}& Cx_t + v_t,\end{aligned}$$</p>
     \begin{array}{l}
       \hat{x}_{t+1{}\mid{}t}
       {}={}
-      A \hat{x}_{t{}\mid{}t} + Bu_{t}
+      A \hat{x}_{t{}\mid{}t} + Bu_{t}^{\rm meas}
       \\
       \Sigma_{t+1{}\mid{}t}
       {}={}
@@ -297,4 +297,4 @@ y_t {}={}& Cx_t + v_t,\end{aligned}$$</p>
 </div>
 
 
-> <b>Read next:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a> (expected: 13 Feb 2023)<br>
+> <b>Read next:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a><br>

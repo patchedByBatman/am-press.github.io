@@ -107,8 +107,7 @@ F_{x_{t+1}{}\mid{} x_0, x_1, \ldots, x_{t}}(x^+ {}\mid{} x_0, x_1, \ldots, x_{t}
 ### A key property towards the Kalman filter
 
 <p>A property that plays a key role in the development of the Kalman filter is</p>
-<div style="border-style:dashed;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px">
-
+<div style="border-style:dashed;border-width:1.5px;padding: 10px 0px 0px 10px; margin-bottom: 10px" id="propI1">
 <p><b>Proposition I.1 (Key result).</b> It is $$p_{x_{t+1}\mid x_t}(x_{t+1}\mid x_t) {}={} p_{w_t}(x_{t+1} - Ax_t).$$</p>
 </div>
 <p>This can be easily generalised when the system is nonlinear, but let us prove this first.</p> 
