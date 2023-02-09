@@ -2,7 +2,6 @@
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter VII: Recursive maximum a posteriori"
 date: 2023-02-09
-draft: true
 description: "The Kalman filter is a recursive maximum a posteriori estimator"
 summary: "We show that the Kalman filter is a recursive maximum a posteriori estimator. This "
 math: true
