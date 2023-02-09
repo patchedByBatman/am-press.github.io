@@ -33,6 +33,9 @@ collapsible: true
 <p>Given a set of measurements $y_0, y_1, \ldots, y_{N-1}$ we need to estimate $x_0, x_1, \ldots, x_{N}$.</p>
 
 
+<iframe alt="YouTube video on the MAPE interpretation of the Kalman filter" style="margin:auto;display:block;" width="560" height="315" src="https://www.youtube.com/embed/YFnLIwYFu2Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 
 ## Useful results
 
