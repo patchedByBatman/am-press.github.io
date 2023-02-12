@@ -147,7 +147,7 @@ collapsible: true
 
 <p>We can now state the update equations of the Kalman filter</p>
 
-<p>$$\begin{aligned}
+<p id="eq:kf-updates">$$\begin{aligned}
     \text{Measurement} &
     \left[
     \begin{array}{l}
@@ -223,7 +223,7 @@ collapsible: true
 <p>$$\Sigma_{t+1{}\mid{}t}
   {}={}
   A \Sigma_{t{}\mid{}t-1} A^\intercal
-  {}+{}
+  {}-{}
   A \Sigma_{t{}\mid{}t-1}C^\intercal
   (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}
   C\Sigma_{t{}\mid{}t-1} A^\intercal
@@ -234,3 +234,61 @@ collapsible: true
 conditional variance estimator).</p>
 
 > <b>Read next:</b> <a href="../kalman-4">Kalman Filter IV: Application to position estimation</a>
+
+<p>The limit covariance satisfies</p>
+<p>$$\Sigma_{\infty}
+  {}={}
+  A \Sigma_{\infty} A^\intercal
+  {}-{}
+  A \Sigma_{\infty}C^\intercal
+  (C\Sigma_{\infty}C^\intercal + R)^{-1}
+  C\Sigma_{\infty} A^\intercal
+  {}+{}
+  GQG^\intercal,$$</p>
+<p>that is, $\Sigma_{\infty}$ is the solution of a discrete-time algebraic Riccati equation (DARE). We can compute such a matrix in Python as follows</p>
+
+```python
+import numpy as np
+import scipy.linalg as spla
+
+A = np.array([[1.2, 0], [1, 0.5]])
+C = np.array([[1, 3]])
+Q = np.eye(2)
+G = np.eye(2)
+R = np.array([[4]])
+
+sigma_inf = scipy.linalg.solve_discrete_are(A.T, C.T, G @ Q @G.T, R)
+```
+
+
+
+## Joseph form of covariance update
+
+<p>Here we will show an equivalent form of the measurement update of the covariance matrix, known as the Joseph update.</p>
+
+<div style="border-style:dashed;border-width:1.5px;padding-left:10px;padding-right:8px" id="PropIII1">
+<p><strong>Proposition III.1 (Joseph form).</strong> The measurement update of the covariance matrix can be written as </p>
+<p>$$\Sigma_{t\mid{}t} {}={} (I-L_t C_t)\Sigma_{t\mid{}t-1}(I-L_tC_t)^\intercal + L_tR_tL_t^\intercal,\tag{13}$$</p>
+<p>where $L_t$ is the <em>Kalman gain</em> matrix given by</p>
+<p>$$L_t = \Sigma_{t{}\mid{}t-1}C^\intercal
+      (C\Sigma_{t{}\mid{}t-1}C^\intercal + R)^{-1}.\tag{14}$$</p>
+</div>
+
+<button onclick="toggleCollapseExpand('proofPropIII1', 'proofPropIII1Container', 'proof')" id="proofPropIII1Button">
+  <i class="fa fa-cog fa-spin"></i> Click to see the proof
+</button>
+<div style="margin-top:20px"></div>
+
+<div style="width: 100%; display: none; padding: 5px 5px;" id="proofPropIII1Container">
+<p><em>Proof.</em> We can prove this by completing the square in the sense of the following identity </p>
+<p id="eq:15">$$\begin{aligned}
+\|A+B\|_X^2 = \|A\|_X^2 + \|B\|_X^2 + \langle A, B\rangle_X + \langle B, A\rangle_X,\tag{15}
+\end{aligned}$$</p>
+<p>where $\|{}\cdot{}\|_X$ is <em>not</em> a norm and $\langle {}\cdot{}, {}\cdot{} \rangle_X$ is <em>not</em> an inner product; instead, we define</p>
+<p>$$\|A\|_X^2 = AXA^\intercal,\tag{16a}$$</p>
+<p>and</p>
+<p>$$\langle A, B\rangle_X = AXB^\intercal.\tag{16b}$$</p>
+<p>Equation <a href="#eq:15">(15)</a> is reminiscent the classical $\|a+b\|_X^2 = \|a\|_X^2 + \|b\|_X^2 + 2\langle a, b\rangle_X,$ where $\|a\|_X^2 = \langle a, a\rangle_X$, and $\langle a, b \rangle_X = a^\intercal X b$, where $X$ is symmetric positive definitve, is an inner product. The reader can apply Equation <a href="#eq:15">(15)</a> with $A=I$, $B=I-L_tC$ and $X = \Sigma_{t\mid t-1}$, and it can be seen that in this case $\langle A, B\rangle_X = \langle B, A\rangle_X$. $\Box$</p>
+</div>
+
+<p>As we will see <a href="../kalman-8">later</a>, the Joseph form is more convenient in some cases.</p>
