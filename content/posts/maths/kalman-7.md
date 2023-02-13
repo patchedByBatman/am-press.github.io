@@ -6,12 +6,12 @@ description: "The Kalman filter is a recursive maximum a posteriori estimator"
 summary: "We show that the Kalman filter is a recursive maximum a posteriori estimator. This "
 math: true
 series: ["Mathematix"]
-tags: ["Estimation"]
+tags: ["Estimation", "Kalman filter"]
 collapsible: true
 ---
 
 > <b>Previous post:</b> <a href="../kalman-6">Kalman Filter VI: Further examples</a><br>
-> <b>Read next:</b> <a href="../kalman-8">The Kalman Filter VIII: Observer form, Steady state, Square root and Information form</a><br>
+> <b>Read next:</b> <a href="../kalman-8">The Kalman Filter VIII: Square root form</a><br>
 
 <p>Consider the dynamical system</p>
 

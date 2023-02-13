@@ -6,7 +6,7 @@ description: "More examples"
 summary: "Further examples using the Kalman filter in Python"
 math: true
 series: ["Mathematix"]
-tags: ["Estimation"]
+tags: ["Estimation", "Kalman filter"]
 collapsible: true
 ---
 

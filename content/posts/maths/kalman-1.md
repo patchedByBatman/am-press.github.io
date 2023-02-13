@@ -6,7 +6,7 @@ description: "Introduction to the Kalman Filter"
 summary: "We present the Gauss-Markov Model, thus taking our first step towards understanding the Kalman filter"
 math: true
 series: ["Mathematix"]
-tags: ["Estimation"]
+tags: ["Estimation", "Kalman filter"]
 collapsible: true
 ---
 

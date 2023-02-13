@@ -6,7 +6,7 @@ description: "Application to position estimation"
 summary: "We use the Kalman filter to estimate the position of a vehicle by fusing tachometer and GPS sensor data"
 math: true
 series: ["Mathematix"]
-tags: ["Estimation"]
+tags: ["Estimation", "Kalman filter"]
 collapsible: true
 ---
 

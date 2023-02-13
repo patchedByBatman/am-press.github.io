@@ -6,7 +6,7 @@ description: "Update equations of the Kalman fiter"
 summary: "We derive the measurement and update steps of the Kalman filter"
 math: true
 series: ["Mathematix"]
-tags: ["Estimation"]
+tags: ["Estimation", "Kalman filter"]
 collapsible: true
 ---
 

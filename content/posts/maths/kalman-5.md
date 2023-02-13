@@ -5,7 +5,7 @@ date: 2023-02-04
 description: "The Kalman filter is BLUE"
 summary: "In this post we will show that the Kalman filter is BLUE: a best linear unbiased estimator"
 math: true
-series: ["Mathematix"]
+tags: ["Estimation", "Kalman filter"]
 tags: ["Estimation"]
 collapsible: true
 ---
