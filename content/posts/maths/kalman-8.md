@@ -2,7 +2,6 @@
 author: "Pantelis Sopasakis"
 title:  "The Kalman Filter VIII: QR-based square root form"
 date: 2023-02-13
-draft: true
 description: "Square root form of the Kalman filter using QR decompositions"
 summary: "Square root form of the Kalman filter"
 math: true
