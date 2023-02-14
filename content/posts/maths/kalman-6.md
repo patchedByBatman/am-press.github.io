@@ -110,19 +110,19 @@ for i in range(t_sim):
 <p>where $b_t$ is a bias term, which we can model as</p>
 <p>$$b_{t+1} = b_t + w^b_t,$$</p>
 <p>where $w^b_t$ is an additive noise term, the process $(w^b_t)_t$ is iid zero-mean Gaussian with variance $Q^b$, and $w^b_t$ is independent of $x_t$.</p>
-<p>We can then define the new state variable $\tilde{x}_t = (x_t, w_t^b)$ and attempt to estimate this news state, that is, to estimate $x_t$ and the measurement bias, $w^b_t$. The system dynamics and output can be written as</p>
+<p>We can then define the new state variable $z_t = (x_t, w_t^b)$ and attempt to estimate this news state, that is, to estimate $x_t$ and the measurement bias, $w^b_t$. The system dynamics and output can be written as</p>
 <p>$$\begin{aligned}
-z_{t+1} =& \begin{bmatrix} A \\ & I \end{bmatrix}\tilde{x}_t + \tilde{w}_t,
+z_{t+1} =& \begin{bmatrix} A \\ & I \end{bmatrix}z_t + \tilde{w}_t,
 \\
-y_{t+1} =& \begin{bmatrix} C & I \end{bmatrix}\tilde{x}_t + v_t,
+y_{t+1} =& \begin{bmatrix} C & I \end{bmatrix}z_t + v_t,
 \end{aligned}$$</p>
 <p>where $\tilde{w}_t = (w_t, w^b_t) \sim \mathcal{N}(0, \tilde{Q})$ with</p>
 <p>$$\tilde{Q} = \begin{bmatrix}Q \\ & Q^b\end{bmatrix}.$$</p> 
 </p>More concisely, we have the system</p>
 <p>$$\begin{aligned}
-z_{t+1} =& \tilde{A}\tilde{x}_t + \tilde{w}_t,
+z_{t+1} =& \tilde{A}z_t + \tilde{w}_t,
 \\
-y_{t+1} =& \tilde{C}\tilde{x}_t + v_t,
+y_{t+1} =& \tilde{C}z_t + v_t,
 \end{aligned}$$</p>
 <p>with</p>
 <p>$$\tilde{A} = \begin{bmatrix} A \\ & I \end{bmatrix}, \tilde{C} = \begin{bmatrix} C & I \end{bmatrix}.$$</p>
