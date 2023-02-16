@@ -11,7 +11,6 @@ collapsible: true
 ---
 
 > <b>Previous post:</b> <a href="../kalman-7">Kalman Filter VII: Recursive maximum a posteriori</a><br>
-> <b>Read next:</b> <a href="../kalman-9">The Kalman Filter IX: Information filter</a> (coming soon; expected: end of February)<br>
 
 ## About
 
