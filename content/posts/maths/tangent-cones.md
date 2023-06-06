@@ -91,7 +91,7 @@ If \( 0 \in \mathrm{relint}(C_1 - C_2)\) or \( \mathrm{relint}(C_1) \cap \mathrm
 
 ### 2.2. Trivial case: normal cone of a singleton
 
-This is a trivial example: \( N_{\{x_0\}}(x_0)=\mathbb{R}^n\).
+<p>This is a trivial example: \(N_{\{x_0\}}(x_0)=\mathbb{R}^n\).</p>
 
 
 ### 2.3. Normal cone of a closed interval
