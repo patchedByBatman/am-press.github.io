@@ -1,9 +1,9 @@
 ---
 author: "Pantelis Sopasakis"
-title:  "Reading Vershynin's HDP I"
-date: 2023-06-29
-description: "A result on the convergence of sample mean"
-summary: "<p>We show that the sample mean converges to the true mean at a rate of 1 / sqrt(k)</p>"
+title:  "Reading Vershynin's HDP I: Markov, Chernoff, Hoeffding"
+date: 2023-06-28
+description: "Sums of independent random variables and concentration inequalities"
+summary: "A result on the convergence of sample mean and notes on some standard concentration inequalities such as the Markov, Chernoff, Hoeffding, and Chernoff's bounds"
 math: true
 series: ["Mathematix"]
 tags: ["Probability", "Vershynin"]
@@ -11,7 +11,7 @@ collapsible: true
 draft: false
 ---
 
-<p>These are my notes on Ronan Vershynin's "High dimensional probability", Chapters 1 and 2 [<a href="#cite:ver19" title="Vershynin, HDP">1</a>] and some solved exercises.</p>
+<p>These are my notes on Ronan Vershynin's "High dimensional probability", Chapters 1 and 2 [<a href="#cite:ver19" title="Vershynin, HDP">1</a>] and some solved exercises. Many of the results below focus on Bernoulli random variables.</p>
 
 ## Preliminaries
 
@@ -127,6 +127,9 @@ draft: false
 
 <p>Let us start by stating Hoeffding's inequality for independent symmetric Bernoulli random variables. Recall that the symmetric Bernoulli distribution - <em>aka</em> the Rademacher distribution - takes the values \(-\tfrac{1}{2}\) and \(\tfrac{1}{2}\) with equal probability.</p>
 
+<!-- THEOREM 4:  
+    Hoeffdings's inequality for symmetric Bernoulli
+-->
 <div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="cheby-ineq">
 <p><strong>Theorem 4 (Hoeffdings's inequality for symmetric Bernoulli).</strong> Let \(X_1, \ldots, X_N\) be independent symmetric Bernoulli random variables, and \(a{}\in{}{\rm I\!R}^N\). Then, for any \(t\geq 0\),</p>
 <p id="eq:h1">$${\rm P}\left[\sum_{i=1}^{N}a_i X_i \geq t\right] \leq \exp\left(- \frac{t^2}{2\|a\|_2^2}\right).\tag{H1}$$</p>
@@ -168,7 +171,7 @@ draft: false
 <p>Hoeffding's inequality can be generalised to general bounded variables.</p>
 
 <!-- THEOREM 5 -->
-<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="cheby-ineq">
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="hoeffding-bounded">
 <p><strong>Theorem 5 (Hoeffdings's inequality for bounded random varibles).</strong> Let \(X_1, \ldots, X_N\) be independent random variables, bounded in $[m_i, M_i]$ for all $i$. Then, for any \(t > 0\),</p>
 <p id="eq:h2">$${\rm P}\left[\sum_{i=1}^{N} (X_i - {\rm I\!E}[X_i]) \geq t\right] \leq \exp\left(- \frac{2t^2}{\sum_{i=1}^{N}(M_i - m_i)^2}\right).\tag{H2}$$</p>
 </div>
@@ -223,6 +226,109 @@ draft: false
 \end{aligned}$$</p>
 <p>Above, "Ber." stands for Bernstein's trick, "Mar." stands for Markov inequality, and "Ind." refers to the independence of $X_i$. The above inequality holds for $\lambda=1$, and the assertion follows. $\Box$</p>
 
+
+## Chernoff bound for Bernoulli random variables
+
+<p>Hoeffding's inequality can be loose when the distribution is very skewed (e.g., Bernoulli with a very small value $p_i$). Chernoff's bound is a result that is more sensitive to the distribution of $X_i$. Let us state the result.</p>
+
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="chernoff-bound">
+<p><strong>Theorem 6 (Chernoff's inequality).</strong> Let \(X_1, \ldots, X_N\) be independent Bernoulli random variables with parameters $p_i$. Define $S_N = \sum_{i=1}^{N}X_i$ and $\mu = {\rm I\!E}S_N$. Then, for any \(t > \mu\),</p>
+<p id="eq:chernoff">$${\rm P}\left[S_N \geq t\right] \leq e^{-\mu}\left( \frac{e\mu}{t}\right)^t.$$</p>
+</div>
+
+<p>We follow the same procedure as in the proof of Hoeffding's inequality:</p>
+
+<p>$$\begin{aligned}
+{\rm P}[S_N \geq t] {}={}& {\rm P}[ \exp(\lambda S_N) \geq \exp(\lambda t)]
+\\
+{}\leq{}& {\rm I\!E}\exp(\lambda S_N) \exp(-lambda t)
+\\
+{}={} \prod_{i=1}^{N} {\rm I\!E} e^{\lambda X_i} / e^{\lambda t}
+\end{aligned}$$</p>
+
+<p>We now use the fact that $X_i \sim {\rm Ber}(p_i)$. The <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> of $X_i$ is</p>
+
+<p>$$\begin{aligned}
+{\rm I\!E} e^{\lambda X_i} {}={}& e^{\lambda}p_i + 1-p_i
+\\
+{}={}& 1 + p_i(e^\lambda - 1)
+\\
+{}\leq{}& \exp[p_i(e^{\lambda} - 1)],
+\end{aligned}$$</p>
+
+<p>where we used the fact that $1+x \leq e^x$ for all $x\in{\rm I!R}$. Therefore,</p>
+<p>$$\begin{aligned}
+&\prod {\rm I\!E} e^{\lambda X_i} {}\leq{} \exp\left[(e^\lambda - 1)\sum_{i=1}^{N}p_i\right] = \exp((e^\lambda - 1)\mu)
+\\
+\Rightarrow
+&
+{\rm P}[S_N \geq t] \leq e^{-\lambda t} \exp[(e^\lambda - 1)\mu],
+\end{aligned}$$</p>
+<p>for all $\lambda > 0$. We substitute $\lambda = \ln(t/\mu)$, which is positive because $t>\mu$, so</p>
+<p>$${\rm P}[S_N] \leq e^{-\mu}\left(\frac{e\mu}{t}\right)^t.$$</p>
+<p>This completes the proof. $\Box$</p>
+
+
+<p>Let us recall the definition of the <a href="https://en.wikipedia.org/wiki/Poisson_distribution" target="_blank">Poisson distribution</a>.</p>
+
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="poisson-def">
+<p><strong>Definition 7 (Poisson distribution).</strong> A random variable $X$ follows the Poisson distribution with parameter $\lambda>0$ - we denote $X\sim{\rm Poisson}(\lambda)$ - if it is supported on ${\rm I\!N}$ with <u style="text-decoration:underline dotted" title="probability mass function">pmf</u></p>
+<p>$${\rm P}[X = k] = \frac{\lambda^k e^{-\lambda}}{k!}.$$</p>
+</div>
+
+<p>If $X\sim{\rm Poisson}(\lambda)$, then ${\rm I\!E}[X] = \lambda$ and ${\rm Var}[X] = \lambda$. The <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> of $X$ is</p>
+<p>$${\rm I\!E}[\exp(sX)] = \exp[\lambda(e^s - 1)].$$</p>
+
+<div style="border-style:dashed;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="ex233">
+<p><strong>Exercise 2.3.3.</strong> Let $X\sim{\rm Poisson}(\lambda)$. Show that for all $t>\lambda$ we have</p>
+<p>$${\rm P}[X \geq t] \leq e^{-\lambda} \left(\frac{e\lambda}{t}\right)^t.$$</p>
+</div>
+
+<p><em>Solution.</em> We have</p>
+<p>$$\begin{aligned}
+{\rm P}[X \geq t] {}={}& {\rm P}[\exp(sX) \geq \exp(st)]
+\\
+{}={}& e^{-st}{\rm I\!E}[sX]
+\\
+{}={}& e^{-st} e^{\lambda(e^s-1)}.
+\end{aligned}$$</p>
+<p>Taking $s=\ln\tfrac{t}{\lambda}$ completes the proof. $\Box$</p>
+
+
+<div style="border-style:dashed;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="ex238">
+<p><strong>Exercise 2.3.8. (Normal approximation to Poisson)</strong> Let $X\sim{\rm Poisson}(\lambda)$. Show that as $\lambda\to\infty$ we have</p>
+<p>$$\frac{X-\lambda}{\sqrt{\lambda}} \overset{d}{\to} \mathcal{N}(0, 1).$$</p>
+</div>
+
+<p><em>Solution.</em> One way to show this is by using the following continuity theorem</p>
+
+<div style="border-style:dotted;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="continuity theorem">
+<p><strong>Theorem 8 (Continuity theorem).</strong> Let $(X_n)_n$ be a sequence of random variables with <u style="text-decoration:underline dotted" title="cumulative distribution function">cdf</u> $F_n$ and corresponding <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> $M_{X_n}$. Let $X$ be a random variable with <u style="text-decoration:underline dotted" title="cumulative distribution function">cdf</u> $F$ and <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> $M_{X}$. If</p>
+<p>$$M_{X_n} \to M_X,$$</p>
+<p>pointwise over an open interval containing zero, then</p>
+<p>$$F_n{}\to{}F,$$</p>
+<p>at all points of continuity of $F$, that is $X_n \overset{d}{\to} X$.</p>
+</div>
+
+<p>Take a sequence of $\lambda_n > 0$ that goes to $\infty$. The <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> of $Z_n = \frac{X_n-\lambda_n}{\sqrt{\lambda_n}}$, where $X_n\sim{\rm Poisson}(\lambda_n)$ is</p>
+<p>$$\begin{aligned}
+    M_{Z_n}(t) {}={}& {\rm I\!E}\exp(tZ_n) = {\rm I\!E} \exp\left(t \frac{X_n - \lambda_n}{\sqrt{\lambda_n}}\right)
+     \\ {}={}&
+    {\rm I\!E}\exp\left(\frac{t X_n}{\sqrt{\lambda_n}} - \frac{t\lambda_n}{\sqrt{\lambda_n}}\right)
+    \\ {}={}&
+    \exp\left(-\frac{t\lambda_n}{\sqrt{\lambda_n}}\right) 
+    \exp\left[ \lambda_n \left( \exp\left(\frac{t}{\sqrt{\lambda_n}}\right) - 1 \right) \right]
+    \\ {}={}&
+    \exp \left[ -\frac{t\lambda_n}{\sqrt{\lambda_n}} + \lambda_n \left( \exp\frac{t}{\sqrt{\lambda_n}} - 1 \right) \right]
+    \\ {}={}&
+    \exp \left[ -\lambda_n \left(\frac{t}{\sqrt{\lambda_n}} + 1\right) + \lambda_n e^{t/\sqrt{\lambda_n}}\right]
+\end{aligned}$$</p>
+<p>and we can see that as $n\to\infty$,</p>
+<p>$$M_{Z_n}(t) \to \exp(t^2/2).$$</p>
+<p>for all $t\in{\rm I\!R}$. This completes the proof. $\Box$</p>
+
+<p><em>Solution (again)</em>. We can show the same using the <a href="#ll-clt">Lindeberg-Lévy central limit theorem</a>. Take $Y_i{}\sim{}{\rm Poisson(1)}$, and $X_n = \sum_{i=1}^{n} Y_i \sim {\rm Poisson}(n)$, ${\rm I\!E}[X_n] = n$ and ${\rm Var}[X_n] = n$, so from the Lindeberg-Lévy central limit theorem,</p>
+<p>$$\frac{X-\lambda}{\sqrt{\lambda}} \overset{d}{\to} \mathcal{N}(0, 1).$$</p>
 
 
 ## References 
