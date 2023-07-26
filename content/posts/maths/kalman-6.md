@@ -122,7 +122,7 @@ y_{t} =& \begin{bmatrix} C & I \end{bmatrix}z_t + v_t,
 <p>$$\begin{aligned}
 z_{t+1} =& \tilde{A}z_t + \tilde{w}_t,
 \\
-y_{t+1} =& \tilde{C}z_t + v_t,
+y_{t} =& \tilde{C}z_t + v_t,
 \end{aligned}$$</p>
 <p>with</p>
 <p>$$\tilde{A} = \begin{bmatrix} A \\ & I \end{bmatrix}, \tilde{C} = \begin{bmatrix} C & I \end{bmatrix}.$$</p>
