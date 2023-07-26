@@ -114,7 +114,7 @@ for i in range(t_sim):
 <p>$$\begin{aligned}
 z_{t+1} =& \begin{bmatrix} A \\ & I \end{bmatrix}z_t + \tilde{w}_t,
 \\
-y_{t+1} =& \begin{bmatrix} C & I \end{bmatrix}z_t + v_t,
+y_{t} =& \begin{bmatrix} C & I \end{bmatrix}z_t + v_t,
 \end{aligned}$$</p>
 <p>where $\tilde{w}_t = (w_t, w^b_t) \sim \mathcal{N}(0, \tilde{Q})$ with</p>
 <p>$$\tilde{Q} = \begin{bmatrix}Q \\ & Q^b\end{bmatrix}.$$</p> 
