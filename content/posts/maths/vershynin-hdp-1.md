@@ -327,8 +327,9 @@ draft: false
 <p>$$M_{Z_n}(t) \to \exp(t^2/2).$$</p>
 <p>for all $t\in{\rm I\!R}$. This completes the proof. $\Box$</p>
 
-<p><em>Solution (again)</em>. We can show the same using the <a href="#ll-clt">Lindeberg-Lévy central limit theorem</a>. Take $Y_i{}\sim{}{\rm Poisson(1)}$, and $X_n = \sum_{i=1}^{n} Y_i \sim {\rm Poisson}(n)$, ${\rm I\!E}[X_n] = n$ and ${\rm Var}[X_n] = n$, so from the Lindeberg-Lévy central limit theorem,</p>
-<p>$$\frac{X-\lambda}{\sqrt{\lambda}} \overset{d}{\to} \mathcal{N}(0, 1).$$</p>
+<p><em>Note</em>. Let us invoke the <a href="#ll-clt">Lindeberg-Lévy central limit theorem</a>. Take $Y_i{}\sim{}{\rm Poisson(1)}$, and $X_n = \sum_{i=1}^{n} Y_i \sim {\rm Poisson}(n)$, ${\rm I\!E}[X_n] = n$ and ${\rm Var}[X_n] = n$. From the Lindeberg-Lévy central limit theorem,</p>
+<p>$$\frac{X_n-n}{\sqrt{n}} \overset{d}{\to} \mathcal{N}(0, 1).$$</p>
+<p>This is a more concise way to solve <a href="#ex238" title="normal approx. to Poisson">Exercise 2.3.8</a>.</p>
 
 
 ## References 
