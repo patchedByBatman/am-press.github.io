@@ -17,6 +17,46 @@ Applied Mathematix Press proudly presents the textbook “Control Systems: An in
 
 <a href="https://www.amazon.co.uk/dp/173913866X" title="Buy from Amazon"><img alt="Buy from Amazon" src="/amazon-buy-now-button.png" style="width: 20%; margin-left: auto;margin-right: auto;"></a>
 
+<p style="text-align:center"><span style="color:#cc0000;font-size: 30px;font-weight:bold"><b>Summer discount: <s>£42.00</s> £29.99</b></span></p>
+<p style="text-align:center;font-weight:bold">Until the 10th of September</p>
+<p id="demo" style="text-align:center;font-weight:bold;font-size: 25px;"></p>
+
+
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Sep 10, 2023 23:59:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = "The offer expires in " 
+  + days + "d " 
+  + hours + "h "
+  + minutes + "m "
+  + seconds + "s";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
 This book’s objective is to equip the students of engineering schools with the necessary theoretical tools and practical skills (including programming) to analyse dynamical systems and design appropriate controllers.
 
 The book starts with an introductory chapter on modelling of physical systems, gives a brief presentation of linearisation, and moves on to the frequency domain with the introduction of the Laplace transform and its inverse. This brings us to the concept of a transfer function, which is a notion of central importance in classical control theory. We give the definition of BIBO stability and state the Routh-Hurwitz criterion. We then move to the frequency domain: we discuss the properties of the steady state frequency response of the system and state the Bode stability criterion and conclude with the powerful Nyquist criterion.
