@@ -11,6 +11,8 @@ collapsible: true
 draft: false
 ---
 
+> Next post: <a href="../subgaussianity">Reading Vershynin's HDP II: Subgaussianity</a>
+
 <p>These are my notes on Ronan Vershynin's "High dimensional probability", Chapters 1 and 2 [<a href="#cite:ver19" title="Vershynin, HDP">1</a>] and some solved exercises. Many of the results below focus on Bernoulli random variables.</p>
 
 ## Preliminaries
@@ -331,6 +333,8 @@ draft: false
 <p>$$\frac{X_n-n}{\sqrt{n}} \overset{d}{\to} \mathcal{N}(0, 1).$$</p>
 <p>This is a more concise way to solve <a href="#ex238" title="normal approx. to Poisson">Exercise 2.3.8</a>.</p>
 
+
+> See next: <a href="../vershynin-hdp-2">Reading Vershynin's HDP II: Subgaussianity</a>
 
 ## References 
 
