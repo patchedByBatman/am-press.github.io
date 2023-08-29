@@ -3,7 +3,7 @@ author: "Pantelis Sopasakis"
 title:  "Estimation Crash Course II: Fisher information"
 date: 2023-08-23
 description: "Introduction to Fisher information"
-summary: "Fisher information for one-parameter models"
+summary: "Introduction of the notion of Fisher information: a quantity of central importance in statistics."
 math: true
 series: ["Mathematix"]
 tags: ["Probability"]
@@ -74,10 +74,10 @@ draft: false
 <p id="eq:8bb3a8f6-94b6-4231-8c38-c5e09df9791a">$$I(\theta)
   {}={}
   \int_E \left(\frac{\partial \ell(\theta; x)}{\partial \theta}\right)^2 p_X(x; \theta){\rm d} x.\tag{5}$$</p>
-<p>The Fisher information is defined if the following <em>basic regularity conditions</em> are satisfied: (i)~$p_X(x; \theta)$ is differentiable wrt $\theta$ almost everywhere,
-(ii)~the support of $p_X(x; \theta)$ does not depend on $\theta$. In other words, the set $\{x{}:{} p_X(x;\theta)>0\}$ does not depend on $\theta$,
+<p>The Fisher information is defined if the following <em>basic regularity conditions</em> are satisfied: (i) $p_X(x; \theta)$ is differentiable wrt $\theta$ almost everywhere,
+(ii) the support of $p_X(x; \theta)$ does not depend on $\theta$. In other words, the set $\{x{}:{} p_X(x;\theta)>0\}$ does not depend on $\theta$,
 and
-(iii)~it holds that $\frac{\partial}{\partial \theta}\int p_X(x;\theta){\rm d} x = \int \frac{\partial}{\partial \theta} p_X(x;\theta){\rm d} x$.</p>
+(iii) it holds that $\frac{\partial}{\partial \theta}\int p_X(x;\theta){\rm d} x = \int \frac{\partial}{\partial \theta} p_X(x;\theta){\rm d} x$.</p>
 
 <p>Note that the first assumption is <em>not satisfied for the uniform distribution</em>, $U(0, \theta)$, and the Fisher information is not defined for $U(0, \theta)$.</p>
 
@@ -115,7 +115,9 @@ and
 </div>
 
 
-<p>We have</p>
+> <p><b>Note.</b> The quantity $\frac{\partial \ell(\theta; X)}{\partial \theta}$ is called the score function. The mean score is zero, while the variance of the score is the Fisher information.</p>
+
+<p><em>Proof.</em> We have</p>
 <p>$$\begin{aligned}
     {\rm I\!E}\left[
     \left.
@@ -196,10 +198,59 @@ and
 
 <div id="fig:bernoulli-fisher">
 <img src="/fisher-bernoulli.png" alt="Low-variance log-likelihood function"  style="width: 90%; margin-left: auto; margin-right: auto;">
-<p><em><strong>Figure 4.</strong> Fisher information for ${\rm Ber}(p)$ as a function of $p$. The outcomes of blatantly unfair coins are more informative about the parameter $p$.</p>
+<p><em><strong>Figure 4.</strong> Fisher information for ${\rm Ber}(p)$ as a function of $p$. The outcomes of blatantly unfair coins are more informative about the parameter $p$.</em></p>
 </div>
 
 <p>We see that the Fisher information increases for values of $p$ close to $0$ or $1$ (for blatantly unfair coins). $\heartsuit$</p>
 
 
+<p id="x:normal-known-variance"><b>Example 3 (Normal with known variance).</b> Consider the random variable $X\sim\mathcal{N}(\mu, \sigma^2)$, with known variance and unknown mean. It is not difficult to see that</p>
+<p>$$I(\mu) = \frac{1}{\sigma^2}.$$</p>
+<p>As one would expect, the higher the variance, the lower the Fisher information (the less informative each observation is about the mean). Note, that the Fisher information in this case does not depend on the parameter.</p>
+
+## Reparametrisation and Fisher information
+
+<p>The Fisher information depends on the parametrisation of the model. For instance, let us go back to <a href="#x:normal-known-variance">Example 3</a>, but now let us assume that $\mu = 1/\tau$, where $\tau\neq 0$ is a new parameter. The reader can verify that the Fisher information of $\tau$ is</p>
+<p>$$I(\tau) = \frac{1}{\sigma^2 \tau^4}.$$</p>
+
+> <p>To avoid confusion, from now on let us denote the Fisher information with respect to a parameter $\theta$, by $I_{\theta}$.</p>
+
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="thm:reparametrisation_fisher">
+<p><b>Theorem 2 (Reparametrisation of Fisher information).</b> Consider a statistical model involving a parameter $\theta\in\Theta \subseteq {\rm I\!R}$ and a sample $X$ with pdf $p(x; \theta)$. Let $I_\theta(\theta)$ be the Fisher information of $\theta$. The Fisher information of the parametrisation $\theta = \phi(u)$, where $\phi$ is a differentiable function, is given by</p>
+<p>$$I_u(u) = \phi'(u)^2 I_\theta(\phi(u)).$$</p>
+</div>
+
+<p><em>Proof.</em> The log-likelihood with respect to $u$ is $\ell(\phi(u); X)$ and its derivative with respect to $u$ is </p>
+<p>$$\frac{{\rm d}}{{\rm d}u}\ell(\phi(u); X) = \phi'(u) \ell'(\phi(u), X).$$</p>
+<p></p>
+<p>By employing <a href="#thm:mse_var_bias">Theorem 1</a> the proof is complete. $\Box$</p>
+
+## Multivariate models
+
+<p>Where $\theta \in {\rm I\!R}^n$ is a vector, the Fisher information is defined to be an $n\times n$ matrix given by</p>
+<p>$$[I(\theta)]_{i,j} = -{\rm I\!E}\left[\frac{\partial^2}{\partial \theta_i \partial \theta_j}\ell(X; \theta)\right],$$</p>
+<p>for $i,j=1,\ldots, n$, or, what is the same,</p>
+<p>$$I(\theta) = -{\rm I\!E}\left[\nabla_\theta^2 \ell(X; \theta)\right].$$</p>
+
+<p>In the multivariate case, the score function is defined as<p>
+<p>$$s(\theta)_i = \frac{\partial}{\partial \theta_i}\ell(X; \theta),$$</p>
+<p>for $i=1,\ldots, n$, or, what is the same</p>
+<p>$$s(\theta) = \nabla_\theta \ell(X; \theta).$$</p>
+<p>Similar to what we showed in <a href="#thm:mse_var_bias">Theorem 1</a>, we can show that</p>
+<p>$$I(\theta) = {\rm Var}[s(\theta)] = {\rm I\!E}[s(\theta)s(\theta)^\intercal].$$</p>
+
+<p><b>Example 4 (Normal distribution).</b> Consider the case where $X$ follows the normal distribution, $X\sim\mathcal{N}(\mu, \sigma^2)$, and both $\mu$ and $\sigma^2$ are unknown. Let us choose the parameter vector $\theta=(\mu, \sigma^2)$. Then, the log-likelihood function is </p>
+<p>$$\ell(\theta; x) = -\frac{1}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}(x-\mu)^2.$$</p>
+<p>The score function is</p>
+<p>$$s(\theta; X) = \nabla_\theta \ell(\theta; X) = 
+\begin{bmatrix}
+\frac{X-\mu}{\sigma^2} \\[1em] \frac{(X-\mu)^2}{2\sigma^4} - \frac{1}{2\sigma^2}
+\end{bmatrix}$$</p>
+<p>We can then determine the Fisher information matrix</p>
+<p>$$I(\mu, \sigma^2) = \begin{bmatrix} \frac{1}{\sigma^2} \\ & \frac{1}{2\sigma^4}\end{bmatrix}.$$</p>
+
+
+
+
 > <p><b>Read next:</b> <a href="../estimation-cc-3">Estimation Crash Course III: The Cramér-Rao bound</a></p>
+
