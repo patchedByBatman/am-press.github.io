@@ -1,14 +1,14 @@
 ---
 author: "Pantelis Sopasakis"
 title:  "Estimation Crash Course III: Cramér-Rao bound"
-date: 2023-08-30
+date: 2023-08-29
 description: "The Cramér-Rao bound"
 summary: "The Cramér-Rao Bound is a lower bound on the variance of an unbiased estimator. Here we focus on one-parameter models."
 math: true
 series: ["Mathematix"]
 tags: ["Probability"]
 collapsible: true
-draft: true
+draft: false
 ---
 
 > <p><b>Previous article:</b> <a href="../estimation-cc-2">Estimation Crash Course II: Fisher information</a></p>
