@@ -83,7 +83,7 @@ If this holds we say that the statistical model is <em>identifiable</em>.</p>
 
 <p>In practice it is typically desirable for an estimator to exhibit minimum MSE; at the same time, we want it to be unbiased. These requirements are sometimes impossible to reconcile. In some cases, no unbiased estimators exist. Let us give a few examples to understand the above concepts.</p>
 
-<p><b>Example 1 (Sample mean is unbiased).</b> Suppose that $X_1, \ldots, X_N$ are iid samples with mean $\mu$. The sample mean is given in Equation <a href="#eq:1">(1)</a> and is an estimtor of $\mu$. We can easily see that the bias of $\bar{X}_N$ is</p>
+<p id="x:sample-mean-unbiased"><b>Example 1 (Sample mean is unbiased).</b> Suppose that $X_1, \ldots, X_N$ are iid samples with mean $\mu$. The sample mean is given in Equation <a href="#eq:1">(1)</a> and is an estimtor of $\mu$. We can easily see that the bias of $\bar{X}_N$ is</p>
 <p>$$\begin{aligned}
   {\rm bias}(\bar{X}_N)
   {}={}
@@ -96,7 +96,7 @@ If this holds we say that the statistical model is <em>identifiable</em>.</p>
 \end{aligned}$$</p>
 <p>This proves that $\bar{X}_N$ is an unbiased estimator of $\mu$. $\heartsuit$</p>
 
-<p><b>Example 2 (MSE of sample mean).</b> Assume that the variance of $X_i$ is known and equal to $\sigma^2$ for all $i\in\N_{[1, N ]}$. According to Equation <a href="#eq:4">(4)</a>, the variance of the sample mean is<p>
+<p id="x:mse-sample-mean"><b>Example 2 (MSE of sample mean).</b> Assume that the variance of $X_i$ is known and equal to $\sigma^2$ for all $i\in\N_{[1, N ]}$. According to Equation <a href="#eq:4">(4)</a>, the variance of the sample mean is<p>
 <p>$$\begin{aligned}
   {\rm var}(\bar{X}_N)
   {}={} &
@@ -136,7 +136,7 @@ If this holds we say that the statistical model is <em>identifiable</em>.</p>
 <p>We see that $s^2$ is a biased estimator, but the bias converges to $0$ as $N{}\to{}\infty$. We say that $s^2$ is an <em>asymptotically unbiased</em> estimator of $\sigma^2$.  $\heartsuit$</p>
 
 
-<p><b>Example 4 (Unbiased estimator of the variance).</b> Following the same procedure as above we can show that the following estimate of $\sigma^2$ is an unbiased estimator</p>
+<p id="x:bessel-correction"><b>Example 4 (Unbiased estimator of the variance).</b> Following the same procedure as above we can show that the following estimate of $\sigma^2$ is an unbiased estimator</p>
 <p>$$\begin{aligned}
   s^2_{\rm corr} = \frac{1}{N-1}\sum_{i=1}^{N}(X_i-\bar{X}_N)^2.
 \end{aligned}$$</p>

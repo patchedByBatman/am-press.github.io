@@ -74,7 +74,7 @@ draft: false
 <p id="eq:8bb3a8f6-94b6-4231-8c38-c5e09df9791a">$$I(\theta)
   {}={}
   \int_E \left(\frac{\partial \ell(\theta; x)}{\partial \theta}\right)^2 p_X(x; \theta){\rm d} x.\tag{5}$$</p>
-<p>The Fisher information is defined if the following <em>basic regularity conditions</em> are satisfied: (i) $p_X(x; \theta)$ is differentiable wrt $\theta$ almost everywhere,
+<p id="par:basic-regularity-assumptions">The Fisher information is defined if the following <em>basic regularity conditions</em> are satisfied: (i) $p_X(x; \theta)$ is differentiable wrt $\theta$ almost everywhere,
 (ii) the support of $p_X(x; \theta)$ does not depend on $\theta$. In other words, the set $\{x{}:{} p_X(x;\theta)>0\}$ does not depend on $\theta$,
 and
 (iii) it holds that $\frac{\partial}{\partial \theta}\int p_X(x;\theta){\rm d} x = \int \frac{\partial}{\partial \theta} p_X(x;\theta){\rm d} x$.</p>
@@ -207,6 +207,25 @@ and
 <p id="x:normal-known-variance"><b>Example 3 (Normal with known variance).</b> Consider the random variable $X\sim\mathcal{N}(\mu, \sigma^2)$, with known variance and unknown mean. It is not difficult to see that</p>
 <p>$$I(\mu) = \frac{1}{\sigma^2}.$$</p>
 <p>As one would expect, the higher the variance, the lower the Fisher information (the less informative each observation is about the mean). Note, that the Fisher information in this case does not depend on the parameter.</p>
+
+
+## Exercises 
+
+<p><b>Exercise 1.</b> Determine the Fisher information in each of the following cases:</p>
+<ol>
+  <li>${\rm Poisson}(\lambda)$</li>
+  <li>${\rm Exp}(\lambda)$</li>
+  <li>$\mathcal{N}(\mu, \sigma^2)$ with known $\sigma^2$</li>
+  <li>$\mathcal{N}(0, \sigma^2)$ with unknown $\sigma^2$</li>
+</ol>
+<p>For each of the above distributions, plot $I(\theta)$  and produce figures akin to Figure <a href="#fig:normal-fisher">1</a> or Figure <a href="#fig:exp-fisher">3</a> for different values of $\theta$.</p>
+
+<p id="ex:fisher-multiple-observations"><b>Exercise 2</b> Suppose that the Fisher information associated with a likelihood function $\ell(\theta; X)$ is $I(\theta)$. Suppose we have a sample of $N$ observations, $X_1,\ldots, X_N$. Show that the Fisher information for $\ell(\theta;X_1,\ldots, X_N)$ is $NI(\theta)$.</p>
+
+<p id="ex:fisher-reparametrisation"><b>Exercise 3 (Fisher information of transformation).</b> Suppose the log-likelihood function, $\ell(\theta; X)$, has Fisher information $I(\theta)$. Now suppose that the statistical model is parametrised with a parameter $\lambda$ such that $\theta = g(\lambda)$, for some continuously differentiable function $g$. Let $I_1(\lambda)$ be the Fisher information of the new model. Show that</p>
+<p>$$I_1(\lambda) = g'(\lambda)^2 I(g(\lambda)).$$</p>
+
+<p id="ex:4"><b>Exercise 4 (Application of Exercise <a href="#ex:fisher-reparametrisation">3</a>).</b> Suppose $X\sim{\rm Exp}(\lambda)$. We know that the Fisher information is $I(\lambda)=1/\lambda^2$. We reparametrise this model using $\lambda = \xi^2$, that is $X\sim{\rm Exp}(\xi^2)$. What is the Fisher information of the parameter $\xi$ for the new model?</p>
 
 ## Reparametrisation and Fisher information
 
