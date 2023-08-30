@@ -371,7 +371,7 @@ then $K \geq \|X\|_{\psi_2}.$</p>
     <ol>
         <li id="subGaussianityNormProp:1">${\rm P}[|X| \geq t] \leq 2 \exp(-ct^2/\|X\|_{\psi_2})$, for all $t\geq 0$</li>
         <li id="subGaussianityNormProp:2">$\|X\|_{L^p} \leq C \|X\|_{\psi_2} \sqrt{p}$ for all $p\geq 1$</li>
-        <li id="subGaussianityNormProp:3">${\rm I\!E}\exp(X^2 / \|X\|_{\psi_2}) \leq 2$</li>
+        <li id="subGaussianityNormProp:3">${\rm I\!E}\exp(X^2 / \|X\|_{\psi_2}^2) \leq 2$</li>
         <li id="subGaussianityNormProp:4">If ${\rm I\!E}[X] = 0$, then ${\rm I\!E}\exp(\lambda X) \leq \exp(C\lambda^2 \|X\|_{\psi_2}^2)$, for all $\lambda \in {\rm I\!R}$</li>
     </ol>    
 </div>
@@ -388,8 +388,57 @@ then $K \geq \|X\|_{\psi_2}.$</p>
 \end{aligned}$$</p>
 <p>which proves the first property. Note that in the first inequality we used <a href="../vershynin-hdp-1#markov-ineq" target="_blank">Markov's inequality</a>.</p>
 
+## An alternative expression for the sub-Gaussian norm
+
+<p>An alternative expression for the sub-Gaussian norm can be produced by <a href="#subGaussianityProp">Proposition 1</a> and, in particular, the equivalence between <a href="#subGaussianityProp:2">2.</a> and <a href="#subGaussianityProp:4">4.</a>. We have</p>
+<p>$$\begin{aligned}
+\|X\|_{\psi_2} 
+{}={}&
+\inf \{t>0 {}:{} {\rm I\!E}[\exp(X^2/t^2)] \leq 2\}
+\\
+{}={}& \inf\{t > 0 {}:{} \|X\|_{p} \leq Ct\sqrt{p}, \text{ for all } p \geq 1\}.
+\end{aligned}$$</p>
+<p>for some constant $C > 0$. We can now set $s=Ct > 0$, so $t=s/C$, and write</p>
+<p>$$\begin{aligned}
+\|X\|_{\psi_2} 
+{}={}& \frac{1}{C}\inf\{s > 0 {}:{} \|X\|_{p} \leq s\sqrt{p}, \text{ for all } p \geq 1\}
+\\
+{}={}& \frac{1}{C}\inf\{s > 0 {}:{} \frac{\|X\|_{p}}{\sqrt{p}} \leq s, \text{ for all } p \geq 1\}
+\\
+{}={}& \frac{1}{C}\sup_{p\geq 1} \frac{\|X\|_{p}}{\sqrt{p}}.
+\end{aligned}$$</p>
+<p>Along the same lines and using item <a href="#subGaussianityProp:5">5.</a> we can show that a zero-mean random variable has the following sub-Gaussian norm</p>
+
+<p>$$\begin{aligned}\|X\|_{\psi_2} {}={}&
+\frac{1}{C}\inf\{K > 0 {}:{} {\rm I\!E}[\exp(\lambda X)] \leq \exp(K^2\lambda^2),  \lambda \in {\rm I\!R}\}
+\\
+{}={}&
+\frac{1}{C}\inf\{K > 0 {}:{} \log {\rm I\!E}[\exp(\lambda X)] \leq K^2\lambda^2,  \lambda \in {\rm I\!R}
+\}\end{aligned}$$</p>
+<p>The natural logarithm of the <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> is known as the <a href="https://en.wikipedia.org/wiki/Cumulant">cumulant generating function</a>, $\kappa_X$. We can write</p>
+<p>$$\begin{aligned}\|X\|_{\psi_2} {}={}&
+\frac{1}{C}\inf\{K > 0 {}:{} \kappa_X(\lambda) \leq K^2\lambda^2,  \text{ for all } \lambda \in {\rm I\!R}\}
+\\
+{}={}&
+\frac{1}{C} \sup_{\lambda}\frac{\kappa_X(\lambda)}{\lambda^2}
+\end{aligned}$$</p>
+<p>Cool! Let's put these in a box...</p>
+
+<!-- PROPOSITION 3 -->
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="thm:psi2-norm-alternative">
+<p><strong>Proposition 3. ($\|{}\cdot{}\|_{\psi_2}$ norm)</strong> The sub-Gaussian norm of a sub-Gaussian random variable $X$ can be written as</p>
+<p>$$\|X\|_{\psi_2} {}={} \frac{1}{C}\sup_{p\geq 1} \frac{\|X\|_{p}}{\sqrt{p}}$$</p>
+<p>for an absolute constant $C$. If $X$ is a zero-mean variable, then</p>
+<p>$$\|X\|_{\psi_2} {}={} \frac{1}{C} \sup_{\lambda}\frac{\kappa_X(\lambda)}{\lambda^2}.$$</p>
+</div>
+
+
 
 ## Maximum of sub-Gaussians
+
+### First attempt 
+
+<p>We will first show an upper bound on the expectation of the maximum of finitely many sub-Gaussian random variables which is of the form $O(\log N)$.</p>
 
 <p>Suppose that $X_1, \ldots, X_N$ are sub-Gaussian random variables. In this section we shall study $\max_i |X_i|$ and try to establish uppper bounds. To that end, we will work with the <u style="text-decoration:underline dotted" title="moment generating function">mgf</u>s of $X_i$.</p>
 <p>Firstly, we observe that</p>
@@ -418,7 +467,74 @@ then $K \geq \|X\|_{\psi_2}.$</p>
 <p>for all $t>0$. By taking $t = \log(2N)/K_5^2$, we obtain,</p>
 <p>$$\begin{aligned}{\rm I\!E}\max_{i=1,\ldots, N}|X_i| \leq  K_5^2 + \log(2N).\end{aligned}$$</p>
 
+
+### Vershynin's result
+
+<p>We will show the following result, which is Exercise 2.5.10 in [<a href="#cite:ver19" title="Vershynin, HDP">1</a>].</p>
+
+<div style="border-style:dashed;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="ex113">
+<p><strong>Exercise 2.5.10.</strong> Let $X_1, X_2, \ldots, X_N$ be a sequence of sub-Gaussian random variables, not necessarily independent, with $K_{\max} = \max_i \|X_i\|_{\psi_2}$. Show that</p>
+<p>$${\rm I\!E}\max_{i} \frac{|X_i|}{\sqrt{1+\log i}} \leq C  K_{\max}.$$</p>
+<p>Then, deduce that for $N\geq 2$,</p>
+<p>$${\rm I\!E}\max_{i=1,\ldots,N} |X_i|\leq C  K_{\max} \sqrt{\log N}.$$</p>
+</div>
+
+<p><em>Solution.</em> For notational convenience let us define $Y_i = X_i / \sqrt{1 + \log i}$. The key idea is to express the expectation in terms of tail probabilities. We have</p>
+<p>$$\begin{aligned}
+{\rm I\!E}\left[\max_{i=1,\ldots, N}Y_i\right] 
+{}={}&
+\int_0^\infty {\rm P}\left[\max_{i=1,\ldots, N}Y_i \geq t\right] {\rm d}t
+\\
+{}\leq{}&
+\int_0^\infty \sum_{i=1}^{N}{\rm P}\left[Y_i \geq t\right] {\rm d}t
+\\
+{}={}&
+\sum_{i=1}^{N} \int_0^\infty {\rm P}\left[Y_i \geq t\right] {\rm d}t
+\\
+{}={}&
+\sum_{i=1}^{N} \int_0^\infty {\rm P}\left[|X_i| \geq t\sqrt{1+\log i}\right] {\rm d}t
+\end{aligned}$$</p>
+<p>Now define $u = t\sqrt{1+\log i}$, so</p>
+<p>$$\begin{aligned}
+{\rm I\!E}\left[\max_{i=1,\ldots, N}Y_i\right] 
+{}\leq{}&
+\sum_{i=1}^{N} \frac{1}{\sqrt{1+\log i}} \int_0^\infty {\rm P}\left[|X_i| \geq u\right] {\rm d}u
+\\
+{}={}&
+\sum_{i=1}^{N} \frac{1}{\sqrt{1+\log i}} \int_0^\infty \exp(-cu^2/\|X_i\|_{\psi_2}) {\rm d}u
+\\
+{}\leq{}&
+\sum_{i=1}^{N} \frac{1}{\sqrt{1+\log i}} \int_0^\infty \exp(-cu^2/K_{\max}) {\rm d}u
+\end{aligned}$$</p>
+<p>The proof is concluded with a trick that can be found <a href="https://math.stackexchange.com/a/3302080/8357" target="_blank">here</a>.</p>
+
 <!-- <p>$$\begin{aligned}\end{aligned}$$</p> -->
+
+
+## Sum of sub-Gaussians
+
+<p>Here we will show that the sum of independent sub-Gaussians is sub-Gaussian too.</p>
+
+<!-- PROPOSITION 4 -->
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="subGaussianityProp">
+    <p><strong>Proposition 4. (Sub of sub-Gaussians)</strong> Let $X_1, \ldots, X_N$ be <em>independent</em> sub-Gaussian random variables with zero-mean. Then,</p>
+    <p>$$\left\|\sum_{i=1}^N X_i\right\|_{\psi_2}^2 {}\leq{} C \sum_{i=1}^{N} \|X_i\|_{\psi_2}^2$$</p>
+    <p>where $C$ is an absolute constant.</p>
+</div>
+
+<p><em>Proof.</em> The <u style="text-decoration:underline dotted" title="moment generating function">mgf</u> of the sum is</p>
+<p>$$\begin{aligned}
+{\rm I\!E}\left[\exp\left(\lambda \sum_{i=1}^{N}X_i\right)\right]
+{}={}&
+\prod_{i=1}^{N} {\rm I\!E}[\exp(\lambda X_i)]
+\\
+{}\leq{}& \prod_{i=1}^N \exp (C_0\lambda^2 \|X_i\|_{\psi_2}^2)
+\\
+{}={}&
+\exp\left(\lambda^2 C_0 \sum_{i=1}^N \|X_i\|_{\psi_2}^2\right).
+\end{aligned}$$</p>
+<p>Given that $\sum_i X_i$ is a zero-mean RV, it follows from Proposition 1, Item <a href="#subGaussianityProp:5">5</a>, that it is sub-Gaussian and $K_5^2 = C_0 \sum_{i=1}^N \|X_i\|_{\psi_2}^2.$ There is a constant $\bar{C}$ such that $K_1 \leq \bar{C}K_5 = \bar{C}C_0 \sum_{i=1}^N \|X_i\|_{\psi_2}^2$. This completes the proof. $\Box$</p>
+
 
 > See next: <a href="../vershynin-hdp-3">Reading Vershynin's HDP III: Subexponential random variables</a>
 
