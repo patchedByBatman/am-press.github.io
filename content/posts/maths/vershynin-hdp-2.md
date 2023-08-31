@@ -544,7 +544,7 @@ then $K \geq \|X\|_{\psi_2}.$</p>
 <p>If $X$ is sub-Gaussian, then $X - {\rm I\!E}[X]$ is also sub-Gaussian. The following result gives its sub-Gaussian norm.</p>
 
 <!-- PROPOSITION 5 -->
-<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="subGaussianityProp">
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="centering">
     <p><strong>Proposition 5. (Centering)</strong> If $X$ is a sub-Gaussian random variable, then</p>
     <p>$$\|X - {\rm I\!E}[X]\|_{\psi_2} \lesssim \|X\|_{\psi_2}.$$</p>
 </div>
@@ -565,7 +565,19 @@ then $K \geq \|X\|_{\psi_2}.$</p>
 > See next: <a href="../vershynin-hdp-3">Reading Vershynin's HDP III: Subexponential random variables</a>
 
 
-## References 
+
+### Hoeffding's inequality
+
+<p>Let us state Hoeffding's inequality for subgaussian random variables.</p>
+
+<!-- THM 6 -->
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="hoeffding-subgaussian">
+    <p><strong>Theorem 6. (Hoeffding's inequality for subgaussian random variables)</strong> Let $X_1,\ldots, X_N$ be independent zero-mean subgaussian random variables and let $a\in{\rm I\!R}^N$. Then for every $t\geq 0$,</p>
+    <p>$${\rm P}\left[\left| \sum_{i=1}^{N}a_i X_i \right| \geq t\right] \leq 2 \exp\left(-\frac{ct^2}{K^2 \|a\|^2}\right),$$</p>
+    <p>where $K=\max_i \|X_i\_{\psi_2}\|$.</p>
+</div>
+
+### References 
 
 <ol>
   <li id="cite:ver19">R. Vershynin, High Dimensional Probabiltiy: an introduction with applications in data science, Cambridge University Press, 2019</li>  
