@@ -538,6 +538,33 @@ then $K \geq \|X\|_{\psi_2}.$</p>
 
 > See next: <a href="../vershynin-hdp-3">Reading Vershynin's HDP III: Subexponential random variables</a>
 
+
+## Non-zero mean random variables
+
+<p>If $X$ is sub-Gaussian, then $X - {\rm I\!E}[X]$ is also sub-Gaussian. The following result gives its sub-Gaussian norm.</p>
+
+<!-- PROPOSITION 5 -->
+<div style="border-style:solid;border-width:1.5px;padding: 10px 15px 0px 10px; margin-bottom: 10px" id="subGaussianityProp">
+    <p><strong>Proposition 5. (Centering)</strong> If $X$ is a sub-Gaussian random variable, then</p>
+    <p>$$\|X - {\rm I\!E}[X]\|_{\psi_2} \lesssim \|X\|_{\psi_2}.$$</p>
+</div>
+
+<p><b>Note:</b> The notation $\|X - {\rm I\!E}[X]\|_{\psi_2} \lesssim \|X\|_{\psi_2}$ means that there is an absolute constant $C$ such that $\|X - {\rm I\!E}[X]\|_{\psi_2} \leq C \|X\|_{\psi_2}.$</p>
+
+<p><em>Proof.</em> We have</p>
+<p>$$\begin{aligned}
+\|X - {\rm I\!E}[X]\|_{\psi_2} \leq \|X\|_{\psi_2} + \|{\rm I\!E}[X]\|_{\psi_2},
+\end{aligned}$$</p>
+<p>where the second term is the $\psi_2$-norm of a constant. Using the fact that $\|X\|_{\psi_2} \leq C \|X\|_{\infty}$, where $C = 1/\sqrt{\log 2}$, we have $\|{\rm I\!E}[X]\|_{\psi_2} \leq C |{\rm I\!E}[X]|$. As a result</p>
+<p>$$\begin{aligned}
+\|{\rm I\!E}[X]\|_{\psi_2} \leq C |{\rm I\!E}[X]| \leq C {\rm I\!E}[|X|] = C \|X\|_1.
+\end{aligned}$$</p>
+<p>We also have that $\|X\|_1 \leq C \|X\|_{\psi_2}$, so $\|{\rm I\!E}[X]\|_{\psi_2} \lesssim \|X\|_1 \lesssim \|X\|_{\psi_2}$ and the result follows. $\Box$</p>
+
+
+> See next: <a href="../vershynin-hdp-3">Reading Vershynin's HDP III: Subexponential random variables</a>
+
+
 ## References 
 
 <ol>
