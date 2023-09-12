@@ -18,7 +18,7 @@ Applied Mathematix Press proudly presents the textbook “Control Systems: An in
 <a href="https://www.amazon.co.uk/dp/173913866X" title="Buy from Amazon"><img alt="Buy from Amazon" src="/amazon-buy-now-button.png" style="width: 20%; margin-left: auto;margin-right: auto;"></a>
 
 <p style="text-align:center"><span style="color:#cc0000;font-size: 30px;font-weight:bold"><b>Summer discount: <s>£42.00</s> £29.99</b></span></p>
-<p style="text-align:center;font-weight:bold">Until the 10th of September</p>
+<p style="text-align:center;font-weight:bold">Until the end of September</p>
 <p id="demo" style="text-align:center;font-weight:bold;font-size: 25px;"></p>
 
 
