@@ -110,7 +110,8 @@ for i in range(t_sim):
 <p>where $b_t$ is a bias term, which we can model as</p>
 <p>$$b_{t+1} = b_t + w^b_t,$$</p>
 <p>where $w^b_t$ is an additive noise term, the process $(w^b_t)_t$ is iid zero-mean Gaussian with variance $Q^b$, and $w^b_t$ is independent of $x_t$.</p>
-<p>We can then define the new state variable $z_t = (x_t, w_t^b)$ and attempt to estimate this news state, that is, to estimate $x_t$ and the measurement bias, $w^b_t$. The system dynamics and output can be written as</p>
+<p>We can then define the new state variable $z_t = (x_t, b_t)$ and attempt to estimate this news state, that is, to estimate $x_t$ and the measurement bias, $b_t$. 
+The system dynamics and output can be written as</p>
 <p>$$\begin{aligned}
 z_{t+1} =& \begin{bmatrix} A \\ & I \end{bmatrix}z_t + \tilde{w}_t,
 \\
