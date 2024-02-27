@@ -88,7 +88,7 @@ params:
     images: ["cover.png"]
 
     profileMode:
-        enabled: false
+        enabled: true
         title: AMP
         imageUrl: "#"
         imageTitle: my image
