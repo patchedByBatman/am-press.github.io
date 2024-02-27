@@ -272,7 +272,7 @@ y_t {}={}& Cx_t + v_t,\end{aligned}$$</p>
       \\
       \Sigma_{t+1{}\mid{}t}
       {}={}
-      A \Sigma_{t{}\mid{}t} A^\intercal + BNB^\intercal + Q^\intercal
+      A \Sigma_{t{}\mid{}t} A^\intercal + BNB^\intercal + Q
     \end{array}
     \right.
     \\
