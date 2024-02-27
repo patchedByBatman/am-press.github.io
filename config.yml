@@ -89,16 +89,16 @@ params:
 
     profileMode:
         enabled: true
-        title: AMP
-        imageUrl: "#"
-        imageTitle: my image
+        title: Applied Mathematix Press
+        # imageUrl: "cover.png"
+        # imageTitle: my image
         # imageWidth: 120
         # imageHeight: 120
         buttons:
+            - name: Blog
+              url: posts
             - name: Archives
               url: archives
-            - name: Tags
-              url: tags
 
     homeInfoParams:
         Title: "Applied Mathematix Press"
