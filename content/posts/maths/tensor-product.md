@@ -23,7 +23,7 @@ collapsible: true
 <p>$$T(\phi+\psi, v) = T(\phi, v) + T(\psi, v),$$</p>
 <p>and</p>
 <p>$$T(\lambda \phi, v) = \lambda T(\phi, v),$$</p>
-<p>for all $v\in V$, *and* it is also linear in the second argument, that is, </p>
+<p>for all $v\in V$, <em>and</em> it is also linear in the second argument, that is, </p>
 <p>$$T(\phi, v+w) = T(\phi, v) + T(\phi, w),$$</p>
 <p>and</p>
 <p>$$T(\phi, \lambda v) = \lambda T(\phi, v).$$</p>
@@ -99,7 +99,7 @@ collapsible: true
 \delta_{i_2 j_2'}
 \delta_{i_3 j_3'}.
 \end{aligned}$$</p>
-<p>A *general* tensor of $\mathcal{T}^{2}_{3}$ has the form<p> 
+<p>A <em>general</em> tensor of $\mathcal{T}^{2}_{3}$ has the form<p> 
 <p>$$T 
 {}={}
 \sum_{
@@ -243,7 +243,7 @@ v_1\otimes w + v_2 \otimes w
 
 ## Universal property 
 
-<p>Here's how I understand the universal property: Suppose we know that we have a function $f: V\times W \to{} ?$, which is *bilinear*. We can always think of the mysterious space $?$ as the tensor space $V\otimes W$ <sup>[<a href="#cite:5">5</a>]</sup>.</p>
+<p>Here's how I understand the universal property: Suppose we know that we have a function $f: V\times W \to{} ?$, which is <em>bilinear</em>. We can always think of the mysterious space $?$ as the tensor space $V\otimes W$ <sup>[<a href="#cite:5">5</a>]</sup>.</p>
 
 <p>Let's look at Figure 1.</p>
 
@@ -252,7 +252,7 @@ v_1\otimes w + v_2 \otimes w
 <p><em><strong>Figure 1.</strong> Universal property of tensor product.</em></p>
 </div>
 
-<p>There is a unique *linear* function $\tilde{f}:V\otimes W \to{} ?$ such that</p>
+<p>There is a unique <em>linear</em> function $\tilde{f}:V\otimes W \to{} ?$ such that</p>
 <p>$$f(v, w) = \tilde{f}(v\otimes w).$$</p>
 <p>Let us underline that $\tilde{f}$ is linear! This makes $\otimes$ a <em>prototype bilinear function</em> as any other bilinear function is a linear map of precisely this one.</p>
 
@@ -327,12 +327,12 @@ v_1\otimes w + v_2 \otimes w
 \\
 0, &\text{ otherwise}
 \end{cases}$$</p>
-<p>The function $\delta_s:S \to \{0,1\}$ is called *Kronecker's delta*.</p>
+<p>The function $\delta_s:S \to \{0,1\}$ is called <em>Kronecker's delta</em>.</p>
 
 <p>If $S$ is finite, then every $f\in S$ can be written as</p>
 <p>$$f = \sum_{s\in S} a_s \delta_s.$$</p>
 
-<p>Let $S_1$ and $S_2$ be *finite* sets and let $F(S_1)$ and $F(S_2)$ be the corresponding function spaces. Then, there is a canonical identity of the form</p>
+<p>Let $S_1$ and $S_2$ be <em>finite<em> sets and let $F(S_1)$ and $F(S_2)$ be the corresponding function spaces. Then, there is a canonical identity of the form</p>
 <p>$$\underbrace{F(\underbrace{S_1 \times S_2}_{\text{Finite set of pairs}})}_{\text{Has }\delta_{s_1, s_2}\text{ as basis}} = F(S_1) \otimes F(S_2),$$</p>
 <p>which associates each function $\delta_{s_1, s_2}$ with $\delta_{s_1} \otimes \delta_{s_2}$.</p>
 
@@ -378,7 +378,7 @@ v_1\otimes w + v_2 \otimes w
 <p>$$\begin{bmatrix}x_1y_1\\x_1y_2\\x_2y_1\\x_2y_2\end{bmatrix}, \begin{bmatrix}x_1y_1\\x_2y_1\\x_1y_2\\x_2y_2\end{bmatrix}$$</p>
 <p>and we see that the two vectors contain the same elements in different order. In that sense,</p>
 <p>$$V\otimes W \cong W \otimes V.$$</p>
-<p>The corresponding map, $V\otimes V \ni v\otimes v' \mapsto v'\otimes v \in V\otimes V$ is called the *braiding map* and it induces an automorphism on $V\otimes V$.</p>
+<p>The corresponding map, $V\otimes V \ni v\otimes v' \mapsto v'\otimes v \in V\otimes V$ is called the <em>braiding map</em> and it induces an automorphism on $V\otimes V$.</p>
 
 ## Some key isomorphisms
 
@@ -390,7 +390,7 @@ v_1\otimes w + v_2 \otimes w
 <p>$$\Phi:V^*\otimes W \to {\rm Hom}(V, W),$$</p>
 <p>by defining</p>
 <p>$$\Phi(v^*\otimes w)(v) = v^*(v)w.$$</p>
-<p>Note that $v^*\otimes w$ is a *pure* tensor. A general tensor has the form</p>
+<p>Note that $v^*\otimes w$ is a <em>pure</em> tensor. A general tensor has the form</p>
 <p>$$\sum_i v_i^*\otimes w_i,$$</p>
 <p>and</p>
 <p>$$\Phi\left(\sum_i v_i^*\otimes w_i\right)(v) = \sum_i v_i^*(v)w_i.$$</p>
@@ -515,7 +515,7 @@ V\otimes W^*
 
 <p>This is based on<sup>[<a href="#cite:9">9</a>]</sup>. We can identify vectors $u=(u_0, \ldots, u_{n-1})\in{\rm I\!R}^n$ and $v\in{\rm I\!R}^m$ as polynomials over ${\rm I\!R}$ of the form</p>
 <p>$$u(x) = u_0 + u_1x + \ldots + u_{n-1}x^{n-1}.$$</p>
-<p>We know that a *pair* of vectors lives in the Cartesian product space ${\rm I\!R}^n\times {\rm I\!R}^m$. A pair of polynomials lives in a space with basis</p> 
+<p>We know that a <em>pair</em> of vectors lives in the Cartesian product space ${\rm I\!R}^n\times {\rm I\!R}^m$. A pair of polynomials lives in a space with basis</p> 
 <p>$$\mathcal{B}_{\rm prod} 
 {}\coloneqq{}
 \{(1, 0), (x, 0), \ldots, (x^{n-1}, 0)\} \cup \{(0, 1), (0, y), \ldots, (0, y^{n-1})\}.$$</p>
@@ -525,7 +525,7 @@ V\otimes W^*
 
 ## Further reading
 
-Lots of books on tensors for physicists are in <sup>[<a href="#cite:11">11</a>]</sup>. In *Linear Algebra Done Wrong* <sup>[<a href="#cite:12">12</a>]</sup> there is an extensive chapter on the matter. It would be interesting to read about tensor norms <sup>[<a href="#cite:13">13</a>]</sup>. These lecture notes <sup>[<a href="#cite:14">14</a>]</sup> <sup>[<a href="#cite:15">15</a>]</sup> <sup>[<a href="#cite:16">16</a>]</sup> seem worth studying too. These <sup>[<a href="#cite:18">18</a>]</sup> lectures notes on multilinear algebra look good, but are more theoretical and look a bit category-theoretical. A must-read book is <sup>[<a href="#cite:19">19</a>]</sup> and these lectures notes for MIT <sup>[<a href="#cite:20">20</a>]</sup>. A book that seems to explain things in an accessible way, yet rigorously is <sup>[<a href="#cite:21">21</a>]</sup>.
+Lots of books on tensors for physicists are in <sup>[<a href="#cite:11">11</a>]</sup>. In <em>Linear Algebra Done Wrong</em> <sup>[<a href="#cite:12">12</a>]</sup> there is an extensive chapter on the matter. It would be interesting to read about tensor norms <sup>[<a href="#cite:13">13</a>]</sup>. These lecture notes <sup>[<a href="#cite:14">14</a>]</sup> <sup>[<a href="#cite:15">15</a>]</sup> <sup>[<a href="#cite:16">16</a>]</sup> seem worth studying too. These <sup>[<a href="#cite:18">18</a>]</sup> lectures notes on multilinear algebra look good, but are more theoretical and look a bit category-theoretical. A must-read book is <sup>[<a href="#cite:19">19</a>]</sup> and these lectures notes for MIT <sup>[<a href="#cite:20">20</a>]</sup>. A book that seems to explain things in an accessible way, yet rigorously is <sup>[<a href="#cite:21">21</a>]</sup>.
 
 ## References
 
@@ -542,7 +542,7 @@ Lots of books on tensors for physicists are in <sup>[<a href="#cite:11">11</a>]<
   <li id="cite:10">Answer on <a href="https://math.stackexchange.com/a/679600/8357">MSE</a> on why ${\rm Hom}(V, W)$ is the same thing as $V^*\otimes W$, accessed on 9 November 2023</li>  
   <li id="cite:11">Lots of books on tensors, tensor calculus, and applications to physics can be found on <a href="https://github.com/JackieXie168/documents/tree/master/mathematics">this GitHub repo</a>, accessed on 9 November 2023</li>  
   <li id="cite:12">S. Treil, <a href="http://www.math.brown.edu/streil/papers/LADW/LADW_2017-09-04.pdf">Linear algebra done wrong</a>, Chapter 8: dual spaces and tensors, 2017</li>  
-  <li id="cite:13">A. Defant and K. Floret, *Tensor norms and operator ideals* (<a href="https://github.com/JackieXie168/documents/blob/master/mathematics/Tensor%20Norms%20and%20Operator%20Ideals%20(North-Holland%20Mathematics%20Studies)%20(A.%20Defant%2C%20K.%20Floret)%200444890912.pdf">link</a>), North Holand, 1993</li>  
+  <li id="cite:13">A. Defant and K. Floret, <em>Tensor norms and operator ideals</em> (<a href="https://github.com/JackieXie168/documents/blob/master/mathematics/Tensor%20Norms%20and%20Operator%20Ideals%20(North-Holland%20Mathematics%20Studies)%20(A.%20Defant%2C%20K.%20Floret)%200444890912.pdf">link</a>), North Holand, 1993</li>  
   <li id="cite:14">K. Purbhoo, Notes on Tensor Products and the Exterior Algebra for Math 245, <a href="https://www.math.uwaterloo.ca/~kpurbhoo/spring2012-math245/tensor.pdf">link</a></li>  
   <li id="cite:15">Lecture notes on tensors, Uni Berkeley, <a href="http://hitoshi.berkeley.edu/221A/tensorproduct.pdf">link</a></li>  
   <li id="cite:16">J. Zintl, Notes on tensor products, part 3, <a href="https://www.math.uni-tuebingen.de/user/zintl/MLA_Wi1819/MLA_Skript_%c2%a76.pdf">link</a></li>  
