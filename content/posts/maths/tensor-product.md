@@ -332,7 +332,7 @@ v_1\otimes w + v_2 \otimes w
 <p>If $S$ is finite, then every $f\in S$ can be written as</p>
 <p>$$f = \sum_{s\in S} a_s \delta_s.$$</p>
 
-<p>Let $S_1$ and $S_2$ be <em>finite<em> sets and let $F(S_1)$ and $F(S_2)$ be the corresponding function spaces. Then, there is a canonical identity of the form</p>
+<p>Let $S_1$ and $S_2$ be <em>finite</em> sets and let $F(S_1)$ and $F(S_2)$ be the corresponding function spaces. Then, there is a canonical identity of the form</p>
 <p>$$\underbrace{F(\underbrace{S_1 \times S_2}_{\text{Finite set of pairs}})}_{\text{Has }\delta_{s_1, s_2}\text{ as basis}} = F(S_1) \otimes F(S_2),$$</p>
 <p>which associates each function $\delta_{s_1, s_2}$ with $\delta_{s_1} \otimes \delta_{s_2}$.</p>
 
