@@ -121,9 +121,12 @@ Where, $i$ is the number of the iteration in $\bm{S}$ simulation steps, with $\m
 **Note:** The reader might notice that this iterative method only works assuming that the computation of ${}^\star \mathbf{U}^i$ takes less than $T$ seconds during each iteration. It is indeed the case and it is not clear what happens if each computation takes longer than $T$ seconds. This hurts the confidence on the designed system, as it might produce unexpected results. Thus, the selection of $T$ shall be of careful consideration owing to the trade off between the accuracy of the discrete approximation and computational limitations. 
 
 This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$. The following video shows the simulation results.
-<video width="320" height="240" controls>
-  <source src="/mpc_car_st_slope_no_brake.mp4" type="video/mp4">
+
+<div>
+<video width="640" height="480" controls>
+  <source src="/mpc_car_st_slope_no_brake.gif" type="video/mp4">
 </video>
+</div>
 
 As it can be seen in the video that the NMPC controlled vehicle indeed drove towards (close to) the destination $[5, 5]^\mathsf{T}$, but it didn't converge. It could have been a matter of tuning $\mathbf{Q}_1$ and $\mathbf{Q}_2$, but before tuning them, the vehicle dynamics need to be modified to add a braking system. Remember, the end goal is to have an NMPC controlled autonomous vehicle that is *road safe*. These preliminary results are good enough for now as the wight matrices $\mathbf{Q}_1$ and $\mathbf{Q}_2$ might need retuning when the dynamics have changed.
 
