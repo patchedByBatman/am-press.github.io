@@ -122,7 +122,7 @@ Where, $i$ is the number of the iteration in $\bm{S}$ simulation steps, with $\m
 
 This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$. The following video shows the simulation results.
 <video width="320" height="240" controls>
-  <source src="assets\mpc_car_st_slope_no_brake.mp4" type="video/mp4">
+  <source src="/mpc_car_st_slope_no_brake.mp4" type="video/mp4">
 </video>
 
 As it can be seen in the video that the NMPC controlled vehicle indeed drove towards (close to) the destination $[5, 5]^\mathsf{T}$, but it didn't converge. It could have been a matter of tuning $\mathbf{Q}_1$ and $\mathbf{Q}_2$, but before tuning them, the vehicle dynamics need to be modified to add a braking system. Remember, the end goal is to have an NMPC controlled autonomous vehicle that is *road safe*. These preliminary results are good enough for now as the wight matrices $\mathbf{Q}_1$ and $\mathbf{Q}_2$ might need retuning when the dynamics have changed.
