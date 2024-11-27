@@ -27,8 +27,8 @@ I have recently read a paper named "A Nonlinear Model Predictive Control Strateg
 |$1_{n \times m}$       | $[1]_{n \times m}$     | An $n \times m$ matrix with every element equal to 1.|
 |$I_{n}$                | $I_{n \times n}$       | An $n \times n$ identity matrix.|
 |$\R$                   |$(-\infty,\ \infty)$    | Set of real numbers.        |
-|$\R^n$                 |$\\{\mathbf{x}_ {n \times 1}: x_i \in \R \ \forall \ i \in \Z_{[1,\ n]}, n \in \R\\}$| Set of all $n \times 1$ real vectors.|
-|$\R^{n \times m}$      |$\\{\mathbf{A}_ {n \times m}: a_ {i,\ j} \in \R \ \forall \ i \in \Z_{[1,\ n]},\text{ and } j \in \Z_{[1,\ m]}\\}$| Set of all $n \times 1$ real vectors.|
+|$\R^n$                 | $\\{\mathbf{x}\_{n \times 1}: x_i \in \R \ \forall \ i \in \Z_{[1,\ n]}, n \in \R\\}$ | Set of all $n \times 1$ real vectors.|
+|$\R^{n \times m}$      |$\\{\mathbf{A}\_{n \times m}: a_{i,\ j} \in \R \ \forall \ i \in \Z_{[1,\ n]},\text{ and } j \in \Z_{[1,\ m]}\\}$ | Set of all $n \times 1$ real vectors.|
 |$\R_{[i,\ j]}$         |$\\{k: i \le k \le j\ \forall\ i,\ j,\ k \in \R\\}$| Set of real numbers from $i$ to $j$ inclusive.        |
 |$\R_-$ or $\R_{\lt 0}$ |$(-\infty,\ 0)$         | Set of all negative real numbers.|
 |$\R_+$ or $\R_{\ge 0}$ |$[0,\ \infty)$          | Set of all positive real numbers.|
@@ -181,6 +181,20 @@ Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{
 <img src="/mpc_car_st_slope_with_brake.gif" alt="Simulation results" width="640" height="400">
 
 As it can be seen from the results, indeed the vehicle reaches close to $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=2.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$ will be discussed in the next section i.e., Section 3.
+
+## ఠ Section 3: Obstacle avoidance
+
+In this section, obstacle avoidance feature (*constraint*) will be added to the NMPC formulation. This feature is of importance for two reasons, first being that it extends the concept of *safety* for both the vehicle and the environment that it is navigating in. The obstacle could be a tree, another vehicle, or a human. Enabling such a feature prohibits the vehicle from injuring living beings and prevents self-damage when navigating around objects. The second reason being that this concept can be extended and reused when constraining the vehicle to stay on the track (road).
+
+Before introducing this feature, the fix for simultaneous activation of $\tilde{d}$ and $\tilde{b}$ should be addressed. The solution for this problem is being introduced here, instead of in Section 2, because just like for obstacle avoidance the fix has to do with modifying the formulation (not the dynamics as in Section 2). The simplest fix is to modify the cost function in the minimisation problem as follows,
+
+<p>
+$$
+\|\mathbf{p}^i_N - \mathbf{p}^i_d\|_{\mathbf{Q}_{1}}^2 + \sum_{k=0}^{N-1} \left(\|\mathbf{u}^i(k) - \mathbf{u}^i(k-1)\|_{\mathbf{Q}_2}^2 + \mathbf{R} \cdot \tilde{d}(k) \cdot \tilde{b}(k) \right)
+$$
+</p>
+
+Where $\mathbf{R} \in \R_{>0}$ and must be a very large number. This imposes that the best (*optimal*) way to avoid a large cost is to make the selected control actions $\tilde{d}$ and $\tilde{b}$ not be greater than zero at the same time.
 
 ## References
 [1] Cataffo, Vittorio & Silano, Giuseppe & Iannelli, Luigi & Puig, Vicenç & Glielmo, Luigi. (2022). A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles. 10.1109/SMC53654.2022.9945279. 
