@@ -120,7 +120,7 @@ Where, $i$ is the number of the iteration in $\bm{S}$ simulation steps, with $\m
 
 **Note:** The reader might notice that this iterative method only works assuming that the computation of ${}^\star \mathbf{U}^i$ takes less than $T$ seconds during each iteration. It is indeed the case and it is not clear what happens if each computation takes longer than $T$ seconds. This hurts the confidence on the designed system, as it might produce unexpected results. Thus, the selection of $T$ shall be of careful consideration owing to the trade off between the accuracy of the discrete approximation and computational limitations. 
 
-This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$. The following video shows the simulation results.
+This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$. The following GIF shows the simulation results.
 
 <!-- <div>
 <img width="640" height="480" controls>
@@ -130,11 +130,34 @@ This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ \
 <img src="/mpc_car_st_slope_no_brake.gif" alt="Simulation results" width="640" height="400">
 
 
-As it can be seen in the video that the NMPC controlled vehicle indeed drove towards (close to) the destination $[5, 5]^\mathsf{T}$, but it didn't converge. It could have been a matter of tuning $\mathbf{Q}_1$ and $\mathbf{Q}_2$, but before tuning them, the vehicle dynamics need to be modified to add a braking system. Remember, the end goal is to have an NMPC controlled autonomous vehicle that is *road safe*. These preliminary results are good enough for now as the wight matrices $\mathbf{Q}_1$ and $\mathbf{Q}_2$ might need retuning when the dynamics have changed.
+As it can be seen in the GIF, the NMPC controlled vehicle indeed drove towards (close to) the destination $[5, 5]^\mathsf{T}$, but it didn't converge. It could have been a matter of tuning $\mathbf{Q}_1$ and $\mathbf{Q}_2$, but before tuning them, the vehicle dynamics need to be modified to add a braking system. Remember, the end goal is to have an NMPC controlled autonomous vehicle that is *road safe*. These preliminary results are good enough for now as the weight matrices $\mathbf{Q}_1$ and $\mathbf{Q}_2$ might need retuning when the dynamics have changed.
 
-## Section 2: Let's Brake $_\text{(or rather not)}$ the system
+## Section 2: Let's Brake $_{(\textit{or rather not})}$ the system
 
-This section discusses the addition of a braking system to the vehicle dynamics. In the end, a simulation result is provided for the modified system under the same scenario as in Section 1.
+This section discusses the addition of a braking system to the vehicle dynamics. In the end, a simulation result is provided for the modified system under the same scenario as in Section 1. The dynamics shall be modified with caution, as it might end up with a broken (*unsolvable*) system.  Going further, the GIF playback will be slowed down when necessary to help with tracking changes in the states and control inputs.
+
+In the equation of $F_x$ in the dynamics, the term $C_{m3}$ might act as the initial resistance of static friction between the tires and the road, and the term $C_{m4}v^2_x$ acts as the force due to air drag as the vehicle starts to move. Though, this captures the initial and forward moving dynamics, this model only works for $\tilde{d} > 0$. Leave $\tilde{d} = 0$, then at $t=0$, $F_x = -C_{m3}$, which makes $v_x < 0$. Since, $v_x^2 > 0$, the negative x-force on the vehicle increases quadratically as $F_x = -C_{m3} - C_{m3}v_x^2$. Also, when the vehicle starts moving i.e., $|v_x| > 0$, the term $C_{m3}$ should vanish, or should switch to rolling fictional force between the tires and the road. It would also make sense to make $\text{sign}(C_{m4}) = \text{sign}(v_x)$ to properly model air drag. These will require additional modifications in the dynamics, which will be addressed in a later section.
+
+Due to the above reasons, moving forward it is assumed that the simulation results are valid as long as $\tilde{d} > 0$ and $v_x > 0$ (this is also the lower bound of $v_x$ in our formulation) and any part of the simulation that violates these conditions (even when $v_x = 0$) shall be considered inaccurate.
+
+With these conditions under consideration, the addition of the braking system can be done by the following modifications to the system dynamics,
+
+<p>
+$$
+\begin{aligned}
+&F_\text{brake} = \mu_{KF}\tilde{b}, \\
+&\tilde{b} \in [0, 1], \\
+&\mu_{KF} \in \R_+, \\
+&F_x = (C_{m1} - C_{m2} v_x)\tilde{d} - C_{m3} - C_{m4} v^2_x - F_\text{brake}
+\end{aligned}
+$$
+</p>
+
+It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\  \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$ and the results are shown in the following GIF.
+
+<img src="/mpc_car_st_slope_with_brake.gif" alt="Simulation results" width="640" height="400">
+
+As it can be seen from the results, indeed the vehicle reaches $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=3.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$ will be discussed in the next section i.e., Section 3.
 
 ## References
 [1] Cataffo, Vittorio & Silano, Giuseppe & Iannelli, Luigi & Puig, Vicenç & Glielmo, Luigi. (2022). A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles. 10.1109/SMC53654.2022.9945279. 
