@@ -196,5 +196,46 @@ $$
 
 Where $\mathbf{R} \in \R_{>0}$ and must be a very large number. This imposes that the best (*optimal*) way to avoid a large cost is to make the selected control actions $\tilde{d}$ and $\tilde{b}$ not be greater than zero at the same time.
 
+The obstacle avoidance feature shall be introduced in the form of additional constraints to the formulation. In general, it is easy to both design and compute ellipsoidal constraints and for this reason, moving forward all obstacles will be approximated as either ellipses or circles with radii selected in such a way that guarantees safety (collision avoidance). For that, the radii shall address both the size of the obstacle puls some safe distance and a buffer zone that takes the size of the vehicle into account. It is also to be ensured that geometric centre of the object coincides with the centre of the ellipse. From here on, such ellipses are called as safety circles.
+
+For demonstration, an obstacle is placed with its centre at the origin with the radius of its safety circle equal to $2$ mts. The corresponding obstacle avoidance constraint is as follows,
+
+<p>
+$$
+\begin{aligned}
+&p_x^2(k) + p_y^2(k) > 2^2 \\
+\implies &4 - p_x^2(k) - p_y^2(k) < 0,\ \forall k \in \Z_{[1, N]}
+\end{aligned}
+$$
+</p>
+
+Needless to mention that it should be ensured that $(p_x(0), p_y(0)) \notin \\{(x, y): x^2 + y^2 \le 2^2\\}$ i.e., the system does not start from a position inside the obstacle. With these modification the new formulation can we written as follows,
+
+<p>
+$$
+\begin{aligned}
+\mathbb{P}^i_N(\mathbf{z}^i(0)) :\ &\underset{\mathbf{u}^i}{\text{minimise}}\ \|\mathbf{p}^i_N - \mathbf{p}^i_d\|_{\mathbf{Q}_{1}}^2 + \sum_{k=0}^{N-1} \left(\|\mathbf{u}^i(k) - \mathbf{u}^i(k-1)\|_{\mathbf{Q}_2}^2 + \mathbf{R} \cdot \tilde{d}(k) \cdot \tilde{b}(k) \right) \\
+\text{s.t.}\ & \mathbf{z}^i(0) = \mathbf{z}^{i-1}(N), \\
+\ &\mathbf{u}^i(-1) = \mathbf{u}^{i-1}(N-1), \\
+\ &\mathbf{z}^i(k+1) = \mathbf{g}(\mathbf{z}^i(k), \mathbf{u}^i(k)),\ k \in \Z_{[0, N-1]}, \\
+\ &\mathbf{u}^i(k) \in \bm{\mu},\ k \in \Z_{[0, N-1]}, \\
+\ &v_x^i(k) \in \bm{\gamma},\ k \in \Z_{[0, N-1]}, \\
+\ &2^2 - (p_x^i(k))^2 - (p_y^i(k))^2 < 0,\ k \in \Z_{[1, N]}, \\
+\ &\mathbf{p}^0(0) \notin \{(x, y): x^2 + y^2 \le 2^2\}, \\
+\ &\mathbf{Q}_1 \in \mathbb{S}^{2}_{++}, \\
+\ &\mathbf{Q}_2 \in \mathbb{S}^{n_u}_{++}, \text{ and}\\
+\ &i \in \Z_{[0, \bm{S}]}.
+\end{aligned}
+$$
+</p>
+
+The simulation results of this formulation with $N=50,\ \bm{S} = 300,\ T=0.01$, $\mathbf{p}^0(0) = [-2, 2]^\mathsf{T}$ and $\mathbf{p}^i_d = [1, 4]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$ are shown in the following GIF,
+
+<img src="/mpc_car_obst_2m_6.gif" alt="Simulation results" width="640" height="400">
+
+From the GIF, it can be seen that the NMPC controlled vehicle is indeed avoiding the obstacle and reaching close to the destination. It must be observed that before $t=1.5$, the vehicle drove close (tangential) to the safety circle because that is an optimal path that minimises the above formulated cost function. This is the reason why the radii (radius in this case) must include a buffer zone around the actual object. This ensures that the vehicle never comes *dangerously* close to the actual object. 
+
+It should also be noted that before $t<1$, there was a noticeable magnitude of $v_y$. This could probably be the case that the vehicle is drifting, which is undesirable when it comes to *road safety*. However, this can simply be fixed by tuning the wright matrices $\mathbf{Q}_1$ and $\mathbf{Q}_2$, which will be done at a later point. But, for Section 4 (the next section), the goal is have the NMPC drive on a predetermined track without exiting.
+
 ## References
 [1] Cataffo, Vittorio & Silano, Giuseppe & Iannelli, Luigi & Puig, Vicenç & Glielmo, Luigi. (2022). A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles. 10.1109/SMC53654.2022.9945279. 
