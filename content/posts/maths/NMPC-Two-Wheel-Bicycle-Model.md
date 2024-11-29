@@ -9,8 +9,9 @@ series: ["Mathematix"]
 tags: ["Nonlinear Control", "NMPC"]
 collapsible: true
 ---
+
 ## Introduction
-I have recently read a paper named "A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles" by Vittorio Cataffo et al., [1]. After reading the paper, I have decided to implement the proposed system in [Python3](https://www.python.org/) using [OpEn](https://alphaville.github.io/optimization-engine/). To study it further, I will be modifying the method to prioritize *road safe* features over minimum lap time. The purpose of this article is to showcase the formulation and simulation results of an NMPC controlled vehicle system that is *road safe* (at least in simulations). As a part of experimentation, I will be modifying the approach as the need arises and I will be updating this article by adding new sections accordingly. Going forward, the symbol **ఠ** will be used at the beginning of a section to indicate that a *road safety* feature is being introduced. Throughout this article the right-hand coordinate space is used with the z-axis pointing vertically up, the angles and rotations in counter-clockwise (CCW) direction are taken as positive. 
+I recently read a paper named "A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles" by Vittorio Cataffo et al., [1]. After reading the paper, I have decided to implement the proposed system in [Python3](https://www.python.org/) using [OpEn](https://alphaville.github.io/optimization-engine/). To study it further, I will be modifying the method to prioritize *road safe* features over minimum lap time. The purpose of this article is to showcase the formulation and simulation results of an NMPC controlled vehicle system that is *road safe* (at least in simulations). As a part of experimentation, I will be modifying the approach as the need arises and I will be updating this article by adding new sections accordingly. Going forward, the symbol **ఠ** will be used at the beginning of a section to indicate that a *road safety* feature is being introduced. Throughout this article the right-hand coordinate space is used with the z-axis pointing vertically up, the angles and rotations in counter-clockwise (CCW) direction are taken as positive. 
 
 ### Software Used
 1. **[Python3](https://www.python.org/):** An open-source high-level interpreted programming language.
@@ -41,9 +42,9 @@ I have recently read a paper named "A Nonlinear Model Predictive Control Strateg
 
 
 ## Section 1: Initial Formulation
-This section showcases the simulation results of an NMPC controlled vehicle based on bicycle model dynamics used in [1]. The results in this section are limited to the implementation of vehicle dynamics and the fromulation of an NMPC to drive it to a reference position on the global xy-coordinate space. This section does not include autonomous navigation on a track and obstacle avoidance. 
+This section showcases the simulation results of an NMPC controlled vehicle based on bicycle model dynamics used in [1]. The results in this section are limited to the implementation of vehicle dynamics and the fromulation of an NMPC to drive it to a reference position on the global xy-coordinate space. This section does not include autonomous navigation on a track (lane-keeping) and obstacle avoidance, as these will be discussed in a separate post. 
 
-The two-wheel Bicycle model in [1] is as follows:
+The two-wheel bicycle model in [1] is as follows:
 
 <p>
 $$
@@ -180,7 +181,7 @@ Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{
 
 <img src="/mpc_car_st_slope_with_brake.gif" alt="Simulation results" width="640" height="400">
 
-As it can be seen from the results, indeed the vehicle reaches close to $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=2.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$ will be discussed in the next section i.e., Section 3.
+As it can be seen from the results, indeed the vehicle reaches close to $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=2.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$, and the addition of lane-keeping and obstacle avoidance will be discussed in an upcoming article.
 
 ## References
 [1] Cataffo, Vittorio & Silano, Giuseppe & Iannelli, Luigi & Puig, Vicenç & Glielmo, Luigi. (2022). A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles. 10.1109/SMC53654.2022.9945279. 
