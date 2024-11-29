@@ -44,6 +44,10 @@ I recently read a paper named "A Nonlinear Model Predictive Control Strategy for
 ## Section 1: Initial Formulation
 This section showcases the simulation results of an NMPC controlled vehicle based on bicycle model dynamics used in [1]. The results in this section are limited to the implementation of vehicle dynamics and the fromulation of an NMPC to drive it to a reference position on the global xy-coordinate space. This section does not include autonomous navigation on a track (lane-keeping) and obstacle avoidance, as these will be discussed in a separate post. 
 
+The free-body diagram of the bicycle model (inspired by Figure 1 in [1]) is shown in the figure below.
+
+<img src="/FBD_bicycle_model_NMPC.svg" alt="FBD bicycle model -- NMPC" style="width: 500px; height: 500px; object-fit: cover;"/>
+
 The two-wheel bicycle model in [1] is as follows:
 
 <p>
