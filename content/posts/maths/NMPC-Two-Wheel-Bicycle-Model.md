@@ -81,7 +81,7 @@ $$
 where
 $m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires. In the subscript, the letters $r$ and $f$ indicate the rear and front tires, and the letters $x$ and $y$ indicate the longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. 
 
-The control inputs $\tilde{d} \in \R_{[0, 1]},\text{ and }  \delta \in \R$ are the normalised forward acceleration PWM duty cycle of the electric drive train motor (refer [2]) and front wheel steering angle input in radians respectively. The states $p_x,\ p_y,\text{ and }  \psi \in \R$ are the vehicle's x position in meters, the y position in meters, and the heading in radians in the global frame of reference respectively. The states $v_x,\ v_y,\text{ and }  \omega \in \R$ are the vehicle's x velocity in meters-per-second, the y velocity in meters-per-second, and the angular rotation rate around the z-axis in radians-per-second in the local body-fixed frame of reference respectively. 
+The control inputs $\tilde{d} \in [0, 1],\text{ and }  \delta \in \R$ are the normalised forward acceleration PWM duty cycle of the electric drive train motor (refer [2]) and front wheel steering angle input in radians respectively. The states $p_x,\ p_y,\text{ and }  \psi \in \R$ are the vehicle's x position in meters, the y position in meters, and the heading in radians in the global frame of reference respectively. The states $v_x,\ v_y,\text{ and }  \omega \in \R$ are the vehicle's x velocity in meters-per-second, the y velocity in meters-per-second, and the angular rotation rate around the z-axis in radians-per-second in the local body-fixed frame of reference respectively. 
 
 The constants $B_f$, and $B_r \in \R$ are the *stiffness factors*, $C_f$, and $C_r \in \R$ are the *shape factors* $D_f$, and $D_r \in \R$ are the *peak factors*, and $C_{m1}$, $C_{m2}$, $C_{m3}$, and $C_{m4} \in \R_+$ are empirical parameters as described in [1]. The parameters $\alpha_f$ and $\alpha_r$ are the slip angles. These equations and their parameters are described in equations (1) through (4) in [1]. Now the dynamics can be written as,
 
@@ -138,26 +138,27 @@ It should also be of priority that the system is not subjected to violently arbi
 <p>
 $$
 \begin{aligned}
-\mathbb{P}^i_N(\mathbf{z}^i(0)) :\ &\underset{\mathbf{u}^i}{\text{minimise}}\ \|\mathbf{p}^i_N - \mathbf{p}^i_d\|_{\mathbf{Q}_{1}}^2 + \sum_{k=0}^{N-1} \|\mathbf{u}^i(k) - \mathbf{u}^i(k-1)\|_{\mathbf{Q}_2}^2 \\
-\text{s.t.}\ & \mathbf{z}^i(0) = \mathbf{z}^{i-1}(N), \\
-\ &\mathbf{u}^i(-1) = \mathbf{u}^{i-1}(N-1), \\
-\ &\mathbf{z}^i(k+1) = \mathbf{g}(\mathbf{z}^i(k), \mathbf{u}^i(k)),\ k \in \Z_{[0, N-1]}, \\
-\ &\mathbf{u}^i(k) \in \mathbf{U},\ k \in \Z_{[0, N-1]}, \\
-\ &v_x^i(k) \in \bm{\Gamma},\ k \in \Z_{[0, N-1]}, \\
-\ &\mathbf{Q}_1 \in \mathbb{S}^{2}_{++}, \\
-\ &\mathbf{Q}_2 \in \mathbb{S}^{n_u}_{++}, \text{ and}\\
-\ &i \in \Z_{[0, \bm{S}]}.
+\mathbb{P}_N(\mathbf{z}(0), {}^\star\mathbf{u}_{\text{prev}}) :\ &\underset{\mathbf{u}}{\text{minimise}}\ \|\mathbf{p}_N - \mathbf{p}_d\|_{\mathbf{Q}_{1}}^2 + \sum_{k=0}^{N-1} \|\mathbf{u}(k) - \mathbf{u}(k-1)\|_{\mathbf{Q}_2}^2 \\
+\text{s.t.}\ & \mathbf{z}(0) = \mathbf{z}(N), \\
+\ &\mathbf{u}(-1) = {}^\star\mathbf{u}_{\text{prev}}, \\
+\ &\mathbf{z}(k+1) = \mathbf{g}(\mathbf{z}(k), \mathbf{u}(k)),\ k \in \Z_{[0, N-1]}, \\
+\ &\mathbf{u}(k) \in \mathbf{U},\ k \in \Z_{[0, N-1]}, \\
+\ &v_x(k) \in \bm{\Gamma},\ k \in \Z_{[0, N-1]}, \\
+\ &\mathbf{Q}_1 \in \mathbb{S}^{2}_{++}, \text{ and} \\
+\ &\mathbf{Q}_2 \in \mathbb{S}^{n_u}_{++}.
 \end{aligned}
 $$
 </p>
 
-**Note:** The $i$ in the superscript of $\mathbb{P}^i_N$ is indicative of a formulation that can change over iterations, which will be addressed in the coming sections.
+**Note:** The control input ${}^\star\mathbf{u}_{\text{prev}}$ is the control input used to drive the vehicle during the previous iteration.
 
-Where, $i$ is the number of the iteration in $\bm{S}$ simulation steps, with $\mathbf{u}^0(-1)$ being the input that the system began with i.e., the input at $t=-T$. The idea of NMPC is to begin with iteration number $i=0$ at $t=0$ and solve $\mathbb{P}^0_N(\mathbf{z}^0(0))$ for ${}^\star \mathbf{U}^{0}$, where ${}^\star \mathbf{U}^i = \underset{\mathbf{u}^i}{\text{argmin}}\ \mathbb{P}^i_N(\mathbf{z}^i(0))$. Then, take the first computed input ${}^\star\mathbf{u}^0(0)$, apply it to the system and take a measurement of the resulting state ${}^\star\mathbf{z}^0(1)$. With $\mathbf{u}^1(-1) = {}^\star\mathbf{u}^0(0)$ and $\mathbf{z}^1(0) = {}^\star\mathbf{z}^0(1)$, proceed to iteration $i=1$ at $t=T$ to solve $\mathbb{P}^1_N(\mathbf{z}^1(0))$, obtain ${}^\star\mathbf{u}^1(0)$, apply it to the system to get ${}^\star\mathbf{z}^1(1)$ and move on to iteration $i=2$ at $t = 2T$. This procedure is repeated till $i=\bm{S}$.
+The minimisation problem $\mathbb{P}_N(\mathbf{z}(0), {}^\star\mathbf{u} _{\text{prev}})$ is solved at every time step in a loop. For the first iteration the control input $\mathbf{u}(-1)$ is the input that the system began with i.e., the input at $t=-T$. The idea of NMPC is, at $t=0$, solve $\mathbb{P}_N(\mathbf{z}(0), {}^\star\mathbf{u} _{\text{prev}})$ for ${}^\star \mathbf{U}$, where ${}^\star \mathbf{U} = \underset{\mathbf{u}}{\text{argmin}}\ \mathbb{P}_N(\mathbf{z}(0), {}^\star\mathbf{u} _{\text{prev}})$. 
 
-**Note:** The reader might notice that this iterative method only works assuming that the computation of ${}^\star \mathbf{U}^i$ takes less than $T$ seconds during each iteration. It is indeed the case and it is not clear what happens if each computation takes longer than $T$ seconds. This hurts the confidence on the designed system, as it might produce unexpected results. Thus, the selection of $T$ shall be of careful consideration owing to the trade off between the accuracy of the discrete approximation and computational limitations. 
+Then, take the first computed input ${}^\star\mathbf{u}(0)$, apply it to the system and take a measurement of the resulting state ${}^\star\mathbf{z}(1)$. With $\mathbf{u}(-1) = {}^\star\mathbf{u}(0)$ and $\mathbf{z}(0) = {}^\star\mathbf{z}(1)$, proceed to iteration two at $t=T$ to solve $\mathbb{P}_N(\mathbf{z}(0))$ again, obtain the new ${}^\star\mathbf{u}(0)$, apply it to the system to get a new ${}^\star\mathbf{z}(1)$ and move on to iteration three at $t = 2T$. This procedure is repeated indefinitely or till a set number of iterations is reached. Throughout this article the total number of simulation steps (iterations) is denoted by $\bm{S}$.
 
-This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01 \text{ s},\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$. The following GIF shows the simulation results.
+**Note:** The reader might notice that this iterative method only works assuming that the computation of ${}^\star \mathbf{U}$ takes less than $T$ seconds during each iteration. It is indeed the case and it is not clear what happens if each computation takes longer than $T$ seconds. This hurts the confidence on the designed system, as it might produce unexpected results. Thus, the selection of $T$ shall be of careful consideration owing to the trade off between the accuracy of the discrete approximation and computational limitations. 
+
+This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01 \text{ s},\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}_ d = [5, 5]^\mathsf{T}$. The following GIF shows the simulation results.
 
 <!-- <div>
 <img width="640" height="480" controls>
@@ -183,14 +184,14 @@ With these conditions under consideration, the addition of the braking system ca
 $$
 \begin{aligned}
 &F_\text{brake} = \mu_{KF}\tilde{b}, \\
-&\tilde{b} \in \R_{[0, 1]}, \\
+&\tilde{b} \in [0, 1], \\
 &\mu_{KF} \in \R_+, \\
 &F_x = (C_{m1} - C_{m2} v_x)\tilde{d} - C_{m3} - C_{m4} v^2_x - F_\text{brake}.
 \end{aligned}
 $$
 </p>
 
-Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}^i_d = [5, 5]^\mathsf{T}\ \forall\ i \in \Z_{[0, \bm{s}]}$ and the results are shown in the following GIF.
+Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
 
 <img src="/mpc_car_st_slope_with_brake.gif" alt="Simulation results" width="640" height="400">
 
