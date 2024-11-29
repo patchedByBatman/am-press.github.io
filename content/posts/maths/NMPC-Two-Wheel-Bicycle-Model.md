@@ -79,22 +79,32 @@ $$
 </p>
 
 where
-$m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires with $r$ and $f$ indicating rear and front tires respectively, and $x$ and $y$ indicating longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. The control inputs $\tilde{d} \in \R_{[0, 1]},\text{ and }  \delta \in \R$ are the normalised forward acceleration PWM duty cycle control input of the electric drive train motor (refer [2]) and front wheel steering angle input in radians respectively. The states $p_x,\ p_y,\text{ and }  \psi \in \R$ are the vehicle's x position in meters, the y position in meters, and the heading in radians in the global frame of reference respectively. The states $v_x,\ v_y,\text{ and }  \omega \in \R$ are the vehicle's x velocity in meters-per-second, the y velocity in meters-per-second, and the angular rotation rate around the z-axis in radians-per-second in the local body-fixed frame of reference respectively. The constants $B_f$, and $B_r \in \R$ are the *stiffness factors*, $C_f$, and $C_r \in \R$ are the *shape factors* $D_f$, and $D_r \in \R$ are the *peak factors*, and $C_{m1}$, $C_{m2}$, $C_{m3}$, and $C_{m4} \in \R_+$ are empirical parameters as described in [1]. The parameters $\alpha_f$ and $\alpha_r$ are the slip angles. These equations and their parameters are described in equations (1) through (4) in [1]. Now the dynamics can be written as,
+$m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires. In the subscript, the letters $r$ and $f$ indicate the rear and front tires, and the letters $x$ and $y$ indicate the longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. 
+
+The control inputs $\tilde{d} \in \R_{[0, 1]},\text{ and }  \delta \in \R$ are the normalised forward acceleration PWM duty cycle of the electric drive train motor (refer [2]) and front wheel steering angle input in radians respectively. The states $p_x,\ p_y,\text{ and }  \psi \in \R$ are the vehicle's x position in meters, the y position in meters, and the heading in radians in the global frame of reference respectively. The states $v_x,\ v_y,\text{ and }  \omega \in \R$ are the vehicle's x velocity in meters-per-second, the y velocity in meters-per-second, and the angular rotation rate around the z-axis in radians-per-second in the local body-fixed frame of reference respectively. 
+
+The constants $B_f$, and $B_r \in \R$ are the *stiffness factors*, $C_f$, and $C_r \in \R$ are the *shape factors* $D_f$, and $D_r \in \R$ are the *peak factors*, and $C_{m1}$, $C_{m2}$, $C_{m3}$, and $C_{m4} \in \R_+$ are empirical parameters as described in [1]. The parameters $\alpha_f$ and $\alpha_r$ are the slip angles. These equations and their parameters are described in equations (1) through (4) in [1]. Now the dynamics can be written as,
+
+<p>
+$$
+\dot{\mathbf{z}}(t) = \mathbf{g}(\mathbf{z}(t),\ \mathbf{u}(t)).
+$$
+</p>
+
+with
 
 <p>
 $$
 \begin{aligned}
-&\dot{\mathbf{z}}(t) = \mathbf{g}(\mathbf{z}(t),\ \mathbf{u}(t)), \\
-\text{with}\\
-&\mathbf{z}(t) = [p_x(t),\ p_y(t),\ \psi(t),\ v_x(t),\ v_y(t),\ \omega(t)]^\mathsf{T} \text{ as the state vector}, \\
-&\mathbf{u}(t) = [\tilde{d}(t),\ \delta(t)]^\mathsf{T} \text{ as the input vector}, \\
+&\mathbf{z}(t) = [p_x(t),\ p_y(t),\ \psi(t),\ v_x(t),\ v_y(t),\ \omega(t)]^\mathsf{T}, \\
+&\mathbf{u}(t) = [\tilde{d}(t),\ \delta(t)]^\mathsf{T}, \\
 &\mathbf{g} : \R^{n_x} \times \R^{n_u} \rightarrow \R^{n_x}, \\
 &n_x = 6 \text{ and } n_u = 2.
 \end{aligned}
 $$
 </p>
 
-Using forward Euler method, the discretised system for some small sampling time $T \in \R_{>0}$ can be written as,
+Here, $\mathbf{z}(t)$ is the state vector and $\mathbf{u}(t)$ is the input vector. Using forward Euler method, the discretised system for some small sampling time $T >0$ can be written as,
 
 <p>
 $$
@@ -117,9 +127,8 @@ Notice that the value of $C_{m2}$ is almost negligible, this will be bought up i
 <p>
 $$
 \begin{aligned}
-&v_x \in \bm{\gamma} = [0,\ 5], \\
-&\begin{bmatrix} \ \tilde{d} \ \\ \ \delta \ \end{bmatrix}  \in \bm{\mu} = [0,\ 1] \times \left[-\frac{\pi}{3},\ \frac{\pi}{3}\right]. \\
-%&\delta \in \left[-\frac{\pi}{6},\ \frac{\pi}{6}\right].
+&v_x \in \bm{\Gamma} = [0,\ 5], \\
+&\begin{bmatrix} \ \tilde{d} \ \\ \ \delta \ \end{bmatrix}  \in \mathbf{U} = [0,\ 1] \times \left[-\frac{\pi}{3},\ \frac{\pi}{3}\right].
 \end{aligned}
 $$
 </p>
@@ -133,8 +142,8 @@ $$
 \text{s.t.}\ & \mathbf{z}^i(0) = \mathbf{z}^{i-1}(N), \\
 \ &\mathbf{u}^i(-1) = \mathbf{u}^{i-1}(N-1), \\
 \ &\mathbf{z}^i(k+1) = \mathbf{g}(\mathbf{z}^i(k), \mathbf{u}^i(k)),\ k \in \Z_{[0, N-1]}, \\
-\ &\mathbf{u}^i(k) \in \bm{\mu},\ k \in \Z_{[0, N-1]}, \\
-\ &v_x^i(k) \in \bm{\gamma},\ k \in \Z_{[0, N-1]}, \\
+\ &\mathbf{u}^i(k) \in \mathbf{U},\ k \in \Z_{[0, N-1]}, \\
+\ &v_x^i(k) \in \bm{\Gamma},\ k \in \Z_{[0, N-1]}, \\
 \ &\mathbf{Q}_1 \in \mathbb{S}^{2}_{++}, \\
 \ &\mathbf{Q}_2 \in \mathbb{S}^{n_u}_{++}, \text{ and}\\
 \ &i \in \Z_{[0, \bm{S}]}.
@@ -174,7 +183,7 @@ With these conditions under consideration, the addition of the braking system ca
 $$
 \begin{aligned}
 &F_\text{brake} = \mu_{KF}\tilde{b}, \\
-&\tilde{b} \in [0, 1], \\
+&\tilde{b} \in \R_{[0, 1]}, \\
 &\mu_{KF} \in \R_+, \\
 &F_x = (C_{m1} - C_{m2} v_x)\tilde{d} - C_{m3} - C_{m4} v^2_x - F_\text{brake}.
 \end{aligned}
@@ -189,4 +198,5 @@ As it can be seen from the results, indeed the vehicle reaches close to $z_d = [
 
 ## References
 [1] Cataffo, Vittorio & Silano, Giuseppe & Iannelli, Luigi & Puig, Vicenç & Glielmo, Luigi. (2022). A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles. 10.1109/SMC53654.2022.9945279. 
+
 [2] Liniger, A., Domahidi, A., & Morari, M. (2017). Optimization-Based Autonomous Racing of 1:43 Scale RC Cars. ArXiv. https://doi.org/10.1002/oca.2123
