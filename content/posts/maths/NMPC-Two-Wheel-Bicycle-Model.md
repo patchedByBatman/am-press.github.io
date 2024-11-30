@@ -11,7 +11,11 @@ collapsible: true
 ---
 
 ## Introduction
+
+<p>
+
 I recently read a paper named "A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles" by Vittorio Cataffo et al., [1]. After reading the paper, I have decided to implement the proposed system in [Python3](https://www.python.org/) using [OpEn](https://alphaville.github.io/optimization-engine/). To study it further, I will be modifying the method to prioritize *road safe* features over minimum lap time. The purpose of this article is to showcase the formulation and simulation results of an NMPC controlled vehicle system that is *road safe* (at least in simulations). As a part of experimentation, I will be modifying the approach as the need arises and I will be updating this article by adding new sections accordingly. Going forward, the symbol **ఠ** will be used at the beginning of a section to indicate that a *road safety* feature is being introduced. Throughout this article the right-hand coordinate space is used with the z-axis pointing vertically up, the angles and rotations in counter-clockwise (CCW) direction are taken as positive. 
+</p>
 
 ### Software Used
 1. **[Python3](https://www.python.org/):** An open-source high-level interpreted programming language.
@@ -42,13 +46,23 @@ I recently read a paper named "A Nonlinear Model Predictive Control Strategy for
 
 
 ## Section 1: Initial Formulation
+
+<p>
+
 This section showcases the simulation results of an NMPC controlled vehicle based on bicycle model dynamics used in [1]. The results in this section are limited to the implementation of vehicle dynamics and the fromulation of an NMPC to drive it to a reference position on the global xy-coordinate space. This section does not include autonomous navigation on a track (lane-keeping) and obstacle avoidance, as these will be discussed in a separate post. 
+</p>
 
+<p>
 The free-body diagram of the bicycle model (inspired by Figure 1 in [1]) is shown in the figure below.
+</p>
 
+<div>
 <img src="/FBD_bicycle_model_NMPC.svg" alt="FBD bicycle model -- NMPC" style="width: 500px; height: 500px; object-fit: cover;"/>
+</div>
 
+<p>
 The two-wheel bicycle model in [1] is as follows:
+</p>
 
 <p>
 $$
@@ -63,7 +77,9 @@ $$
 $$
 </p>
 
+<p>
 with
+</p>
 
 <p>
 $$
@@ -78,12 +94,20 @@ $$
 $$
 </p>
 
-where
-$m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires. In the subscript, the letters $r$ and $f$ indicate the rear and front tires, and the letters $x$ and $y$ indicate the longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. 
+<p>
+
+where $m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires. In the subscript, the letters $r$ and $f$ indicate the rear and front tires, and the letters $x$ and $y$ indicate the longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. 
+</p>
+
+<p>
 
 The control inputs $\tilde{d} \in [0, 1],\text{ and }  \delta \in \R$ are the normalised forward acceleration PWM duty cycle of the electric drive train motor (refer [2]) and front wheel steering angle input in radians respectively. The states $p_x,\ p_y,\text{ and }  \psi \in \R$ are the vehicle's x position in meters, the y position in meters, and the heading in radians in the global frame of reference respectively. The states $v_x,\ v_y,\text{ and }  \omega \in \R$ are the vehicle's x velocity in meters-per-second, the y velocity in meters-per-second, and the angular rotation rate around the z-axis in radians-per-second in the local body-fixed frame of reference respectively. 
+</p>
+
+<p>
 
 The constants $B_f$, and $B_r \in \R$ are the *stiffness factors*, $C_f$, and $C_r \in \R$ are the *shape factors* $D_f$, and $D_r \in \R$ are the *peak factors*, and $C_{m1}$, $C_{m2}$, $C_{m3}$, and $C_{m4} \in \R_+$ are empirical parameters as described in [1]. The parameters $\alpha_f$ and $\alpha_r$ are the slip angles. These equations and their parameters are described in equations (1) through (4) in [1]. Now the dynamics can be written as,
+</p>
 
 <p>
 $$
@@ -91,7 +115,9 @@ $$
 $$
 </p>
 
+<p>
 with
+</p>
 
 <p>
 $$
@@ -104,7 +130,10 @@ $$
 $$
 </p>
 
+<p>
+
 Here, $\mathbf{z}(t)$ is the state vector and $\mathbf{u}(t)$ is the input vector. Using forward Euler method, the discretised system for some small sampling time $T >0$ can be written as,
+</p>
 
 <p>
 $$
@@ -112,7 +141,9 @@ $$
 $$
 </p>
 
+<p>
 Throughout this article, the vehicle parameters are taken as described in Table 1 in [1]. They are given (estimated) as,
+</p>
 
 | Param    | Value            | Param    | Value              | Param    | value                             |
 | -------- | ---------------- | -------- | ------------------ | -------- | --------------------------------- |
@@ -122,7 +153,10 @@ Throughout this article, the vehicle parameters are taken as described in Table 
 | $D_r$    | $159.919$ N      | $C_{m1}$ | $20$ N             | $C_{m2}$ | $6.92 \times 10^{-7}$ kg s$^{-1}$ |
 | $C_{m3}$ | $3.99$ N         | $C_{m4}$ | $0.67$ kg m$^{-1}$ | $M$      | $1674$                            |
 
+<p>
+
 Notice that the value of $C_{m2}$ is almost negligible, this will be bought up in a later section. The goal is to formulate an NMPC that minimises the distance between the desired final position $\mathbf{p}_d = [p_x^d,\ p_y^d]^\mathsf{T}$ and the position of the vehicle $\mathbf{p}_N = [p_x^N,\ p_y^N]^\mathsf{T}$ after $N$ (prediction horizon) time steps. This can also be interpreted as asking the MPC controller to take the system as close as possible to the desired final position with in a given time of $N \cdot T$ seconds. Whilst doing so, the controller shall ensure that the system obeys the state and input (safety) constraints, given as
+</p>
 
 <p>
 $$
@@ -133,7 +167,10 @@ $$
 $$
 </p>
 
+<p>
+
 It should also be of priority that the system is not subjected to violently arbitrary accelerations and steering angles. This can be formulated as aiming for a minimum *jerk* trajectory and can be modeled as minimising the *distance* between successive input vectors. With this, the NMPC formulation takes the following form,
+</p>
 
 <p>
 $$
@@ -150,35 +187,60 @@ $$
 $$
 </p>
 
+<p>
+
 **Note:** The control input ${}^\star\mathbf{u}_{\text{prev}}$ is the control input used to drive the vehicle during the previous iteration.
+</p>
+
+<p>
 
 The minimisation problem $\mathbb{P}_N$ is solved at every time step in a loop. For the first iteration the control input $\mathbf{u}(-1)$ is the input that the system began with i.e., the input at $t=-T$. The idea of NMPC is, at $t=0$, solve $\mathbb{P}_N$ for ${}^\star \mathbf{U}$, where ${}^\star \mathbf{U} = \underset{\mathbf{u}}{\text{argmin}}\ \mathbb{P}_N$. 
+</p>
+
+<p>
 
 Then, take the first computed input ${}^\star\mathbf{u}(0)$, apply it to the system and take a measurement of the resulting state ${}^\star\mathbf{z}(1)$. With $\mathbf{u}(-1) = {}^\star\mathbf{u}(0)$ and $\mathbf{z}(0) = {}^\star\mathbf{z}(1)$, proceed to iteration two at $t=T$ to solve $\mathbb{P}_N$ again, obtain the new ${}^\star\mathbf{u}(0)$, apply it to the system to get a new ${}^\star\mathbf{z}(1)$ and move on to iteration three at $t = 2T$. This procedure is repeated indefinitely or till a set number of iterations is reached. Throughout this article the total number of simulation steps (iterations) is denoted by $\bm{S}$.
+</p>
+
+<p>
 
 **Note:** The reader might notice that this iterative method only works assuming that the computation of ${}^\star \mathbf{U}$ takes less than $T$ seconds during each iteration. It is indeed the case and it is not clear what happens if each computation takes longer than $T$ seconds. This hurts the confidence on the designed system, as it might produce unexpected results. Thus, the selection of $T$ shall be of careful consideration owing to the trade off between the accuracy of the discrete approximation and computational limitations. 
+</p>
+
+<p>
 
 This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01 \text{ s},\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}_ d = [5, 5]^\mathsf{T}$. The following GIF shows the simulation results.
+</p>
 
-<!-- <div>
-<img width="640" height="480" controls>
-  <source src="/mpc_car_st_slope_no_brake.gif" type="image/gif">
-</img>
-</div> -->
+<div>
 <img src="/mpc_car_st_slope_no_brake.gif" alt="Simulation results" width="640" height="400">
+</div>
 
+<p>
 
 As it can be seen in the GIF, the NMPC controlled vehicle indeed drove towards (close to) the destination $[5, 5]^\mathsf{T}$, but it didn't converge. It could have been a matter of tuning $\mathbf{Q}_1$ and $\mathbf{Q}_2$, but before tuning them, the vehicle dynamics need to be modified to add a braking system. Remember, the end goal is to have an NMPC controlled autonomous vehicle that is *road safe*. These preliminary results are good enough for now as the weight matrices $\mathbf{Q}_1$ and $\mathbf{Q}_2$ might need retuning when the dynamics have changed.
+</p>
 
-## ఠ Section 2: Let's Brake $_{(\textit{or rather not})}$ the system
+## ఠ Section 2: Let's Brake _(or rather not)_ the system
+
+<p>
 
 This section discusses the addition of a braking system to the vehicle dynamics. The dynamics shall be modified with caution, as it might end up as a broken (*unsolvable*) system. In the end, a simulation result is provided for the modified system under the same scenario as in Section 1. Going further, the GIF playback will be slowed down when necessary to help with tracking changes in the states and control inputs. But, the time axis in the graph can always be used as a real-time time reference.
+</p>
+
+<p>
 
 In the equation of $F_x$ in the dynamics, the term $C_{m3}$ might be acting as the initial resistance of static friction between the tires and the road, while the term $C_{m4}v^2_x$ acts as the force due to air drag as the vehicle starts to move. Though, this captures the initial and forward moving dynamics, this model only works for $\tilde{d} > 0$. Leaving $\tilde{d} = 0$, then at $t=0$, $F_x = -C_{m3}$, which makes $v_x < 0$. Since, $v_x^2 > 0$, the negative x-force on the vehicle increases quadratically as $F_x = -C_{m3} - C_{m3}v_x^2$. Also, when the vehicle starts moving i.e., $|v_x| > 0$, the term $C_{m3}$ should vanish, or should switch to rolling fictional force between the tires and the road. It would also make sense to make $\text{sign}(C_{m4}) = \text{sign}(v_x)$ to properly model air drag. These will require additional modifications in the dynamics, which will be addressed in a later section.
+</p>
+
+<p>
 
 Due to the above reasons, moving forward it is assumed that the simulation results are valid as long as $\tilde{d} > 0$ and $v_x > 0$ (this is also the lower bound of $v_x$ in the above formulation) and any part of the simulation that violates these conditions (even when $v_x = 0$) shall be considered inaccurate.
+</p>
 
+<p>
 With these conditions under consideration, the addition of the braking system can be done by the following modifications to the system dynamics,
+</p>
 
 <p>
 $$
@@ -191,13 +253,28 @@ $$
 $$
 </p>
 
-Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
+<p>
 
+Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
+</p>
+
+<div>
 <img src="/mpc_car_st_slope_with_brake.gif" alt="Simulation results" width="640" height="400">
+</div>
+
+<p>
 
 As it can be seen from the results, indeed the vehicle reaches close to $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=2.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$, and the addition of lane-keeping and obstacle avoidance will be discussed in an upcoming article.
+</p>
 
 ## References
+
+<p>
+
 [1] Cataffo, Vittorio & Silano, Giuseppe & Iannelli, Luigi & Puig, Vicenç & Glielmo, Luigi. (2022). A Nonlinear Model Predictive Control Strategy for Autonomous Racing of Scale Vehicles. 10.1109/SMC53654.2022.9945279. 
+</p>
+
+<p>
 
 [2] Liniger, A., Domahidi, A., & Morari, M. (2017). Optimization-Based Autonomous Racing of 1:43 Scale RC Cars. ArXiv. https://doi.org/10.1002/oca.2123
+</p>
