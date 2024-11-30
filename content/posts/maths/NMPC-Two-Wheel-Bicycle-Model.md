@@ -155,7 +155,7 @@ Throughout this article, the vehicle parameters are taken as described in Table 
 
 <p>
 
-Notice that the value of $C_{m2}$ is almost negligible, this will be bought up in a later section. The goal is to formulate an NMPC that minimises the distance between the desired final position $\mathbf{p}_d = [p_x^d,\ p_y^d]^\mathsf{T}$ and the position of the vehicle $\mathbf{p}_N = [p_x^N,\ p_y^N]^\mathsf{T}$ after $N$ (prediction horizon) time steps. This can also be interpreted as asking the MPC controller to take the system as close as possible to the desired final position with in a given time of $N \cdot T$ seconds. Whilst doing so, the controller shall ensure that the system obeys the state and input (safety) constraints, given as
+Notice that the value of $C_{m2}$ is almost negligible, this will be bought up in a later post. The goal is to formulate an NMPC that minimises the distance between the desired final position $\mathbf{p}_d = [p_x^d,\ p_y^d]^\mathsf{T}$ and the position of the vehicle $\mathbf{p}_N = [p_x^N,\ p_y^N]^\mathsf{T}$ after $N$ (prediction horizon) time steps. This can also be interpreted as asking the MPC controller to take the system as close as possible to the desired final position with in a given time of $N \cdot T$ seconds. Whilst doing so, the controller shall ensure that the system obeys the state and input (safety) constraints, given as
 </p>
 
 <p>
@@ -209,7 +209,7 @@ Then, take the first computed input ${}^\star\mathbf{u}(0)$, apply it to the sys
 
 <p>
 
-This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01 \text{ s},\ \mathbf{z}^0(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}_ d = [5, 5]^\mathsf{T}$. The following GIF shows the simulation results.
+This setup is implemented and simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01 \text{ s},\ \mathbf{z}(0) = 0_{n_x \times 1} \text{ and }\mathbf{p}_ d = [5, 5]^\mathsf{T}$. The following GIF shows the simulation results.
 </p>
 
 <div>
@@ -230,12 +230,12 @@ This section discusses the addition of a braking system to the vehicle dynamics.
 
 <p>
 
-In the equation of $F_x$ in the dynamics, the term $C_{m3}$ might be acting as the initial resistance of static friction between the tires and the road, while the term $C_{m4}v^2_x$ acts as the force due to air drag as the vehicle starts to move. Though, this captures the initial and forward moving dynamics, this model only works for $\tilde{d} > 0$. Leaving $\tilde{d} = 0$, then at $t=0$, $F_x = -C_{m3}$, which makes $v_x < 0$. Since, $v_x^2 > 0$, the negative x-force on the vehicle increases quadratically as $F_x = -C_{m3} - C_{m3}v_x^2$. Also, when the vehicle starts moving i.e., $|v_x| > 0$, the term $C_{m3}$ should vanish, or should switch to rolling fictional force between the tires and the road. It would also make sense to make $\text{sign}(C_{m4}) = \text{sign}(v_x)$ to properly model air drag. These will require additional modifications in the dynamics, which will be addressed in a later section.
+In the equation of $F_x$ in the dynamics, the term $C_{m3}$ might be acting as the initial resistance of static friction between the tires and the road, while the term $C_{m4}v^2_x$ acts as the force due to air drag as the vehicle starts to move. Though, this captures the initial and forward moving dynamics, this model only accurate when $\tilde{d} > 0$. Leaving $\tilde{d} = 0$, then at $t=0$, $F_x = -C_{m3}$, which makes $v_x < 0$. Since, $v_x^2 > 0$, the negative x-force on the vehicle increases quadratically as $F_x = -C_{m3} - C_{m3}v_x^2$. Also, when the vehicle starts moving i.e., $|v_x| > 0$, the term $C_{m3}$ should vanish, or should switch to rolling fictional force between the tires and the road. It would also make sense to make $\text{sign}(C_{m4}) = \text{sign}(v_x)$ to properly model air drag. These will require additional modifications in the dynamics that might require conditional expressions, which are currently not supported by OpEN. Nonetheless, this inaccuracy should be kept in mind when interpreting the simulation results.
 </p>
 
 <p>
 
-Due to the above reasons, moving forward it is assumed that the simulation results are valid as long as $\tilde{d} > 0$ and $v_x > 0$ (this is also the lower bound of $v_x$ in the above formulation) and any part of the simulation that violates these conditions (even when $v_x = 0$) shall be considered inaccurate.
+Due to the above reasons, moving forward it is assumed that the simulation results are valid as long as $\tilde{d} > 0$ and $v_x > 0$ (this excludes the lower bound of $v_x$ in the above formulation) and any part of the simulation that violates these conditions (even when $v_x = 0$) shall be considered inaccurate. This also means that, going forward $C_{m3}$ is assumed to be the rolling frictional force between the tires and the road.
 </p>
 
 <p>
@@ -255,7 +255,7 @@ $$
 
 <p>
 
-Here, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
+Here, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
 </p>
 
 <div>
