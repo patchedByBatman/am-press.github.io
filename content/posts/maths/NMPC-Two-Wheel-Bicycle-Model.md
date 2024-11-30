@@ -96,7 +96,7 @@ $$
 
 <p>
 
-where $m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires. In the subscript, the letters $r$ and $f$ indicate the rear and front tires, and the letters $x$ and $y$ indicate the longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. 
+Here, $m$ is the mass of the vehicle, $F_{r, x},\ F_{r, y},\ F_{f, x},\text{ and } F_{f, y} \in \R$ are the forces acting on the tires. In the subscript, the letters $r$ and $f$ indicate the rear and front tires, and the letters $x$ and $y$ indicate the longitudinal and lateral component of forces in the local vehicle body xy-frame respectively. The constants $l_f,\text{ and }  l_r \in \R_+$ are the distances from the Centre of Gravity $(C_g)$ to front and rear wheels respectively. 
 </p>
 
 <p>
@@ -255,7 +255,7 @@ $$
 
 <p>
 
-Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
+Here, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{b}$ and the actual braking force $F_\text{brake}$, not exactly equal to the coefficient of kinetic friction. It should be noted that the $\text{sign}(F_\text{brake})$ is only valid if $v_x > 0$. With these modifications to the dynamics, starting from $\mathbf{z}^0(0) = 0_{n_x \times 1}$, the modified system is simulated in Python3 with $N=50,\ \bm{S} = 300,\ T=0.01, \text{ and }\mathbf{p}_d = [5, 5]^\mathsf{T}$ and the results are shown in the following GIF.
 </p>
 
 <div>
@@ -264,7 +264,7 @@ Where, $\mu_{KF}$ is a constant that relates the normalised brake input $\tilde{
 
 <p>
 
-As it can be seen from the results, indeed the vehicle reaches close to $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=2.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$, and the addition of lane-keeping and obstacle avoidance will be discussed in an upcoming article.
+As it can be seen from the results, indeed the vehicle reaches close to $z_d = [5, 5, 0, 0, 0, 0]^\mathsf{T}$ i.e., $\mathbf{p}_d = [5, 5]^\mathsf{T}$. While this is a good result, it should also be noted that between $t=2.25$ and $t=2.5$, the controller is applying acceleration PWM $(\tilde{d})$ and brake input $(\tilde{b})$ simultaneously. The fix for this undesirable usage of $\tilde{d}$ and $\tilde{b}$, and the addition of lane-keeping and obstacle avoidance will be discussed in a future article.
 </p>
 
 ## References
