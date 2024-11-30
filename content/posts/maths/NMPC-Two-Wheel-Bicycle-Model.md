@@ -34,15 +34,15 @@ I recently read a paper named "A Nonlinear Model Predictive Control Strategy for
 |$\R$                   |$(-\infty,\ \infty)$    | Set of real numbers.        |
 |$\R^n$                 |$\\{\mathbf{x}_ {n \times 1}: x_i \in \R \ \forall \ i \in \Z_{[1,\ n]}, n \in \R\\}$| Set of all $n \times 1$ real vectors.|
 |$\R^{n \times m}$      |$\\{\mathbf{A}_ {n \times m}: a_ {i,\ j} \in \R \ \forall \ i \in \Z_{[1,\ n]},\text{ and } j \in \Z_{[1,\ m]}\\}$| Set of all $n \times 1$ real vectors.|
-|$\R_{[i,\ j]}$         |$\\{k: i \le k \le j\ \forall\ i,\ j,\ k \in \R\\}$| Set of real numbers from $i$ to $j$ inclusive.        |
+|$\R_{[i,\ j]}$         |$\\{k \in \R: i \le k \le j\ \forall\ i,\ j \in \R\\}$| Set of real numbers from $i$ to $j$ inclusive.        |
 |$\R_-$ or $\R_{\lt 0}$ |$(-\infty,\ 0)$         | Set of all negative real numbers.|
 |$\R_+$ or $\R_{\ge 0}$ |$[0,\ \infty)$          | Set of all positive real numbers.|
 |$\Z$                   |$(\ldots, -2,\ -1,\ 0,\ 1,\ 2, \ldots)$| Set of all integers.|
-|$\Z_{[i,\ j]}$         |$\\{k: i \le k \le j\ \forall\ i,\ j,\ k \in \Z\\}$| Set of all integers between $i$ and $j$ inclusive.|
+|$\Z_{[i,\ j]}$         |$\\{k \in \Z: i \le k \le j\ \forall\ i,\ j \in \Z \\}$| Set of all integers between $i$ and $j$ inclusive.|
 |$\Z_-$ or $\Z_{\lt 0}$ |$(\ldots, -2,\ -1,\ 0)$ | Set of all negative integers.|
 |$\Z_+$ or $\Z_{\ge 0}$ |$[0,\ 1,\ 2, \ldots)$   | Set of all positive integers.|
-|$\mathbb{S}_+^n$       |$\\{\mathbf{A}: \mathbf{x}^\mathsf{T}\mathbf{A}\mathbf{x} \ge 0 \ \forall \ \mathbf{x} \in \R^n, \ \mathbf{A} \in \R^{n \times n},\ \text{and } n \in \R_+ \\}$| Set of all symmetric positive semi-definite matrices.|
-|$\mathbb{S}_{++}^n$    |$\\{\mathbf{A}: \mathbf{x}^\mathsf{T}\mathbf{A}\mathbf{x} \gt 0 \text{ and } \mathbf{x}^\mathsf{T}\mathbf{A}\mathbf{x} \implies \mathbf{x} = 0 \ \forall \ \mathbf{x} \in \R^n, \ \mathbf{A} \in \R^{n \times n},\ \text{and } n \in \R_+ \\}$| Set of all symmetric positive definite matrices.|
+|$\mathbb{S}_+^n$       |$\\{\mathbf{A}\in \R^{n \times n}: \mathbf{x}^\mathsf{T}\mathbf{A}\mathbf{x} \ge 0 \ \forall \ \mathbf{x} \in \R^n \\}$| Set of all symmetric positive semi-definite matrices.|
+|$\mathbb{S}_{++}^n$    |$\\{\mathbf{A} \in \R^{n \times n}: \mathbf{x}^\mathsf{T}\mathbf{A}\mathbf{x} \gt 0 \text{ and } \mathbf{x}^\mathsf{T}\mathbf{A}\mathbf{x} = 0 \implies \mathbf{x} = 0_n \ \forall \ \mathbf{x} \in \R^n \\}$| Set of all symmetric positive definite matrices.|
 
 
 ## Section 1: Initial Formulation
